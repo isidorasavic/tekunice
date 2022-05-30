@@ -32,7 +32,7 @@ public class Habitat {
     @Column(name="label", nullable=false)
     private Label label;
 
-    @JoinColumn(name = "natural_factor_id", referencedColumnName = "id")
+    @JoinColumn(name = "natural_factors_id", referencedColumnName = "id")
     @OneToOne
     private NaturalFactor naturalFactors;
 
