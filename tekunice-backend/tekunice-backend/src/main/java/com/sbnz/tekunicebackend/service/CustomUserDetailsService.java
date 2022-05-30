@@ -18,15 +18,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 
-	private User user;
-
 	public CustomUserDetailsService() {
 	}
 
-
-	public CustomUserDetailsService(User user) {
-        this.user = user;
-    }
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
