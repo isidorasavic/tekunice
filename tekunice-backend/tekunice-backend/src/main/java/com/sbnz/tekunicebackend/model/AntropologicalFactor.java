@@ -52,8 +52,8 @@ public class AntropologicalFactor {
     public AntropologicalFactor() {
     }
 
-    public AntropologicalFactor(int shrubbery, int distanceToNextPopulation, int disturbance, int roads,
-            int agriculture, int grazing, int grassRemoving, int predators, int protection, int purpouse) {
+
+    public AntropologicalFactor(int shrubbery, int distanceToNextPopulation, int disturbance, int roads, int agriculture, int grazing, int grassRemoving, int predators, int protection, int purpouse, LocalDate dateAdded) {
         this.shrubbery = shrubbery;
         this.distanceToNextPopulation = distanceToNextPopulation;
         this.disturbance = disturbance;
@@ -64,7 +64,9 @@ public class AntropologicalFactor {
         this.predators = predators;
         this.protection = protection;
         this.purpouse = purpouse;
+        this.dateAdded = dateAdded;
     }
+    
 
     public long getId() {
         return id;

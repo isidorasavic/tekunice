@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.sbnz.tekunicebackend.model.enums.Elevation;
 import com.sbnz.tekunicebackend.model.enums.Exposition;
+import com.sbnz.tekunicebackend.model.enums.Flooding;
 import com.sbnz.tekunicebackend.model.enums.MJT;
 import com.sbnz.tekunicebackend.model.enums.Slope;
 import com.sbnz.tekunicebackend.model.enums.Type;
@@ -46,6 +47,10 @@ public class NaturalFactor {
     @Enumerated(EnumType.STRING)
     private Slope slope;
 
+    @Column(name = "flooding", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Flooding flooding;
+
     @JoinColumn(name = "habitat_id")
     @ManyToOne
     private Habitat habitat;
@@ -54,13 +59,16 @@ public class NaturalFactor {
     public NaturalFactor() {
     }
 
-    public NaturalFactor(Type type, Elevation elevation, MJT mjt, Exposition exposition, Slope slope) {
+
+    public NaturalFactor(Type type, Elevation elevation, MJT mjt, Exposition exposition, Slope slope, Flooding flooding) {
         this.type = type;
         this.elevation = elevation;
         this.mjt = mjt;
         this.exposition = exposition;
         this.slope = slope;
+        this.flooding = flooding;
     }
+    
 
     public Type getType() {
         return type;
@@ -114,6 +122,13 @@ public class NaturalFactor {
         this.habitat = habitat;
     }
 
+    public Flooding getFlooding() {
+        return this.flooding;
+    }
+
+    public void setFlooding(Flooding flooding) {
+        this.flooding = flooding;
+    }
 
     
 

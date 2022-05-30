@@ -1,0 +1,35 @@
+package drools.slope-and-flooding-rules.rules;
+
+import com.sbnz.tekunicebackend.model.Habitat;
+
+rule "Label habitat - Great slope"
+    when
+        $h: Habitat( naturalFactors.label==Label.NoLabel, naturalFactors.slope==Slope.Great )
+    then
+        $h.setLabel(Label.Inappropriate);
+        update($h);
+end
+
+rule "Label habitat - Often flooding"
+    when
+        $h: Habitat( naturalFactors.label==Label.NoLabel, naturalFactors.flooding==Flooding.Often )
+    then
+        $h.setLabel(Label.Inappropriate);
+        update($h);
+end
+
+rule "Label habitat - Medium slope and no flooding"
+    when
+        $h: Habitat( naturalFactors.label==Label.NoLabel, naturalFactors.slope==Slope.Medium, naturalFactors.flooding==Flooding.None )
+    then
+        $h.setLabel(Label.Inappropriate);
+        update($h);
+end
+
+rule "Label habitat - No slope and flooding sometimes"
+    when
+        $h: Habitat( naturalFactors.label==Label.NoLabel, naturalFactors.slope==Slope.None, naturalFactors.flooding==Flooding.Sometimes )
+    then
+        $h.setLabel(Label.Inappropriate);
+        update($h);
+end

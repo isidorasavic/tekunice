@@ -5,6 +5,8 @@ import com.sbnz.tekunicebackend.security.authentication.RestAuthenticationEntryP
 import com.sbnz.tekunicebackend.security.authentication.TokenAuthenticationFilter;
 import com.sbnz.tekunicebackend.service.CustomUserDetailsService;
 
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder(10);
 	}
+
 
 	// Servis koji se koristi za citanje podataka o korisnicima aplikacije
 	@Autowired
