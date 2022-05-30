@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import com.sbnz.tekunicebackend.model.enums.Elevation;
 import com.sbnz.tekunicebackend.model.enums.Exposition;
-import com.sbnz.tekunicebackend.model.enums.Label;
 import com.sbnz.tekunicebackend.model.enums.MJT;
 import com.sbnz.tekunicebackend.model.enums.Slope;
 import com.sbnz.tekunicebackend.model.enums.Type;
