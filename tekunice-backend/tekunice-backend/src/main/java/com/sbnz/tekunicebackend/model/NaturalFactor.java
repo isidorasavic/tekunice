@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.sbnz.tekunicebackend.model.enums.Elevation;
@@ -42,6 +44,10 @@ public class NaturalFactor {
     @Column(name = "slope", nullable = false)
     @Enumerated(EnumType.STRING)
     private Slope slope;
+
+    @JoinColumn(name = "habitat_id")
+    @ManyToOne
+    private Habitat habitat;
 
 
     public NaturalFactor() {
@@ -97,6 +103,14 @@ public class NaturalFactor {
 
     public long getId() {
         return id;
+    }
+
+    public Habitat getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(Habitat habitat) {
+        this.habitat = habitat;
     }
 
 

@@ -1,5 +1,7 @@
 package com.sbnz.tekunicebackend.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,6 +44,9 @@ public class AntropologicalFactor {
     @JoinColumn(name = "habitat_id")
     @ManyToOne
     private Habitat habitat;
+
+    @Column(name="date_added", nullable=false)
+    private LocalDate dateAdded;
     
     
     public AntropologicalFactor() {
@@ -152,6 +157,14 @@ public class AntropologicalFactor {
 
     public void setHabitat(Habitat habitat) {
         this.habitat = habitat;
+    }
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     
