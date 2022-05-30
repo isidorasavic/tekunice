@@ -1,13 +1,13 @@
-package com.ftn.sbnz;
+package com.sbnz.tekunicebackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SbnzApplication {
+public class TekuniceBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SbnzApplication.class, args);
+		SpringApplication.run(TekuniceBackendApplication.class, args);
 		System.out.println("Hello world :)");
 	}
 
