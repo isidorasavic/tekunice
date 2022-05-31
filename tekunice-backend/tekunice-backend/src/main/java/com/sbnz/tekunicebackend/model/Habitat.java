@@ -1,7 +1,5 @@
 package com.sbnz.tekunicebackend.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +14,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sbnz.tekunicebackend.model.enums.Label;
+
+import java.util.List;
 
 @Entity
 @Table(name="habitat")
@@ -99,5 +99,5 @@ public class Habitat {
     public void setUser(User user) {
         this.user = user;
     }
-    
+
 }
