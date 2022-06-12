@@ -1,0 +1,30 @@
+Tekunice 
+
+- Korisnik mora da se uloguje pre nego sto pristupi sistemu.
+
+- Korisnik ima svoje licne podatke, i listu stanista koje je kreirao u sistemu.
+
+- Staniste ima ime, nepromenljive faktore, i antropogene faktore i labelu.
+
+- Labela je jedna od pet vrednosti iz enumeracije, i oznacava stepen kvaliteta stanista, ili ukoliko je nema NO_LABEL
+
+- Nepromenljivi faktori ima tip stanista, nadmorsku visinu, srednju julsku temperaturu, ekspoziciju, nagib terena i kolicinu padavina tj plavljenje terena. Sve su vrednosti iz enumeracija, osim nadmorske visine i srednje julske temperature koje predstavljaju po dve vrednosti, donju i gornju granicu.
+
+- Antropeni faktori su deset atributa, i svaki je objekat klase FactorLevelAndDescription (nazvati mozda lepse). 
+
+- Klasa  (FactorLevelAndDescription) sadrzi ime promenljivog faktora kom pripada, brojnu  vrednost koliko je nepovoljno (vrednosti idu od 0 do 10, i sto je veca to j gore), opis (mozda) i tekstualni predlog sta se u tom slucaju korisniku predlaze da uradi.
+
+- Postoji klasa NaturalFactorOptions koja se koriti u toku dodavanja novog stanista. Ona ima id i ime stanista koje se opisuje, tip stanista, i liste opcija koje korisnik moze  odabere za ostale vrednosti. 
+
+- Kad korisnik zeli da kreira novo staniste tok je sledeci:
+	1. Korisnik unese ime stanista, i odabere kog je staniste tipa.
+	2. Na beku se prodje forward chainig, napune se liste y NaturalFactorOptions i korisniku se nude ve moguce opcije za ostala obelezja.
+	3. Kad odabere sve nepromenljive faktore, nude mu se svi promenljivi faktori, on bira po jednu vrednost za svaki, i to se salje na bek isto.
+	4. Kad je korisnik popunio sve forme, sistem odredjuje labelu stanista, i pomocu backward chaining-a trazi preporuke iz baze. 
+	5. Kad su labela i preporuke pronadjene, korisniku se na frontu ispisuje rezultat, preporuke i procenat uspesnosti koji sistem predvidja.
+
+- Korisnik moze da za vec postojece staniste, koje nije nepovoljno, na odredjeni vremenski period kreira nove antropogene faktore.
+
+- Sve bi trebalo da ima datum kad se dodalo u sistem.
+
+- Staniste ne mora da cuva sve antropogene faktore, jer ce oni imati podatak o tome kom stanistu pripadaju.
