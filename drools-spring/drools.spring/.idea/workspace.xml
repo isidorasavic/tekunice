@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="509b70ed-80b8-4cf4-bcbd-0e30c07392bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/NaturalFactorOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/enums/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/service/NaturalFactorsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/drools/spring/rules/natural-factor-options-rules.drl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/drools/spring/rules/natural-factor-options-rules.drl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/SampleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/SampleApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/SampleAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/SampleAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/NaturalFactors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/NaturalFactors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drools/spring/rules/classify-item-rules.drl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/drools/spring/rules/classify-item-rules.drl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/drools/spring/example/SampleApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/drools/spring/example/SampleApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/drools/spring/example/SampleAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/drools/spring/example/SampleAppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/drools/spring/example/model/NaturalFactors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/drools/spring/example/model/NaturalFactors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/drools/spring/rules/classify-item-rules.drl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/drools/spring/rules/classify-item-rules.drl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tekunice-backend/tekunice-backend/src/main/resources/drools/forward-chaining-rules/PZSOptions/possible-options-pzs-rules.drl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tekunice-backend/tekunice-backend/src/main/resources/drools/slope-and-flooding-rules/slope-and-flooding-rules.drl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tekunice-backend/tekunice-backend/src/main/resources/drools/templates/elevation-interval.drt" beforeDir="false" />
@@ -34,7 +47,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2ATVqzmsWfHGcjyQXUXTQSPN2BF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -70,5 +85,8 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

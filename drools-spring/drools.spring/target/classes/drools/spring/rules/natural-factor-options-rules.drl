@@ -1,0 +1,21 @@
+package drools.spring.rules;
+import drools.spring.example.dto.NaturalFactorOptions
+import drools.spring.example.model.enums.*
+//
+//rule "panonske-zaslanjene-stepe-elevation-options"
+//    when
+//        $n : NaturalFactorOptions(habitatType == Type.PZS, elevationOptions.size() == 0)
+//    then
+//        $n.addElevationOption(Elevation.NoElevation.name());
+//        $n.addElevationOption(Elevation.ExtraSmall.name());
+//end
+
+rule "panonske-zaslanjene-stepe-mjt-options"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType == Type.PZS, elevationOptions.size() == 0)
+    then
+        $n.addMjtOption(MJT.Medium.name());
+        $n.addMjtOption(MJT.Hot.name());
+        $n.addMjtOption(MJT.VeryHot.name());
+end

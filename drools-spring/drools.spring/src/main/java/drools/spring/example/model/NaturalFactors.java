@@ -20,7 +20,8 @@ public class NaturalFactors {
     private long id;
 
     @Column(name="type", nullable=false)
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     @Column(name="elevation", nullable=false)
     @Enumerated(EnumType.STRING)
