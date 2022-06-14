@@ -20,6 +20,8 @@ public class AntropologicalFactorLevelAndDescription {
 
     @Column(name="factor_name", nullable=false)
     private String factorName;
+    @Column(name="description", nullable=false)
+    private String description;
     @Column(name="level", nullable=false)
     private int level;
     @Column(name="recommendation", nullable=false)

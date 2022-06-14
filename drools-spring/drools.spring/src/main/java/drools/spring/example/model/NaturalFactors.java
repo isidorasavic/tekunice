@@ -1,5 +1,6 @@
 package drools.spring.example.model;
 
+import drools.spring.example.dto.NaturalFactorsDTO;
 import drools.spring.example.model.enums.*;
 import lombok.*;
 
@@ -43,5 +44,13 @@ public class NaturalFactors {
     @Enumerated(EnumType.STRING)
     private Flooding flooding;
 
+    public NaturalFactors(NaturalFactorsDTO naturalFactorsDTO) {
+        this.type = Type.valueOf(naturalFactorsDTO.getType());
+        this.elevation = Elevation.valueOf(naturalFactorsDTO.getElevation());
+        this.mjt = MJT.valueOf(naturalFactorsDTO.getMjt());
+        this.exposition = Exposition.valueOf(naturalFactorsDTO.getExposition());
+        this.slope = Slope.valueOf(naturalFactorsDTO.getSlope());
+        this.flooding = Flooding.valueOf(naturalFactorsDTO.getFlooding());
+    }
 
 }

@@ -19,7 +19,7 @@ public class NaturalFactorController {
         this.naturalFactorsService = naturalFactorsService;
     }
 
-    @RequestMapping(value="/getOptions", method= RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value="/naturalFactorOptions", method= RequestMethod.GET, produces = "application/json")
     public NaturalFactorOptions getOptions(@RequestParam("name") String name, @RequestParam("type") String type){
         NaturalFactorOptions options = new NaturalFactorOptions();
         options.setHabitatName(name);

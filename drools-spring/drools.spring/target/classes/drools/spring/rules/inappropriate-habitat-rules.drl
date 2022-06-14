@@ -1,0 +1,42 @@
+package drools.spring.rules;
+
+import drools.spring.example.model.Habitat
+import drools.spring.example.model.enums.*
+
+dialect  "mvel"
+
+rule "prevelik-nagib-rule"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.slope == Slope.Great)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "cesto-plavljenje-rule"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.flooding == Flooding.Often)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "srednji-nagib-nema-plavljenja-rule"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.flooding == Flooding.None, naturalFactors.slope == Slope.Medium)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "mali-nagib-povremeno-plavljneje-rule"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.flooding == Flooding.Sometimes, naturalFactors.slope == Slope.NoSlope)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+// TODO: srediti zbunje
+//rule "puno-zbunja-rule"
+//    when
+//        $h : Habitat(label == Label.NO_LABEL, antropologicalFactors.shrubbery)
+//    then
+//        modify($h){setLabel(Label.INAPPROPRIATE)}
+//end

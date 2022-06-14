@@ -19,6 +19,9 @@ public class Habitat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name="name", nullable = false)
+    private String name;
+
     @Column(name="label", unique=true, nullable = false)
     private Label label;
 
