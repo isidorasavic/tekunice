@@ -3,6 +3,8 @@ package drools.spring.example.service;
 import drools.spring.example.SampleAppService;
 import drools.spring.example.dto.NaturalFactorOptions;
 import drools.spring.example.model.NaturalFactors;
+import drools.spring.example.model.enums.Exposition;
+import drools.spring.example.model.enums.Flooding;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
@@ -27,6 +29,16 @@ public class NaturalFactorsService {
         kieSession.insert(naturalFactorOptions);
         kieSession.fireAllRules();
         kieSession.dispose();
+
+        for (Exposition exp : Exposition.values()) {
+            naturalFactorOptions.addExpositionOption(exp.name());
+        }
+
+        for (Flooding fl : Flooding.values()) {
+            naturalFactorOptions.addFloodingOption(fl.name());
+        }
+
+
         return naturalFactorOptions;
     }
 }

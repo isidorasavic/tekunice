@@ -20,16 +20,16 @@ public class SampleApp {
 	private static Logger log = LoggerFactory.getLogger(SampleApp.class);
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(SampleApp.class, args); 
-
-        String[] beanNames = ctx.getBeanDefinitionNames();
-        Arrays.sort(beanNames);
-
-        StringBuilder sb = new StringBuilder("Application beans:\n");
-        for (String beanName : beanNames) {
-            sb.append(beanName + "\n");
-        }
-        log.info(sb.toString());
+		SpringApplication.run(SampleApp.class, args);
+//
+//        String[] beanNames = ctx.getBeanDefinitionNames();
+//        Arrays.sort(beanNames);
+//
+//        StringBuilder sb = new StringBuilder("Application beans:\n");
+//        for (String beanName : beanNames) {
+//            sb.append(beanName + "\n");
+//        }
+//        log.info(sb.toString());
 		log.info("Hello world :)");
 	}
 	

@@ -1,0 +1,65 @@
+package drools.spring.rules;
+import drools.spring.example.dto.NaturalFactorOptions
+import drools.spring.example.model.enums.*
+
+
+rule "no-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions contains "NoElevation", !(slopeOptions contains "NoSlope"))
+    then
+        modify($n){
+            addSloopeOption("NoSlope")
+        }
+end
+
+rule "small-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions.contains("ExtraSmall"), !(slopeOptions contains "Small"))
+    then
+        modify($n){
+            addSloopeOption("Small")
+        }
+end
+
+rule "medium-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions.contains("Small"), !(slopeOptions contains "Medium"))
+    then
+        modify($n){
+            addSloopeOption("Medium")
+        }
+end
+
+rule "medium-slope-rule2"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions.contains("Medium"), !(slopeOptions contains "Medium"))
+    then
+        modify($n){
+            addSloopeOption("Medium")
+        }
+end
+
+rule "great-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions.contains("Large"), !(slopeOptions contains "Great"))
+    then
+        modify($n){
+            addSloopeOption("Great")
+        }
+end
+
+rule "great-slope-rule2"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, elevationOptions.contains("ExtraLarge"), !(slopeOptions contains "Great"))
+    then
+        modify($n){
+            addSloopeOption("Great")
+        }
+end
+

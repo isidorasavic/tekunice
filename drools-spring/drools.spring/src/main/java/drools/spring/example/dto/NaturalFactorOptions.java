@@ -24,11 +24,11 @@ public class NaturalFactorOptions {
     public NaturalFactorOptions() {
         this.habitatName = "";
         this.setHabitatType(Type.NO_TYPE);
-        elevationOptions = new ArrayList<>();
-        mjtOptions = new ArrayList<>();
-        slopeOptions = new ArrayList<>();
-        floodingOptions = new ArrayList<>();
-        expositionOptions = new ArrayList<>();
+        this.elevationOptions = new ArrayList<>();
+        this.mjtOptions = new ArrayList<>();
+        this.slopeOptions = new ArrayList<>();
+        this.floodingOptions = new ArrayList<>();
+        this.expositionOptions = new ArrayList<>();
     }
 
 

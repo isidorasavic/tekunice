@@ -19,7 +19,7 @@ Tekunice
 - Kad korisnik zeli da kreira novo staniste tok je sledeci:
 	1. Korisnik unese ime stanista, i odabere kog je staniste tipa.
 	2. Na beku se prodje forward chainig, napune se liste y NaturalFactorOptions i korisniku se nude ve moguce opcije za ostala obelezja.
-	3. Kad odabere sve nepromenljive faktore, nude mu se svi promenljivi faktori, on bira po jednu vrednost za svaki, i to se salje na bek isto.
+	3. Kad odabere sve nepromenljive faktore, nude mu se svi promenljivi faktori, on bira po jednu vrednost za svaki, sve se pakuje u jedan HabitatDTO.
 	4. Kad je korisnik popunio sve forme, sistem odredjuje labelu stanista, i pomocu backward chaining-a trazi preporuke iz baze. 
 	5. Kad su labela i preporuke pronadjene, korisniku se na frontu ispisuje rezultat, preporuke i procenat uspesnosti koji sistem predvidja.
 
@@ -28,3 +28,13 @@ Tekunice
 - Sve bi trebalo da ima datum kad se dodalo u sistem.
 
 - Staniste ne mora da cuva sve antropogene faktore, jer ce oni imati podatak o tome kom stanistu pripadaju.
+
+- 0-200 ravno 
+- 200-600 blagi
+- 600-800 srednji
+- 800-1200 srednji
+- 1300-2000 veliki
+- 2000-2600 veliki
+
+
+- dodavanje slope-a dodaje dva puta NoSlope samo pitanje je sto????

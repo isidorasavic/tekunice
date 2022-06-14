@@ -39,12 +39,12 @@ public class SampleAppController {
 		return i2;
 	}
 
-	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json")
-	public NaturalFactorOptions getQuestions(@RequestParam(required = true) String name, @RequestParam(required = true) String type) {
-
-		NaturalFactorOptions options = new NaturalFactorOptions();
-		options.setHabitatName(name);
-		options.setHabitatType(Type.valueOf(type));
-		return naturalFactorsService.getAllOptions(options);
-	}
+//	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json")
+//	public NaturalFactorOptions getQuestions(@RequestParam(required = true) String name, @RequestParam(required = true) String type) {
+//
+//		NaturalFactorOptions options = new NaturalFactorOptions();
+//		options.setHabitatName(name);
+//		options.setHabitatType(Type.valueOf(type));
+//		return naturalFactorsService.getAllOptions(options);
+//	}
 }
