@@ -19,9 +19,15 @@ public class HabitatController {
         this.habitatService = habitatService;
     }
 
-    @RequestMapping(value="/addHabitat", method= RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value="/addHabitat", method= RequestMethod.POST, produces = "application/json")
     public Habitat getOptions(@RequestBody HabitatDTO habitatDTO){
         return habitatService.addNewHabitat(habitatDTO);
+
+    }
+
+    @RequestMapping(value="/getHabitatLabel", method= RequestMethod.GET, produces = "application/json")
+    public Habitat getHabitatLabel(@RequestBody HabitatDTO habitatDTO){
+        return habitatService.generateRules(habitatDTO);
 
     }
 }

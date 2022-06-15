@@ -8,10 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @Table(name = "natural_factors")
 public class NaturalFactors {
@@ -53,4 +50,15 @@ public class NaturalFactors {
         this.flooding = Flooding.valueOf(naturalFactorsDTO.getFlooding());
     }
 
+    public NaturalFactors() {
+    }
+
+    public NaturalFactors(Type type, Elevation elevation, MJT mjt, Exposition exposition, Slope slope, Flooding flooding) {
+        this.type = type;
+        this.elevation = elevation;
+        this.mjt = mjt;
+        this.exposition = exposition;
+        this.slope = slope;
+        this.flooding = flooding;
+    }
 }

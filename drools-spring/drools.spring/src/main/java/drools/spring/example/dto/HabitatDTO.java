@@ -11,6 +11,7 @@ import lombok.*;
 public class HabitatDTO {
 
     private String name;
+    private String label;
     private NaturalFactorsDTO naturalFactorsDTO;
     // TODO: antropological factors
 }

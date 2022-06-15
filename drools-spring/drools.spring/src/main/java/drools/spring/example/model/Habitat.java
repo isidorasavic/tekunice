@@ -1,5 +1,6 @@
 package drools.spring.example.model;
 
+import drools.spring.example.dto.HabitatDTO;
 import drools.spring.example.model.enums.Label;
 import lombok.*;
 
@@ -33,5 +34,19 @@ public class Habitat {
     @OneToOne
     private NaturalFactors naturalFactors;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Habitat(HabitatDTO habitatDTO){
+        this.name = habitatDTO.getName();
+        this.label = Label.valueOf(habitatDTO.getLabel());
+        this.naturalFactors = new NaturalFactors(habitatDTO.getNaturalFactorsDTO());
+        //TODO: antropological factors
+    }
 
 }

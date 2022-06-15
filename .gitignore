@@ -17,3 +17,7 @@ tekunice-backend/.idea/libraries/Maven__com_google_guava_guava_16_0_1.xml
 *.class
 *.class
 drools-spring/drools.spring/.idea/workspace.xml
+drools-spring/drools.spring/.idea/workspace.xml
+*.class
+drools-spring/drools.spring/.idea/runConfigurations.xml
+*.class
