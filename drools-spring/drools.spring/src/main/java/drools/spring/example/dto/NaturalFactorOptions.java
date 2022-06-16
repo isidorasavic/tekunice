@@ -1,5 +1,6 @@
 package drools.spring.example.dto;
 
+import drools.spring.example.model.Option;
 import drools.spring.example.model.enums.Type;
 import lombok.*;
 
@@ -13,16 +14,14 @@ import java.util.List;
 @EqualsAndHashCode
 public class NaturalFactorOptions {
 
-    private String habitatName;
     private Type habitatType;
-    private List<String> elevationOptions;
-    private List<String> mjtOptions;
-    private List<String> slopeOptions;
-    private List<String> floodingOptions;
-    private List<String> expositionOptions;
+    private List<Option> elevationOptions;
+    private List<Option> mjtOptions;
+    private List<Option> slopeOptions;
+    private List<Option> floodingOptions;
+    private List<Option> expositionOptions;
 
     public NaturalFactorOptions() {
-        this.habitatName = "";
         this.setHabitatType(Type.NO_TYPE);
         this.elevationOptions = new ArrayList<>();
         this.mjtOptions = new ArrayList<>();
@@ -33,27 +32,19 @@ public class NaturalFactorOptions {
 
 
     public void addElevationOption(String option) {
-        this.elevationOptions.add(option);
+        this.elevationOptions.add(new Option((option)));
     }
 
     public void addMjtOption(String option) {
-        this.mjtOptions.add(option);
+        this.mjtOptions.add(new Option((option)));
     }
     public void addSloopeOption(String option) {
-        this.slopeOptions.add(option);
+        this.slopeOptions.add(new Option((option)));
     }
     public void addFloodingOption(String option) {
-        this.floodingOptions.add(option);
+        this.floodingOptions.add(new Option((option)));
     }
     public void addExpositionOption(String option) {
-        this.expositionOptions.add(option);
-    }
-
-    public String getHabitatName() {
-        return habitatName;
-    }
-
-    public void setHabitatName(String habitatName) {
-        this.habitatName = habitatName;
+        this.expositionOptions.add(new Option((option)));
     }
 }

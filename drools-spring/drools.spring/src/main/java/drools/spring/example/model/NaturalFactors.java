@@ -53,7 +53,8 @@ public class NaturalFactors {
     public NaturalFactors() {
     }
 
-    public NaturalFactors(Type type, Elevation elevation, MJT mjt, Exposition exposition, Slope slope, Flooding flooding) {
+    public NaturalFactors(long id, Type type, Elevation elevation, MJT mjt, Exposition exposition, Slope slope, Flooding flooding) {
+        this.id = id;
         this.type = type;
         this.elevation = elevation;
         this.mjt = mjt;
