@@ -28,16 +28,22 @@ const CreateHabitatPage = () => {
              <Typography variant="h3" component="div" gutterBottom style={{padding:"60px"}}>
                 Kreiraj novo stanište
             </Typography>
-            <Fab style={{backgroundColor:"tan"}} aria-label="add" 
-                className="arrow-back" onClick={() => {setOpenForm(formNames[formNames.indexOf(openForm)-1])}}
-                disabled={formNames.indexOf(openForm) === 0}> <ArrowBack />
-            </Fab>
-            <Fab style={{backgroundColor:"tan"}} aria-label="add" 
-                className="arrow-next" onClick={() => {setOpenForm(formNames[formNames.indexOf(openForm)+1])}}
-                disabled={formNames.indexOf(openForm) === formNames.length-1}
-                > <ArrowForward /> 
-            </Fab>
             <div className="form-container">
+                <div className="round-bttn-container">
+                    <div className="round-bttn" style={{textAlign:"left"}}>
+                        <Fab style={{backgroundColor:"tan"}} aria-label="add" 
+                            className="arrow-back" onClick={() => {setOpenForm(formNames[formNames.indexOf(openForm)-1])}}
+                            disabled={formNames.indexOf(openForm) === 0}> <ArrowBack />
+                        </Fab>
+                    </div>
+                    <div className="round-bttn"  style={{textAlign:"right"}}>
+                        <Fab style={{backgroundColor:"tan"}} aria-label="add" 
+                            className="arrow-next" onClick={() => {setOpenForm(formNames[formNames.indexOf(openForm)+1])}}
+                            disabled={formNames.indexOf(openForm) === formNames.length-1}
+                            > <ArrowForward /> 
+                        </Fab>
+                    </div>
+                </div>
                 {form}
             </div>
         </div>
