@@ -1,5 +1,5 @@
 .add-habitat-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #D4EFDF;
     color: #6C1E15;
@@ -10,7 +10,7 @@
 .form-container {
     outline:#6C1E15 ridge 2px;
     border-radius: 20px;
-    width: 50%;
+    width: 55vw;
     height: 70%;
     position: absolute;
     top: 50%;
@@ -24,6 +24,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 5px;
+    margin-bottom: 0;
 }
 
 .round-bttn {
