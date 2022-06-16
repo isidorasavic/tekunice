@@ -8,6 +8,24 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/AntropologicalFactorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/Option.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/repository/OptionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data-postgres.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data-postgres.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Tekunice" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tekunice" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/controller/NaturalFactorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/controller/NaturalFactorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/AntropologicalFactorsOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/AntropologicalFactorsOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/NaturalFactorOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/dto/NaturalFactorOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/AntropologicalFactors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/AntropologicalFactors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/Habitat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/Habitat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/NaturalFactors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/model/NaturalFactors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/service/HabitatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/service/HabitatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/drools/spring/example/service/NaturalFactorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/drools/spring/example/service/NaturalFactorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/drools/spring/rules/templates/template-data.xls" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/drools/spring/rules/templates/template-data.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

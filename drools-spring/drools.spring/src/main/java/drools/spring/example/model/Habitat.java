@@ -8,10 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @Table(name="habitats")
 public class Habitat {
@@ -40,6 +37,16 @@ public class Habitat {
 
     public String getName() {
         return this.name;
+    }
+
+    public Habitat() {
+    }
+
+    public Habitat(String name, Label label, AntropologicalFactors antropologicalFactors, NaturalFactors naturalFactors) {
+        this.name = name;
+        this.label = label;
+        this.antropologicalFactors = antropologicalFactors;
+        this.naturalFactors = naturalFactors;
     }
 
     public Habitat(HabitatDTO habitatDTO){

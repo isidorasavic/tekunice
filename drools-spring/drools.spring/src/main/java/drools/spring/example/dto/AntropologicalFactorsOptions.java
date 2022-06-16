@@ -1,6 +1,6 @@
 package drools.spring.example.dto;
 
-import drools.spring.example.model.enums.Type;
+import drools.spring.example.model.Option;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,16 +13,16 @@ import java.util.List;
 @EqualsAndHashCode
 public class AntropologicalFactorsOptions {
 
-    private List<String> shrubberyOptions;
-    private List<String> distanceToNeighbourhoodPopulationOptions;
-    private List<String> disturbanceOptions;
-    private List<String> roadsOptions;
-    private List<String> agricultureOptions;
-    private List<String> grazingOptions;
-    private List<String> grassRemovingOptions;
-    private List<String> predatorsOptions;
-    private List<String> protectionOptions;
-    private List<String> purpouseOptions;
+    private List<Option> shrubberyOptions;
+    private List<Option> distanceToNeighbourhoodPopulationOptions;
+    private List<Option> disturbanceOptions;
+    private List<Option> roadsOptions;
+    private List<Option> agricultureOptions;
+    private List<Option> grazingOptions;
+    private List<Option> grassRemovingOptions;
+    private List<Option> predatorsOptions;
+    private List<Option> protectionOptions;
+    private List<Option> purposeOptions;
 
     public AntropologicalFactorsOptions() {
         this.shrubberyOptions = new ArrayList<>();
@@ -34,7 +34,7 @@ public class AntropologicalFactorsOptions {
         this.grassRemovingOptions = new ArrayList<>();
         this.predatorsOptions = new ArrayList<>();
         this.protectionOptions = new ArrayList<>();
-        this.purpouseOptions = new ArrayList<>();
+        this.purposeOptions = new ArrayList<>();
     }
 
 

@@ -55,8 +55,8 @@ public class AntropologicalFactors {
     private AntropologicalFactorLevelAndDescription protection;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "purpouse_id")
-    private AntropologicalFactorLevelAndDescription purpouse;
+    @JoinColumn(name = "purpose_id")
+    private AntropologicalFactorLevelAndDescription purpose;
 
 
 }
