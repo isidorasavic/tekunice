@@ -1,13 +1,8 @@
 package drools.spring.example.service;
 
-import drools.spring.example.SampleAppService;
 import drools.spring.example.dto.HabitatDTO;
-import drools.spring.example.dto.NaturalFactorOptions;
 import drools.spring.example.model.AntropologicalFactors;
 import drools.spring.example.model.Habitat;
-import drools.spring.example.model.NaturalFactors;
-import drools.spring.example.model.enums.*;
-import org.drools.core.spi.DataProvider;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
@@ -18,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HabitatService {
 
-    private static Logger log = LoggerFactory.getLogger(SampleAppService.class);
+    private static Logger log = LoggerFactory.getLogger(HabitatService.class);
 
     private final KieContainer kieContainer;
 
