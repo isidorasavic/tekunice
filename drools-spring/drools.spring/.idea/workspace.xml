@@ -5,52 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="509b70ed-80b8-4cf4-bcbd-0e30c07392bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/conroller/AntropologicalFactorsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/conroller/HabitatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/conroller/NaturalFactorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/AntropologicalFactorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/AntropologicalFactorsOptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/HabitatDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/NaturalFactorOptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/NaturalFactorsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/dto/TemplateHabitatDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/AntropologicalFactorLevelAndDescription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/AntropologicalFactors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/Habitat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/NaturalFactors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/Option.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Elevation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Exposition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Flooding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Label.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/MJT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Slope.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/model/enums/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/repository/AntropologicalFactorLevelAndDescriptionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/repository/OptionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/service/AntropologicalFactorsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/service/HabitatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/service/NaturalFactorsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/resources/data-postgres.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../drools-spring-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/SampleAppController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/SampleAppService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/SampleHomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/facts/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/SampleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/java/sbnz/integracija/example/SampleApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../drools-spring-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-app/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/META-INF/maven/sbnz.integracija/drools-spring-app/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/META-INF/maven/sbnz.integracija/drools-spring-app/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-app/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/SampleApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/SampleApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/SampleAppController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/SampleAppService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/SampleHomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/facts/Item$Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-app/target/classes/sbnz/integracija/example/facts/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drools-spring-kjar/target/drools-spring-kjar-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../drools-spring-kjar/target/drools-spring-kjar-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +107,7 @@
       <workItem from="1655760309611" duration="1782000" />
       <workItem from="1655762129545" duration="1089000" />
       <workItem from="1655763260657" duration="359000" />
-      <workItem from="1655814585678" duration="2009000" />
+      <workItem from="1655814585678" duration="2409000" />
     </task>
     <servers />
   </component>

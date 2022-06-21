@@ -18,7 +18,7 @@ public class SampleApp {
 	private static Logger log = LoggerFactory.getLogger(SampleApp.class);
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(SampleApp.class, args);
+		SpringApplication.run(SampleApp.class, args);
 
 //		String[] beanNames = ctx.getBeanDefinitionNames();
 //		Arrays.sort(beanNames);
