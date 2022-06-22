@@ -1,7 +1,7 @@
 package sbnz.integracija.example.dto;
 
+import sbnz.integracija.example.facts.Option;
 import lombok.*;
-import sbnz.integracija.example.model.Option;
 
 import java.util.ArrayList;
 import java.util.List;

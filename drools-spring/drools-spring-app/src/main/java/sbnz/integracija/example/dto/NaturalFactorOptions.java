@@ -1,8 +1,8 @@
 package sbnz.integracija.example.dto;
 
 import lombok.*;
-import sbnz.integracija.example.model.Option;
-import sbnz.integracija.example.model.enums.Type;
+import sbnz.integracija.example.facts.Option;
+import sbnz.integracija.example.facts.enums.*;
 
 import java.util.ArrayList;
 import java.util.List;

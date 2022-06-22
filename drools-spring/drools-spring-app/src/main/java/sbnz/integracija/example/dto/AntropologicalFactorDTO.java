@@ -1,10 +1,10 @@
 package sbnz.integracija.example.dto;
 
+import sbnz.integracija.example.facts.Option;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sbnz.integracija.example.model.Option;
 
 @Getter
 @Setter

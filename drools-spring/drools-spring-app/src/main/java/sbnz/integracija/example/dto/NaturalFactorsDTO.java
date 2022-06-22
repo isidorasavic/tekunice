@@ -1,7 +1,7 @@
 package sbnz.integracija.example.dto;
 
 import lombok.*;
-import sbnz.integracija.example.model.NaturalFactors;
+import sbnz.integracija.example.facts.NaturalFactors;
 
 @Getter
 @Setter

@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sbnz.integracija.example.dto.HabitatDTO;
-import sbnz.integracija.example.model.AntropologicalFactors;
-import sbnz.integracija.example.model.Habitat;
+import sbnz.integracija.example.facts.AntropologicalFactors;
+import sbnz.integracija.example.facts.Habitat;
 
 @Service
 public class HabitatService {
