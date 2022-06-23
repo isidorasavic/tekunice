@@ -47,4 +47,18 @@ public class NaturalFactorOptions {
     public void addExpositionOption(String option) {
         this.expositionOptions.add(new Option((option)));
     }
+
+    public boolean containsElevation(String el){
+        for (Option o : elevationOptions){
+            if(o.getValue().equals(el)) return true;
+        }
+        return false;
+    }
+
+    public boolean containsSlope(String el){
+        for (Option o : slopeOptions){
+            if(o.getValue().equals(el)) return true;
+        }
+        return false;
+    }
 }

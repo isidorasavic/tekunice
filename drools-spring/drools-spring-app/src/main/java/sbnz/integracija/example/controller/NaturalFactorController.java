@@ -28,7 +28,7 @@ public class NaturalFactorController {
         return naturalFactorsService.getAllOptions(options);
     }
 
-    @RequestMapping(value="typeOptions", method= RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value="/typeOptions", method= RequestMethod.GET, produces = "application/json")
     public List<Option> getTypeOptions() {
         return naturalFactorsService.getTypeOptions();
     }

@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface OptionRepository extends JpaRepository<Option, Long> {
 
-    Optional<Option> findByLabelAndType(@Param("label") String label, @Param("type") String type);
+    Optional<Option> findByValueAndType(@Param("value") String value, @Param("type") String type);
 
     List<Option> findAllByType(@Param("type") String type);
 

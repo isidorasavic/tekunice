@@ -39,4 +39,12 @@ public class Option {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Option{" +
+                "value='" + value + '\'' +
+                ", label='" + label + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

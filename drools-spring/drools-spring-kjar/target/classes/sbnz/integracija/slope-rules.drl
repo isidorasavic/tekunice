@@ -1,0 +1,70 @@
+package sbnz.integracija;
+import sbnz.integracija.example.dto.NaturalFactorOptions
+import sbnz.integracija.example.facts.enums.*
+
+
+rule "no-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("NoElevation"), !$n.containsSlope("NoSlope"))
+    then
+        modify($n){
+            addSloopeOption("NoSlope")
+        }
+        update($n);
+end
+
+rule "small-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("ExtraSmall"), !$n.containsSlope("Small"))
+    then
+        modify($n){
+            addSloopeOption("Small")
+        }
+        update($n);
+end
+
+rule "medium-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("Small"), !$n.containsSlope("Medium"))
+    then
+        modify($n){
+            addSloopeOption("Medium")
+        }
+        update($n);
+end
+
+rule "medium-slope-rule2"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("Medium"), !$n.containsSlope("Medium"))
+    then
+        modify($n){
+            addSloopeOption("Medium")
+        }
+        update($n);
+end
+
+rule "great-slope-rule"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("Large"), !$n.containsSlope("Great"))
+    then
+        modify($n){
+            addSloopeOption("Great")
+        }
+        update($n);
+end
+
+rule "great-slope-rule2"
+no-loop
+    when
+        $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("ExtraLarge"), !$n.containsSlope("Great"))
+    then
+        modify($n){
+            addSloopeOption("Great")
+        }
+        update($n);
+end
