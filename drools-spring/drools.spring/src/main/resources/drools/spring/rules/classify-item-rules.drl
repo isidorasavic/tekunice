@@ -21,7 +21,7 @@ end
 
 rule "Classify Item - High Range"
     when
-        $i: Item( cost >= 500, category == Category.NA )
+        $i: Item( cost >= 700, category == Category.NA )
     then
         $i.setCategory(Item.Category.HIGH_RANGE);
         update($i);

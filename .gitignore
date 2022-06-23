@@ -13,7 +13,12 @@ tekunice-backend/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml
 tekunice-backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_13_2.xml
 tekunice-backend/.idea/libraries/Maven__com_google_guava_guava_16_0_1.xml
 *.xml
-drools-spring/drools-spring-app/.classpath
-*.MF
-*.MF
-*.xml
+*.class
+*.class
+*.class
+drools-spring/drools.spring/.idea/workspace.xml
+drools-spring/drools.spring/.idea/workspace.xml
+*.class
+drools-spring/drools.spring/.idea/runConfigurations.xml
+*.class
+*.class

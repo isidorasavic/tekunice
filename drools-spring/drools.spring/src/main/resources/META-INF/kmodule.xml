@@ -6,4 +6,10 @@
     	<ksession name="ExampleSession" />
     </kbase>
 
+    <kbase name="TemplateKBase" packages="drools.spring.rules.templates">
+        <ruleTemplate dtable="drools/spring/rules/templates/template-data.xsl" template="drools/spring/rules/templates/template.drt"
+                      row="5" col="3"/>
+        <ksession name="TemplateSession" />
+    </kbase>
+
 </kmodule>

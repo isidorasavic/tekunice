@@ -1,5 +1,6 @@
 package drools.spring.example.model;
 
+import drools.spring.example.dto.HabitatDTO;
 import drools.spring.example.model.enums.Label;
 import lombok.*;
 
@@ -7,10 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @Table(name="habitats")
 public class Habitat {
@@ -18,6 +16,9 @@ public class Habitat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name="name", nullable = false)
+    private String name;
 
     @Column(name="label", unique=true, nullable = false)
     private Label label;
@@ -30,5 +31,29 @@ public class Habitat {
     @OneToOne
     private NaturalFactors naturalFactors;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Habitat() {
+    }
+
+    public Habitat(String name, Label label, AntropologicalFactors antropologicalFactors, NaturalFactors naturalFactors) {
+        this.name = name;
+        this.label = label;
+        this.antropologicalFactors = antropologicalFactors;
+        this.naturalFactors = naturalFactors;
+    }
+
+    public Habitat(HabitatDTO habitatDTO){
+        this.name = habitatDTO.getName();
+        this.label = Label.valueOf(habitatDTO.getLabel());
+        this.naturalFactors = new NaturalFactors(habitatDTO.getNaturalFactorsDTO());
+        //TODO: antropological factors
+    }
 
 }

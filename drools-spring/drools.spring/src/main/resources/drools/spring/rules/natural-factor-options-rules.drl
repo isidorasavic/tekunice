@@ -1,0 +1,283 @@
+package drools.spring.rules;
+import drools.spring.example.dto.NaturalFactorOptions
+import drools.spring.example.model.enums.*
+
+rule "panonske-stepe-mjt-options"
+    when
+        $n : NaturalFactorOptions((habitatType == Type.PZS || habitatType == Type.PSPNL), mjtOptions.size() == 0)
+    then
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+        modify($n){
+            addMjtOption(MJT.VeryHot.name())
+        }
+
+end
+
+rule "panonske-stepe-elevation-options"
+    when
+        $n : NaturalFactorOptions((habitatType == Type.PZS || habitatType == Type.PSPNL), elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+end
+
+
+rule "suvi-peskoviti-krecnjacki-pasnjaci-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SPKP, mjtOptions.size() == 0)
+    then
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+        modify($n){
+            addMjtOption(MJT.VeryHot.name())
+        }
+
+end
+
+rule "suvi-peskoviti-krecnjacki-pasnjaci-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SPKP, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Small.name())
+        }
+
+end
+
+
+rule "sekundarne-livade-sa-visokom-travom-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SLVTKSK, mjtOptions.size() == 0)
+    then
+        modify($n){
+            addMjtOption(MJT.VeryCold.name())
+        }
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+
+end
+
+rule "sekundarne-livade-sa-visokom-travom-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SLVTKSK, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Small.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Medium.name())
+        }
+
+end
+
+
+rule "listopadne-sume-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.LS, mjtOptions.size() == 0)
+    then
+        modify($n){
+            addMjtOption(MJT.VeryCold.name())
+        }
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+
+end
+
+rule "listopadne-sume-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.LS, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Small.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Medium.name())
+        }
+
+end
+
+
+rule "cetinarske-sume-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.CS, mjtOptions.size() == 0)
+    then
+        modify($n){
+            addMjtOption(MJT.ExtraCold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.VeryCold.name())
+        }
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+
+end
+
+rule "cetinarske-sume-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.CS, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.Medium.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Large.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraLarge.name())
+        }
+
+end
+
+
+rule "suve-livade-sa-zbunjem-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SLZ, mjtOptions.size() == 0)
+    then
+        modify($n){
+            addMjtOption(MJT.VeryCold.name())
+        }
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+
+end
+
+rule "suve-livade-sa-zbunjem-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.SLZ, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Small.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Medium.name())
+        }
+end
+
+
+rule "poljoprivredna-zemljista-i-bare-mjt-options"
+    when
+        $n : NaturalFactorOptions((habitatType == Type.PZ || habitatType == Type.BMS), mjtOptions.size() == 0)
+    then
+        modify($n){
+           addMjtOption(MJT.Cold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Medium.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Hot.name())
+        }
+        modify($n){
+            addMjtOption(MJT.VeryHot.name())
+        }
+
+end
+
+rule "poljoprivredna-zemljista-i-bare-elevation-options"
+    when
+        $n : NaturalFactorOptions((habitatType == Type.PZ || habitatType == Type.BMS), elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.NoElevation.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraSmall.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.Small.name())
+        }
+end
+
+
+rule "planinski-pasnjaci-mjt-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.PP, mjtOptions.size() == 0)
+    then
+        modify($n){
+           addMjtOption(MJT.ExtraCold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.VeryCold.name())
+        }
+        modify($n){
+            addMjtOption(MJT.Cold.name())
+        }
+
+end
+
+rule "planinski-pasnjaci-elevation-options"
+    when
+        $n : NaturalFactorOptions(habitatType == Type.PP, elevationOptions.size() == 0, mjtOptions.size() != 0)
+    then
+        modify($n){
+            addElevationOption(Elevation.Large.name())
+        }
+        modify($n){
+            addElevationOption(Elevation.ExtraLarge.name())
+        }
+end

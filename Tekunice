@@ -18,13 +18,24 @@ Tekunice
 
 - Kad korisnik zeli da kreira novo staniste tok je sledeci:
 	1. Korisnik unese ime stanista, i odabere kog je staniste tipa.
-	2. Na beku se prodje forward chainig, napune se liste y NaturalFactorOptions i korisniku se nude ve moguce opcije za ostala obelezja.
-	3. Kad odabere sve nepromenljive faktore, nude mu se svi promenljivi faktori, on bira po jednu vrednost za svaki, i to se salje na bek isto.
+	2. Na beku se prodje forward chaining, napune se liste u NaturalFactorOptions i korisniku se nude sve moguce opcije za ostala obelezja.
+	3. Kad odabere sve nepromenljive faktore, nude mu se svi promenljivi faktori, on bira po jednu vrednost za svaki, sve se pakuje u jedan HabitatDTO.
 	4. Kad je korisnik popunio sve forme, sistem odredjuje labelu stanista, i pomocu backward chaining-a trazi preporuke iz baze. 
 	5. Kad su labela i preporuke pronadjene, korisniku se na frontu ispisuje rezultat, preporuke i procenat uspesnosti koji sistem predvidja.
+
+- Antropoloski faktori sadrze ime faktora, string opis koji korisnik bira, int level koji odredjuje stetnost i string potencijalni predlog. Kad se korisniku na front salju opcije da bira, salje se objekat koji sadrzi 10 lista, a svaka lista predstavlja sve opcije za jedan faktor. U listi se cuvaju elementi tipa AntropologicalFactorLevelDTO koji sadrzi id, kako bi se posle on lakse u bazi nasao, i string koji korisnik vidi kad bira faktor.
+
+- repository nece da radi jebem mu mamu, to ostaje za posle //todo
 
 - Korisnik moze da za vec postojece staniste, koje nije nepovoljno, na odredjeni vremenski period kreira nove antropogene faktore.
 
 - Sve bi trebalo da ima datum kad se dodalo u sistem.
 
 - Staniste ne mora da cuva sve antropogene faktore, jer ce oni imati podatak o tome kom stanistu pripadaju.
+
+- 0-200 ravno 
+- 200-600 blagi
+- 600-800 srednji
+- 800-1200 srednji
+- 1300-2000 veliki
+- 2000-2600 veliki
