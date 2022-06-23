@@ -4,19 +4,37 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import './style.css'
+import * as Constants from '../constants'
+import axios from 'axios'
 
-const CreateNaturalFactors = props => {
 
-    const [naturalFactors, setNaturalFactors] = useState({exposition: null, elevation: null, mjt: null, slope: null, flooding: null});
+const CreateNaturalFactors = () => {
 
-    const [allOptions, setAllOptions] = useState({habitatType: null, elevationOptions:[], mjtOptions: [], expositionOptions:[], floodingOptions:[], slopeOptions:[]});
+    const [naturalFactors, setNaturalFactors] = useState({habitatType: localStorage.getItem('type'), exposition: localStorage.getItem('exposition'), elevation: localStorage.getItem('elevation'), mjt: localStorage.getItem('mjt'), slope: localStorage.getItem('slope'), flooding: localStorage.getItem('flooding')});
+    const [elevationOptions, setElevationOptions] = useState([]);
+    const [expositionOptions, setExpositionOptions] = useState([]);
+    const [mjtOptions, setMjtOptions] = useState([]);
+    const [floodingOptions, setFloodingOptions] = useState([]);
+    const [slopeOptions, setSlopeOptions] = useState([]);
+
 
     useEffect(() => {
-        //TODO:
-        //metoda koja sa beka dobavlja sve opcije
-        console.log('type:', props.type)
-        setAllOptions({...allOptions, habitatType: props.type});
-    }, [props.type]);
+        axios
+        .get(Constants.BasePath + 'naturalFactorOptions?type='+localStorage.getItem('type'), 
+        { headers: { "Content-Type": "application/json; charset=UTF-8" },
+        })
+        .then(response => {
+            console.log(response.data);
+            setElevationOptions(response.data.elevationOptions);
+            setExpositionOptions(response.data.expositionOptions);
+            setMjtOptions(response.data.mjtOptions);
+            setFloodingOptions(response.data.floodingOptions);
+            setSlopeOptions(response.data.slopeOptions);
+        })
+        .catch(error => {
+            console.log(error.response);
+          })
+    }, []);
 
     return (
         <div>
@@ -30,8 +48,12 @@ const CreateNaturalFactors = props => {
                             id="demo-simple-select"
                             value={naturalFactors.exposition}
                             label="Ekspozicija stanista"
+                            onChange={(event)=>{
+                                setNaturalFactors({...naturalFactors, exposition: event.target.value});
+                                localStorage.setItem('exposition', event.target.value);
+                            }}
                         >
-                            {allOptions.expositionOptions.map((option) => (
+                            {expositionOptions.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                                 </MenuItem>
@@ -47,8 +69,12 @@ const CreateNaturalFactors = props => {
                             id="demo-simple-select"
                             value={naturalFactors.elevation}
                             label="Nadmorska visina"
+                            onChange={(event)=>{
+                                setNaturalFactors({...naturalFactors, elevation: event.target.value});
+                                localStorage.setItem('elevation', event.target.value);
+                            }}
                         >
-                            {allOptions.elevationOptions.map((option) => (
+                            {elevationOptions.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                                 </MenuItem>
@@ -64,8 +90,12 @@ const CreateNaturalFactors = props => {
                             id="demo-simple-select"
                             value={naturalFactors.mjt}
                             label="Srednja julska temperatura"
+                            onChange={(event)=>{
+                                setNaturalFactors({...naturalFactors, mjt: event.target.value});
+                                localStorage.setItem('mjt', event.target.value);
+                            }}
                         >
-                            {allOptions.mjtOptions.map((option) => (
+                            {mjtOptions.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                                 </MenuItem>
@@ -81,8 +111,12 @@ const CreateNaturalFactors = props => {
                             id="demo-simple-select"
                             value={naturalFactors.slope}
                             label="Nagib stanista"
+                            onChange={(event)=>{
+                                setNaturalFactors({...naturalFactors, slope: event.target.value});
+                                localStorage.setItem('slope', event.target.value);
+                            }}
                         >
-                            {allOptions.slopeOptions.map((option) => (
+                            {slopeOptions.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                                 </MenuItem>
@@ -96,10 +130,14 @@ const CreateNaturalFactors = props => {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={naturalFactors.exposition}
-                            label="Ekspozicija stanista"
+                            value={naturalFactors.flooding}
+                            label="Nivo podzemnih voda i povremeno plavljenje"
+                            onChange={(event)=>{
+                                setNaturalFactors({...naturalFactors, flooding: event.target.value});
+                                localStorage.setItem('flooding', event.target.value);
+                            }}
                         >
-                            {allOptions.floodingOptions.map((option) => (
+                            {floodingOptions.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                                 </MenuItem>

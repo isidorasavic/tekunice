@@ -20,7 +20,7 @@ const CreateHabitatPage = () => {
 
     let form;
     if(openForm === 'createNew') form = <CreateNewHabitat/>
-    if(openForm === 'naturalFactors') form = <CreateNaturalFactors type=":)"/>
+    if(openForm === 'naturalFactors') form = <CreateNaturalFactors/>
     if(openForm === 'antropologicalFactors') form = <CreateAntropologicalFactors/>
 
     return (
