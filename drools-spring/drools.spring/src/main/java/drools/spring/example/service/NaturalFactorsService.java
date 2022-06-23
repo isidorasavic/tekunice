@@ -1,6 +1,5 @@
 package drools.spring.example.service;
 
-import drools.spring.example.SampleAppService;
 import drools.spring.example.model.Option;
 import drools.spring.example.dto.NaturalFactorOptions;
 import drools.spring.example.model.enums.Exposition;
@@ -12,26 +11,30 @@ import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NaturalFactorsService {
 
-    private static Logger log = LoggerFactory.getLogger(SampleAppService.class);
-
-    private final KieContainer kieContainer;
-//    private final OptionRepository optionRepository;
+    private static Logger log = LoggerFactory.getLogger(NaturalFactorsService.class);
 
     @Autowired
-    public NaturalFactorsService(KieContainer kieContainer) {
-        this.kieContainer = kieContainer;
+    private KieContainer kieContainer;
+
+    @Autowired
+    private OptionRepository optionRepository;
+//
+//    private final KieContainer kieContainer;
+//    private final OptionRepository optionRepository;
+//
+//    @Autowired
+//    public NaturalFactorsService(KieContainer kieContainer, OptionRepository optionRepository) {
+//        this.kieContainer = kieContainer;
 //        this.optionRepository = optionRepository;
-    }
+//    }
 
     public NaturalFactorOptions getAllOptions(NaturalFactorOptions naturalFactorOptions) {
         KieSession kieSession = kieContainer.newKieSession("ExampleSession");
