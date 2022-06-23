@@ -10,7 +10,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="drools-spring-app" value="87aadf91-a028-4da0-b509-d731612648bc" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -28,6 +30,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="drools-spring-kjar-0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="postgresql-42.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.0" level="project" />
@@ -42,9 +46,6 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator-autoconfigure:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-core:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" level="project" />
@@ -127,8 +128,6 @@
     <orderEntry type="library" name="Maven: io.netty:netty-codec-socks:4.1.77.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webflux:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.session:spring-session-jdbc:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-core:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.20" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.postgresql:postgresql:42.3.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
@@ -253,8 +252,12 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
     <orderEntry type="library" name="Maven: sbnz.integracija:drools-spring-kjar:0.0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="drools-spring-kjar-0.0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="postgresql-42.4.0" level="project" />
-    <orderEntry type="library" name="hibernate-jpa-2.0-api-1.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-core:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.20" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
+    <orderEntry type="library" name="javax.persistence-api-2.2" level="project" />
   </component>
 </module>

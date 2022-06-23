@@ -15,6 +15,7 @@ import sbnz.integracija.example.repository.OptionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NaturalFactorsService {
@@ -54,14 +55,6 @@ public class NaturalFactorsService {
 
     public List<Option> getTypeOptions(){
 
-        List<Option> options = new ArrayList<>();
-        for(Type value : Type.values()) {
-            if (value == Type.NO_TYPE) continue;
-//            Optional<Option> option = optionRepository.findByLabelAndType(value.name(), "type");
-//            option.ifPresent(option1 -> options.add(new Option(value.name(), option1.getLabel(), "type")));
-            options.add(new Option(value.name(), ":)", "type"));
-            //TODO: kad proradi baza
-        }
-        return options;
+        return optionRepository.findAllByType("type");
     }
 }

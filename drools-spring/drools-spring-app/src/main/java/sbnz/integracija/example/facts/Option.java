@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name="options")
+@Table(name="factor_options")
 public class Option {
 
     @Id
