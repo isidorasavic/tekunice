@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import sbnz.integracija.example.dto.UserDTO;
 import sbnz.integracija.example.facts.User;
 import sbnz.integracija.example.facts.UserTokenState;
 import sbnz.integracija.example.security.TokenUtils;
@@ -25,7 +26,7 @@ import sbnz.integracija.example.service.CustomUserDetailsService;
 
 
 @RestController
-@RequestMapping(value = "api/auth", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthenticationController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AuthenticationController.class);
@@ -38,9 +39,6 @@ public class AuthenticationController {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
-
-//    @Autowired
-//    private UserService userService;
 
     //log in endpoint
     @PostMapping("/login")
@@ -89,6 +87,13 @@ public class AuthenticationController {
 
 		//add cookie to response
 		response.addCookie(cookie);
+	}
+
+	@PostMapping("/signUp")
+	public UserDTO signUp(@RequestBody UserDTO userDTO){
+		LOG.info("Received request for signup");
+		return userDetailsService.signUp(userDTO);
+
 	}
 
 }

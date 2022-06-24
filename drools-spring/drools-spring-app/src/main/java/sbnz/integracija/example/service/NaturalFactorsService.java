@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sbnz.integracija.example.dto.NaturalFactorOptions;
+import sbnz.integracija.example.dto.NaturalFactorsDTO;
+import sbnz.integracija.example.facts.NaturalFactors;
 import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.facts.enums.Exposition;
 import sbnz.integracija.example.facts.enums.Flooding;
@@ -73,6 +75,16 @@ public class NaturalFactorsService {
         return editedOptions;
     }
 
+    protected NaturalFactorsDTO getDTO(NaturalFactors naturalFactors) {
+        NaturalFactorsDTO naturalFactorsDTO = new NaturalFactorsDTO();
+        naturalFactorsDTO.setType(optionRepository.findByValueAndType(naturalFactors.getType().toString(), "type").get().getLabel());
+        naturalFactorsDTO.setExposition(optionRepository.findByValueAndType(naturalFactors.getExposition().toString(), "exposition").get().getLabel());
+        naturalFactorsDTO.setElevation(optionRepository.findByValueAndType(naturalFactors.getElevation().toString(), "elevation").get().getLabel());
+        naturalFactorsDTO.setMjt(optionRepository.findByValueAndType(naturalFactors.getMjt().toString(), "mjt").get().getLabel());
+        naturalFactorsDTO.setSlope(optionRepository.findByValueAndType(naturalFactors.getSlope().toString(), "slope").get().getLabel());
+        naturalFactorsDTO.setFlooding(optionRepository.findByValueAndType(naturalFactors.getFlooding().toString(), "flooding").get().getLabel());
+        return naturalFactorsDTO;
+    }
 
     public List<Option> getTypeOptions(){
 

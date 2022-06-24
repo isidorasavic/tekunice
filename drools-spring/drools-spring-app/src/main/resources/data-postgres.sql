@@ -1,3 +1,13 @@
+--useri
+insert into users (username, password, first_name, last_name) values ('isidora', '$2y$10$t4NZP3qGGdzGakospEzFHOPQngmjvi7dZeZSiwfiNz.1rv/smO0Ce', 'Isidora', 'Savić');
+
+--prirodni faktori
+insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
+
+
+--stanista
+insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, '2022-05-10');
+
 insert into factor_options (value, label, type) values ('PZS', 'Panonske zaslanjene stepe', 'type');
 insert into factor_options (value, label, type) values ('SPKP', 'Suvi peskoviti krečnjački pašnjaci', 'type');
 insert into factor_options (value, label, type) values ('PSPNL', 'Panonski stepski pašnjaci na lesu', 'type');

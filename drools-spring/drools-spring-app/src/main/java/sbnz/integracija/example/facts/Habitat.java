@@ -7,6 +7,7 @@ import sbnz.integracija.example.dto.HabitatDTO;
 import sbnz.integracija.example.facts.enums.Label;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -22,7 +23,8 @@ public class Habitat {
     @Column(name="name", nullable = false)
     private String name;
 
-    @Column(name="label", unique=true, nullable = false)
+    @Column(name="label", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Label label;
 
     @JoinColumn(name = "antropological_factors_id", referencedColumnName = "id")
@@ -32,6 +34,13 @@ public class Habitat {
     @JoinColumn(name = "natural_factors_id", referencedColumnName = "id")
     @OneToOne
     private NaturalFactors naturalFactors;
+
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
+    private User user;
+
+    @Column(name="date_created")
+    private LocalDate dateCreated;
 
     public void setName(String name) {
         this.name = name;
@@ -44,11 +53,13 @@ public class Habitat {
     public Habitat() {
     }
 
-    public Habitat(String name, Label label, AntropologicalFactors antropologicalFactors, NaturalFactors naturalFactors) {
+    public Habitat(String name, Label label, AntropologicalFactors antropologicalFactors, NaturalFactors naturalFactors, User user, LocalDate dateCreated) {
         this.name = name;
         this.label = label;
         this.antropologicalFactors = antropologicalFactors;
         this.naturalFactors = naturalFactors;
+        this.user = user;
+        this.dateCreated = dateCreated;
     }
 
     public Habitat(HabitatDTO habitatDTO){
@@ -56,6 +67,8 @@ public class Habitat {
         this.label = Label.valueOf(habitatDTO.getLabel());
         this.naturalFactors = new NaturalFactors(habitatDTO.getNaturalFactorsDTO());
         //TODO: antropological factors
+        //TODO: user
+        this.dateCreated = LocalDate.parse(habitatDTO.getDateCreated());
     }
 
 }

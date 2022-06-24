@@ -1,18 +1,14 @@
 import React, { PureComponent, useState } from 'react';
 import './style.css'
-import CreateNewHabitat from '../../components/CreateNewHabitat'
-import CreateNaturalFactors from '../../components/CreateNaturalFactors'
+import CreateNewHabitat from '../../create-habitat-components/CreateNewHabitat'
+import CreateNaturalFactors from '../../create-habitat-components/CreateNaturalFactors'
 import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import ArrowBack from '@mui/icons-material/ArrowBack';
-import CreateAntropologicalFactors from '../../components/CreateAntropologicalFactors'
+import CreateAntropologicalFactors from '../../create-habitat-components/CreateAntropologicalFactors'
 
 const CreateHabitatPage = () => {
-
-    const [newHabitat, setNewHabitat] = useState({name: '', label: null})
-    const [naturalFactors, setNaturalFactors] = useState();
-    const [antropologicalFactors, setAntropologicalFactors] = useState();
 
     const [openForm, setOpenForm] = useState('createNew');
 
@@ -22,6 +18,14 @@ const CreateHabitatPage = () => {
     if(openForm === 'createNew') form = <CreateNewHabitat/>
     if(openForm === 'naturalFactors') form = <CreateNaturalFactors/>
     if(openForm === 'antropologicalFactors') form = <CreateAntropologicalFactors/>
+
+    if (sessionStorage.getItem('username') === null) {
+        return (
+            <div>
+                <h1>Unauthorized</h1>
+            </div>
+        )
+    }
 
     return (
         <div className="add-habitat-container">

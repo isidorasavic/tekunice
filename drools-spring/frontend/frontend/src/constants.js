@@ -29,7 +29,13 @@ export const ModalStyle = {
     p: 5,
   };
 
-export const addBttnStyle = {
-  color:"black",
-  borderColor:"black"
+export const bttnStyle = {
+  color:" #6C1E15",
+  borderColor:" #6C1E15"
 };
+
+export const iconStyle = {
+  color:"tan",
+  borderColor:" tan"
+};
+

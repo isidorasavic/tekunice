@@ -23,5 +23,9 @@ public class AntropologicalFactorDTO {
     private Option protection;
     private Option purpose;
 
+    private String dateAdded;
+
+    //TODO: VRV KONSTRUKTORI
+
 
 }

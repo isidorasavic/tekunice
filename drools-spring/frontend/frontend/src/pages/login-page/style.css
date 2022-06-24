@@ -1,0 +1,43 @@
+.log-in-container {
+    background-color: #D4EFDF;
+    width: 100vw;
+    height: 100vh;
+    color: #6C1E15;
+    align-items: center;
+    text-align: center;
+}
+
+.log-in-title {
+    padding: 30px;
+    font-size: 50px;
+}
+
+.log-in-subtitle {
+    padding: 20px;
+    font-size: 30px;
+}
+
+.log-in-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-in-form {
+    width: 40vw;
+    height: 30vh;
+    align-self: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px;
+}
+
+.row {
+    align-self: center;
+
+}
+
+.input-field {
+    width: 25vw;
+}

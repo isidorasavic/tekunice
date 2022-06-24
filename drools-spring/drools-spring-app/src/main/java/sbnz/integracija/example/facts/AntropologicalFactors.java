@@ -3,6 +3,7 @@ package sbnz.integracija.example.facts;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -57,6 +58,9 @@ public class AntropologicalFactors {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "purpose_id")
     private AntropologicalFactorLevelAndDescription purpose;
+
+    @Column(name="date_added")
+    private LocalDate dateAdded;
 
 
 }

@@ -1,0 +1,38 @@
+.factors-tab-container {
+    height: 69vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+.natural-factors-container {
+    border-right:  #6C1E15 1px solid;
+    border-top:  #6C1E15 1px solid;
+    border-left:  #6C1E15 1px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .label-container {
+    background-color: lightgoldenrodyellow;
+} */
+
+#nf {
+    height: 20%;
+    padding-left: 10px;
+    text-align: start;
+    border-bottom: #6C1E15 1px solid;
+}
+
+b#factor {
+    font-size: 25px;
+}
+
+p#factor-value {
+    font-size: 15px;
+}
+
+.gif {
+    height: 500px;
+    width: 500px;
+}
