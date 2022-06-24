@@ -30,12 +30,15 @@ public class HabitatService {
     private final HabitatRepository habitatRepository;
 
     private final NaturalFactorsService naturalFactorsService;
+
+    private final AntropologicalFactorsService antropologicalFactorsService;
     @Autowired
-    public HabitatService(KieContainer kieContainer, CustomUserDetailsService userService,HabitatRepository habitatRepository, NaturalFactorsService naturalFactorsService) {
+    public HabitatService(KieContainer kieContainer, CustomUserDetailsService userService,HabitatRepository habitatRepository, NaturalFactorsService naturalFactorsService, AntropologicalFactorsService antropologicalFactorsService) {
         this.habitatRepository = habitatRepository;
         this.kieContainer = kieContainer;
         this.userService = userService;
         this.naturalFactorsService = naturalFactorsService;
+        this.antropologicalFactorsService = antropologicalFactorsService;
     }
 
     public Habitat generateRules(HabitatDTO habitatDTO) {
@@ -76,6 +79,7 @@ public class HabitatService {
             habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
             habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
+            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(habitat.getAntropologicalFactors()));
             habitats.add(habitatDTO);
         });
         return habitats;

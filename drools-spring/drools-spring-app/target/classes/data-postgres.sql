@@ -1,12 +1,3 @@
---useri
-insert into users (username, password, first_name, last_name) values ('isidora', '$2y$10$t4NZP3qGGdzGakospEzFHOPQngmjvi7dZeZSiwfiNz.1rv/smO0Ce', 'Isidora', 'Savić');
-
---prirodni faktori
-insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
-
-
---stanista
-insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, '2022-05-10');
 
 insert into factor_options (value, label, type) values ('PZS', 'Panonske zaslanjene stepe', 'type');
 insert into factor_options (value, label, type) values ('SPKP', 'Suvi peskoviti krečnjački pašnjaci', 'type');
@@ -135,3 +126,16 @@ insert into atropological_factor_level_and_description (description, factor_name
 values ('Opštinsko', 'purpose', 2, '');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Privatno', 'purpose', 0, '');
+
+--useri
+insert into users (username, password, first_name, last_name) values ('isidora', '$2y$10$t4NZP3qGGdzGakospEzFHOPQngmjvi7dZeZSiwfiNz.1rv/smO0Ce', 'Isidora', 'Savić');
+
+--prirodni faktori
+insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
+
+--ljudski faktori
+insert into antropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, date_added)
+values (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2022-05-10');
+
+--stanista
+insert into habitats (name, label, natural_factors_id,antropological_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, 1, '2022-05-10');

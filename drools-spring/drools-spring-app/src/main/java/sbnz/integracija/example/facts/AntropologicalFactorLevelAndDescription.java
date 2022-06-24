@@ -6,12 +6,10 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="atropological_factor_level_and_description")  // TODO: ulepsati naziv mozda
+@Table(name="atropological_factor_level_and_description")
 public class AntropologicalFactorLevelAndDescription {
 
     @Id
@@ -26,4 +24,21 @@ public class AntropologicalFactorLevelAndDescription {
     private int level;
     @Column(name="recommendation", nullable=false)
     private String recommendation;
+
+    public AntropologicalFactorLevelAndDescription(Option option) {
+        this.factorName = option.getType();
+        this.description = option.getLabel();
+        this.level = Integer.parseInt(option.getValue());
+        this.recommendation = "";
+    }
+
+    public AntropologicalFactorLevelAndDescription(String factorName, String description, int level, String recommendation) {
+        this.factorName = factorName;
+        this.description = description;
+        this.level = level;
+        this.recommendation = recommendation;
+    }
+
+    public AntropologicalFactorLevelAndDescription() {
+    }
 }

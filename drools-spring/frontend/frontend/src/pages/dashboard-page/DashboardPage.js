@@ -59,6 +59,7 @@ const DashboardPage = () => {
             setHabitatsList(response.data)
             setSelectedHabitat(response.data[0]);
             localStorage.setItem('selectedHabitat', JSON.stringify(response.data[0]))
+            console.log(response.data[0]);
         })
         .catch(error => {
             console.log(error.response);

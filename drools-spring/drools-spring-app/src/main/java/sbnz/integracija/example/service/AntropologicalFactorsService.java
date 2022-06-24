@@ -4,10 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sbnz.integracija.example.dto.AntropologicalFactorDTO;
 import sbnz.integracija.example.dto.AntropologicalFactorsOptions;
+import sbnz.integracija.example.dto.NaturalFactorsDTO;
+import sbnz.integracija.example.facts.AntropologicalFactors;
 import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.repository.AntropologicalFactorAndLevelRepository;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @Service
@@ -60,4 +64,20 @@ public class AntropologicalFactorsService {
         return options;
     }
 
+    protected AntropologicalFactorDTO getDTO(AntropologicalFactors antropologicalFactors) {
+        AntropologicalFactorDTO antropologicalFactorDTO = new AntropologicalFactorDTO();
+        antropologicalFactorDTO.setDateAdded(antropologicalFactors.getDateAdded().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        antropologicalFactorDTO.setShrubbery(new Option(antropologicalFactors.getShrubbery()));
+        antropologicalFactorDTO.setDistanceToNeighbourhoodPopulation(new Option(antropologicalFactors.getDistanceToNeighbourhoodPopulation()));
+        antropologicalFactorDTO.setDisturbance(new Option(antropologicalFactors.getDisturbance()));
+        antropologicalFactorDTO.setRoads(new Option(antropologicalFactors.getRoads()));
+        antropologicalFactorDTO.setAgriculture(new Option(antropologicalFactors.getAgriculture()));
+        antropologicalFactorDTO.setGrazing(new Option(antropologicalFactors.getGrazing()));
+        antropologicalFactorDTO.setGrassRemoving(new Option(antropologicalFactors.getGrassRemoving()));
+        antropologicalFactorDTO.setPredators(new Option(antropologicalFactors.getPredators()));
+        antropologicalFactorDTO.setProtection(new Option(antropologicalFactors.getProtection()));
+        antropologicalFactorDTO.setPurpose(new Option(antropologicalFactors.getPurpose()));
+        return antropologicalFactorDTO;
+
+    }
 }

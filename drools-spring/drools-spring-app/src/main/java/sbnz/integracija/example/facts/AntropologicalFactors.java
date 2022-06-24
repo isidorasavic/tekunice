@@ -1,14 +1,13 @@
 package sbnz.integracija.example.facts;
 
 import lombok.*;
+import sbnz.integracija.example.dto.AntropologicalFactorDTO;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Entity
@@ -63,4 +62,20 @@ public class AntropologicalFactors {
     private LocalDate dateAdded;
 
 
+    public AntropologicalFactors() {
+    }
+
+    public AntropologicalFactors(AntropologicalFactorLevelAndDescription shrubbery, AntropologicalFactorLevelAndDescription distanceToNeighbourhoodPopulation, AntropologicalFactorLevelAndDescription disturbance, AntropologicalFactorLevelAndDescription roads, AntropologicalFactorLevelAndDescription agriculture, AntropologicalFactorLevelAndDescription grazing, AntropologicalFactorLevelAndDescription grassRemoving, AntropologicalFactorLevelAndDescription predators, AntropologicalFactorLevelAndDescription protection, AntropologicalFactorLevelAndDescription purpose, LocalDate dateAdded) {
+        this.shrubbery = shrubbery;
+        this.distanceToNeighbourhoodPopulation = distanceToNeighbourhoodPopulation;
+        this.disturbance = disturbance;
+        this.roads = roads;
+        this.agriculture = agriculture;
+        this.grazing = grazing;
+        this.grassRemoving = grassRemoving;
+        this.predators = predators;
+        this.protection = protection;
+        this.purpose = purpose;
+        this.dateAdded = dateAdded;
+    }
 }

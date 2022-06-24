@@ -20,16 +20,19 @@ public class HabitatDTO {
     private NaturalFactorsDTO naturalFactorsDTO;
     private String username;
 
+    private AntropologicalFactorDTO antropologicalFactorDTO;
+
     private String dateCreated;
     // TODO: antropological factors
 
 
-    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, String dateCreated) {
+    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
         this.username = username;
         this.dateCreated = dateCreated;
+        this.antropologicalFactorDTO = antropologicalFactorDTO;
     }
 
     public HabitatDTO() {
