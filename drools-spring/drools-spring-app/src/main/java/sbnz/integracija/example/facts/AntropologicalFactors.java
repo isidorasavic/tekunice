@@ -61,11 +61,14 @@ public class AntropologicalFactors {
     @Column(name="date_added")
     private LocalDate dateAdded;
 
+    @Column(name="habitat_id")
+    private long habitatId;
+
 
     public AntropologicalFactors() {
     }
 
-    public AntropologicalFactors(AntropologicalFactorLevelAndDescription shrubbery, AntropologicalFactorLevelAndDescription distanceToNeighbourhoodPopulation, AntropologicalFactorLevelAndDescription disturbance, AntropologicalFactorLevelAndDescription roads, AntropologicalFactorLevelAndDescription agriculture, AntropologicalFactorLevelAndDescription grazing, AntropologicalFactorLevelAndDescription grassRemoving, AntropologicalFactorLevelAndDescription predators, AntropologicalFactorLevelAndDescription protection, AntropologicalFactorLevelAndDescription purpose, LocalDate dateAdded) {
+    public AntropologicalFactors(AntropologicalFactorLevelAndDescription shrubbery, AntropologicalFactorLevelAndDescription distanceToNeighbourhoodPopulation, AntropologicalFactorLevelAndDescription disturbance, AntropologicalFactorLevelAndDescription roads, AntropologicalFactorLevelAndDescription agriculture, AntropologicalFactorLevelAndDescription grazing, AntropologicalFactorLevelAndDescription grassRemoving, AntropologicalFactorLevelAndDescription predators, AntropologicalFactorLevelAndDescription protection, AntropologicalFactorLevelAndDescription purpose, LocalDate dateAdded,long habitatId) {
         this.shrubbery = shrubbery;
         this.distanceToNeighbourhoodPopulation = distanceToNeighbourhoodPopulation;
         this.disturbance = disturbance;
@@ -77,5 +80,6 @@ public class AntropologicalFactors {
         this.protection = protection;
         this.purpose = purpose;
         this.dateAdded = dateAdded;
+        this.habitatId = habitatId;
     }
 }

@@ -10,9 +10,11 @@ import sbnz.integracija.example.dto.NaturalFactorsDTO;
 import sbnz.integracija.example.facts.AntropologicalFactors;
 import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.repository.AntropologicalFactorAndLevelRepository;
+import sbnz.integracija.example.repository.AntropologicalFactorRepository;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AntropologicalFactorsService {
@@ -21,9 +23,16 @@ public class AntropologicalFactorsService {
 
     private final AntropologicalFactorAndLevelRepository antropologicalFactorLevelAndDescriptionRepository;
 
+    private final AntropologicalFactorRepository antropologicalFactorRepository;
+
     @Autowired
-    public AntropologicalFactorsService(AntropologicalFactorAndLevelRepository antropologicalFactorLevelRepository){
+    public AntropologicalFactorsService(AntropologicalFactorAndLevelRepository antropologicalFactorLevelRepository, AntropologicalFactorRepository antropologicalFactorRepository){
         this.antropologicalFactorLevelAndDescriptionRepository = antropologicalFactorLevelRepository;
+        this.antropologicalFactorRepository = antropologicalFactorRepository;
+    }
+
+    public List<AntropologicalFactors> findAllForHabitat(long habitatId){
+        return antropologicalFactorRepository.findAllByHabitatId(habitatId);
     }
 
 

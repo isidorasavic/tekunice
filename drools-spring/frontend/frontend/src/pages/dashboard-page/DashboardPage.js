@@ -36,7 +36,7 @@ const DashboardPage = () => {
     const [habitatsList, setHabitatsList] = useState([]);
     const [selectedHabitat, setSelectedHabitat] = useState();
 
-    const [value, setValue] = useState('1');
+    const [value, setValue] = useState('-1');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -59,7 +59,7 @@ const DashboardPage = () => {
             setHabitatsList(response.data)
             setSelectedHabitat(response.data[0]);
             localStorage.setItem('selectedHabitat', JSON.stringify(response.data[0]))
-            console.log(response.data[0]);
+            console.log('habitat',response.data[0].antropologicalFactorDTO);
         })
         .catch(error => {
             console.log(error.response);
@@ -128,12 +128,13 @@ const DashboardPage = () => {
                 <div className="selected-habitat-div">
                     <TabContext value={value} >
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label="Prirodni faktori" value="1" />
-                            <Tab label="Item Two" value="2" />
-                            <Tab label="Item Three" value="3" />
+                            <Tab label="Prirodni faktori" value="-1" />
+                            {/* {selectedHabitat.antropologicalFactorDTO.map((factors, index)=> {
+                                <Tab label={"Ljudski faktori"+factors.dateAdded} value={index} />
+                            })} */}
                         </TabList>
                     {/**/}
-                        <TabPanel value="1"><NaturalFactorsTab/></TabPanel>
+                        <TabPanel value="-1"><NaturalFactorsTab/></TabPanel>
                         <TabPanel value="2">Item Two</TabPanel>
                         <TabPanel value="3">Item Three</TabPanel>
 

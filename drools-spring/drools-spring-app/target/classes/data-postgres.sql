@@ -134,8 +134,9 @@ insert into users (username, password, first_name, last_name) values ('isidora',
 insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
 
 --ljudski faktori
-insert into antropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, date_added)
-values (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2022-05-10');
-
+insert into antropological_factors (habitat_id, shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, date_added)
+values (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2022-05-10');
+insert into antropological_factors (habitat_id, shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, date_added)
+values (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2022-05-20');
 --stanista
 insert into habitats (name, label, natural_factors_id,antropological_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, 1, '2022-05-10');

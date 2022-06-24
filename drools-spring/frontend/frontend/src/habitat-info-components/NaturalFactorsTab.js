@@ -37,8 +37,8 @@ const NaturalFactorsTab = () => {
                 </div>
             </div>
             <div className="label-container">
-                <h1 style={{marginTop:"0"}}>{label.split(' - ')[0]}</h1>
-                <h4>{label.split(' - ')[1]}</h4>
+                {/* <h1 style={{marginTop:"0"}}>{label.split(' - ')[0]}</h1>
+                <h4>{label.split(' - ')[1]}</h4> */}
                 <img src={require('./happy.gif')} className="gif" alt="loading..." />
             </div>
         </div>

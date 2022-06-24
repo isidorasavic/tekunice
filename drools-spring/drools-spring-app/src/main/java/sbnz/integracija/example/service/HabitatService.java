@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sbnz.integracija.example.dto.AntropologicalFactorDTO;
 import sbnz.integracija.example.dto.HabitatDTO;
 import sbnz.integracija.example.facts.AntropologicalFactors;
 import sbnz.integracija.example.facts.Habitat;
@@ -79,7 +80,12 @@ public class HabitatService {
             habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
             habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
-            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(habitat.getAntropologicalFactors()));
+
+            List<AntropologicalFactorDTO> antropologicalFactorDTOS= new ArrayList<>();
+            antropologicalFactorsService.findAllForHabitat(habitat.getId()).forEach(factor -> {
+                antropologicalFactorDTOS.add(antropologicalFactorsService.getDTO(factor));
+            });
+            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorDTOS);
             habitats.add(habitatDTO);
         });
         return habitats;

@@ -8,6 +8,7 @@ import sbnz.integracija.example.facts.enums.Label;
 
 import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,13 +21,13 @@ public class HabitatDTO {
     private NaturalFactorsDTO naturalFactorsDTO;
     private String username;
 
-    private AntropologicalFactorDTO antropologicalFactorDTO;
+    private List<AntropologicalFactorDTO> antropologicalFactorDTO;
 
     private String dateCreated;
     // TODO: antropological factors
 
 
-    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
+    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, List<AntropologicalFactorDTO> antropologicalFactorDTO, String dateCreated) {
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
