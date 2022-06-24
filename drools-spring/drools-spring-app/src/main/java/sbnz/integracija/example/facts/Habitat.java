@@ -64,10 +64,9 @@ public class Habitat {
 
     public Habitat(HabitatDTO habitatDTO){
         this.name = habitatDTO.getName();
-        this.label = Label.valueOf(habitatDTO.getLabel());
+        this.label = Label.valueOf(habitatDTO.getLabel().getValue());
         this.naturalFactors = new NaturalFactors(habitatDTO.getNaturalFactorsDTO());
         //TODO: antropological factors
-        //TODO: user
         this.dateCreated = LocalDate.parse(habitatDTO.getDateCreated());
     }
 

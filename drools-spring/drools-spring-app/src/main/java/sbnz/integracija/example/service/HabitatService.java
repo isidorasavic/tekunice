@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import sbnz.integracija.example.dto.HabitatDTO;
 import sbnz.integracija.example.facts.AntropologicalFactors;
 import sbnz.integracija.example.facts.Habitat;
+import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.facts.User;
 import sbnz.integracija.example.repository.HabitatRepository;
 
@@ -72,7 +73,7 @@ public class HabitatService {
             HabitatDTO habitatDTO = new HabitatDTO();
             habitatDTO.setName(habitat.getName());
             habitatDTO.setUsername(habitat.getUser().getUsername());
-            habitatDTO.setLabel( habitat.getLabel().getName());
+            habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
             habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
             habitats.add(habitatDTO);

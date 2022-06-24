@@ -9,8 +9,8 @@ const NaturalFactorsTab = () => {
     useEffect(()=> {
         const habitat = localStorage.getItem('selectedHabitat');
         const parsedHabitat = JSON.parse(habitat);
-        console.log(parsedHabitat);
-        setLabel(parsedHabitat.label);
+        console.log('label: ', parsedHabitat.label)
+        setLabel(parsedHabitat.label.label);
         setNaturalFactors(parsedHabitat.naturalFactorsDTO);
     }, [])
 
@@ -37,7 +37,8 @@ const NaturalFactorsTab = () => {
                 </div>
             </div>
             <div className="label-container">
-                <h1>{label}</h1>
+                <h1 style={{marginTop:"0"}}>{label.split(' - ')[0]}</h1>
+                <h4>{label.split(' - ')[1]}</h4>
                 <img src={require('./happy.gif')} className="gif" alt="loading..." />
             </div>
         </div>

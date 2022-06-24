@@ -3,6 +3,7 @@ package sbnz.integracija.example.dto;
 import lombok.*;
 import sbnz.integracija.example.facts.Habitat;
 import sbnz.integracija.example.facts.NaturalFactors;
+import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.facts.enums.Label;
 
 import java.text.DateFormat;
@@ -15,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class HabitatDTO {
 
     private String name;
-    private String label;
+    private Option label;
     private NaturalFactorsDTO naturalFactorsDTO;
     private String username;
 
@@ -23,7 +24,7 @@ public class HabitatDTO {
     // TODO: antropological factors
 
 
-    public HabitatDTO(String name, String label, NaturalFactorsDTO naturalFactorsDTO, String username, String dateCreated) {
+    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, String dateCreated) {
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
