@@ -51,33 +51,33 @@ insert into factor_options (value, label, type) values ('Great', 'Veliki nagib (
 
 --zbunje
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema žbunastih vrsta na staništu', 'shrubbery', 2, '');
+values ('Nema žbunastih vrsta na staništu', 'shrubbery', 0, 'Veoma povoljna situacija.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Žbunaste vrste su veoma retke i malobrojne', 'shrubbery', 0, '');
+values ('Žbunaste vrste su veoma retke i malobrojne', 'shrubbery', 3, 'Neophodno je pratiti razvoj žbunastih vrsta i povremeno ih uklanjati.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Žbunaste vrste su relativno brojne', 'shrubbery', 2, '');
+values ('Žbunaste vrste su relativno brojne', 'shrubbery', 5, 'Brojne žbunaste vrste potrebno je mehanički uklanjati i redovno održavati.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Žbunaste vrste su veoma brojne', 'shrubbery', 0, '');
+values ('Žbunaste vrste su veoma brojne', 'shrubbery', 10, 'Ovo je veoma nepovoljna situacija koja se ne može rešiti ni mehaničkim uklanjanjem žbunastih vrsta.');
 
 --udaljenost od susedne populacije
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Najbliža susedna populacija je udaljena više kilometara', 'distanceToNeighbourhoodPopulation', 2, '');
+values ('Najbliža susedna populacija je udaljena više kilometara', 'distanceToNeighbourhoodPopulation', 10, 'Udaljenost do najbliže susedne populacije nije povoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Susedna populacija je udaljena manje 1km ali je između njih neka barijera (npr. urbano područje, poljoprivredno zemljište...)', 'distanceToNeighbourhoodPopulation', 0, '');
+values ('Susedna populacija je udaljena manje 1km ali je između njih neka barijera (npr. urbano područje, poljoprivredno zemljište...)', 'distanceToNeighbourhoodPopulation', 5, 'Udaljenost do najbliže susedne populacije je relativno nepovoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Susedna populacija je veoma blizu i postoji mogućnost kontakta jedinki', 'distanceToNeighbourhoodPopulation', 2, '');
+values ('Susedna populacija je veoma blizu i postoji mogućnost kontakta jedinki', 'distanceToNeighbourhoodPopulation', 0, 'Veoma povoljna situacija.');
 
 --hvatanje trovanje, krivolov
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema', 'disturbance', 2, '');
+values ('Nema', 'disturbance', 0, 'Veoma povoljna situacija');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Veoma retko', 'disturbance', 0, '');
+values ('Veoma retko', 'disturbance', 3, 'Sitacija je relativno nepovoljna, i nije porebno preduzeti drastične mere.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('U manjoj meri', 'disturbance', 2, '');
+values ('U manjoj meri', 'disturbance', 6, 'Nepovoljna situacija, neophodno je raditi na edukaciji stanovništva.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Veoma često', 'disturbance', 0, '');
+values ('Veoma često', 'disturbance', 10, 'Izuzetno nepovoljna situacija, neophodno je raditi na edukaciji stanovništva');
 
---saobracaj
+--saobracaj TODO
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Stanište preseca jedan ili više asfaltnih puteva', 'roads', 2, '');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
@@ -89,43 +89,43 @@ values ('Nema puteva na staništu', 'roads', 0, '');
 
 -- poljoprivreda
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 2, '');
+values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija ybog potencijalnog trovanja pesticidima.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište se jednim delom dodiruje sa poljoprivrednim zemljištem', 'agriculture', 0, '');
+values ('Stanište se jednim delom dodiruje sa poljoprivrednim zemljištem', 'agriculture', 5, 'Tekunice mogu biti ugrožene zbog potencijalnog trovanja pesticidima.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema poljoprivrednog zemljišta u neposrednoj blizini staništa', 'agriculture', 2, '');
+values ('Nema poljoprivrednog zemljišta u neposrednoj blizini staništa', 'agriculture', 0, 'Veoma povoljna situacija.');
 
 --ispasa
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu se redovno napasaju ovce/krave', 'grazing', 2, '');
+values ('Na staništu se redovno napasaju ovce/krave', 'grazing', 0, 'Veoma povoljna situacija');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu se povremeno ili u manjem obimu napasaju ovce/krave ispaše', 'grazing', 2, '');
+values ('Na staništu se povremeno ili u manjem obimu napasaju ovce/krave ispaše', 'grazing', 3, 'Ukoliko je moguće u saradnji sa lokalnom zajednicom raditi na podsticanju razvoja stočarstva');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu nema ispaše', 'grazing', 0, '');
+values ('Na staništu nema ispaše', 'grazing', 6, 'Ukoliko je moguće u saradnji sa lokalnom zajednicom raditi na podsticanju razvoja stočarstva');
 
 --uklanjanje trave
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema uklanjanja trave', 'grassRemoving', 2, '');
+values ('Nema uklanjanja trave', 'grassRemoving', 0, 'Veoma povoljna situacija.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Ima uklanjanja trave', 'grassRemoving', 2, '');
+values ('Ima uklanjanja trave', 'grassRemoving', 7, 'Za uspešnost naseljavanja tekunica neophodno je potpuno prekinuti ovakav vid eksploatacije zemljišta na konkretnom staništu');
 
 --predatori
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu su primećeni potencijalni predatori', 'predators', 2, '');
+values ('Na staništu su primećeni potencijalni predatori', 'predators', 0, 'Veoma povoljna situacija.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu nisu primećeni potencijalni predatori', 'predators', 0, '');
+values ('Na staništu nisu primećeni potencijalni predatori', 'predators', 4, 'Potrebno je pratiti u kojoj meri prirodni predatori utiču na tekunice. U većini slučajeva oni su manje opasni u osnosu na domaće mačke, kojih ima u blizini ljudskih staništa.');
 
 --da li staniste ima vid zastite
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Ima', 'protection', 2, '');
+values ('Ima', 'protection', 0, 'Veoma povoljna situacija');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema', 'protection', 0, '');
+values ('Nema', 'protection', 5, 'VLasnici parcela su svakako u obavezi da postupaju u skladu sa propisanim merama zaštite. Ukoliko je neophodno treba obavestiti građane o novim merama koje se potencijalno donesu.');
 
 --vlasnistvo i namena parcele
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Opštinsko', 'purpose', 2, '');
+values ('Opštinsko', 'purpose', 0, 'Veoma povoljna sitacija');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Privatno', 'purpose', 0, '');
+values ('Privatno', 'purpose', 5, 'Vlasniik parcele je u obaveti da se pridržava zakona o zaštiti prirode. Neophodno je uspostaviti kontakt sa vlasnikom i obavestiti ga o merama koje je potrebno da poštuje.');
 
 --useri
 insert into users (username, password, first_name, last_name) values ('isidora', '$2y$10$t4NZP3qGGdzGakospEzFHOPQngmjvi7dZeZSiwfiNz.1rv/smO0Ce', 'Isidora', 'Savić');

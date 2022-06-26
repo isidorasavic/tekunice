@@ -1,10 +1,6 @@
 package sbnz.integracija.example.dto;
 
 import lombok.*;
-import org.apache.poi.hssf.record.chart.AxisOptionsRecord;
-import org.springframework.beans.factory.annotation.Autowired;
-import sbnz.integracija.example.facts.NaturalFactors;
-import sbnz.integracija.example.repository.OptionRepository;
 
 @Getter
 @Setter
