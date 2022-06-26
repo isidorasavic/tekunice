@@ -1,8 +1,7 @@
 .factors-tab-container {
-    height: 69vh;
+    /* height: 69vh; */
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
 }
 
 .natural-factors-container {
@@ -11,29 +10,38 @@
     border-left:  #6C1E15 1px solid;
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 .label-container {
-    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #nf {
-    height: 20%;
     padding-left: 10px;
     text-align: start;
     border-bottom: #6C1E15 1px solid;
+    max-height: 70px;
+}
+
+p {
+    margin-top: 0;
 }
 
 b#factor {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 p#factor-value {
     font-size: 15px;
 }
 
-.gif {
-    margin-top: 70px;
-    /* height: 500px;
-    width: 500px; */
+h1 {
+    margin-top: 0;
 }
+
+/* .gif {
+    height: 500px;
+    width: 500px; 
+} */
