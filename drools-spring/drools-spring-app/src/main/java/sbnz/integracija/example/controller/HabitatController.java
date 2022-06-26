@@ -23,11 +23,11 @@ public class HabitatController {
 
     }
 
-    @RequestMapping(value="/getHabitatLabel", method= RequestMethod.GET, produces = "application/json")
-    public Habitat getHabitatLabel(@RequestBody HabitatDTO habitatDTO){
-        return habitatService.generateRules(habitatDTO);
-
-    }
+//    @RequestMapping(value="/generateRules", method= RequestMethod.POST, produces = "application/json")
+//    public void generateRules(){
+//        habitatService.generateRules();
+//
+//    }
 
     @RequestMapping(value="/user/{username}/habitats", method= RequestMethod.GET, produces = "application/json")
     public List<HabitatDTO> getUserHabitats(@PathVariable("username") String username){

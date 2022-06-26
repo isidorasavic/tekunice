@@ -58,12 +58,10 @@ const DashboardPage = () => {
         .then(response => {
             setHabitatsList(response.data)
             setSelectedHabitat(response.data[0]);
-            localStorage.setItem('selectedHabitat', JSON.stringify(response.data[0]))
-            console.log('habitat',response.data[0].antropologicalFactorDTO);
         })
         .catch(error => {
             console.log(error.response);
-          })
+        })
     }
 
 
@@ -90,8 +88,7 @@ const DashboardPage = () => {
         )
     }
     const handleListItemClick = (event, index) => {
-        setSelectedHabitat(habitatsList[index]);
-        localStorage.setItem('selectedHabitat', JSON.stringify(habitatsList[index]))
+        setSelectedHabitat(habitatsList.at(index));
       };
 
     return (
@@ -129,12 +126,8 @@ const DashboardPage = () => {
                     <TabContext value={value} >
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Prirodni faktori" value="-1" />
-                            {/* {selectedHabitat.antropologicalFactorDTO.map((factors, index)=> {
-                                <Tab label={"Ljudski faktori"+factors.dateAdded} value={index} />
-                            })} */}
                         </TabList>
-                    {/**/}
-                        <TabPanel value="-1"><NaturalFactorsTab/></TabPanel>
+                        <TabPanel value="-1"><NaturalFactorsTab habitat={selectedHabitat}/></TabPanel>
                         <TabPanel value="2">Item Two</TabPanel>
                         <TabPanel value="3">Item Three</TabPanel>
 

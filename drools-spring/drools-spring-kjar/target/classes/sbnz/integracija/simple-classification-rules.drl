@@ -1,0 +1,91 @@
+package sbnz.integracija;
+
+import sbnz.integracija.example.facts.Habitat
+import sbnz.integracija.example.facts.enums.*
+
+dialect  "mvel"
+
+
+rule "simple-rule-1"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PP, naturalFactors.exposition == Exposition.North)
+    then
+        modify($h){setLabel(Label.INADEQUATE)}
+end
+
+rule "simple-rule-2"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PP, naturalFactors.exposition == Exposition.NorthWest)
+    then
+        modify($h){setLabel(Label.INADEQUATE)}
+end
+
+rule "simple-rule-3"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.LS)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "simple-rule-4"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.CS)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "simple-rule-5"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PZ)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "simple-rule-6"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.BMS)
+    then
+        modify($h){setLabel(Label.INAPPROPRIATE)}
+end
+
+rule "simple-rule-7"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.North)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-8"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.NorthWest)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-9"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PZS, naturalFactors.exposition == Exposition.North)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-10"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PZS, naturalFactors.exposition == Exposition.NorthWest)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-11"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PSPNL, naturalFactors.exposition == Exposition.North)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-12"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PSPNL, naturalFactors.exposition == Exposition.NorthWest)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end

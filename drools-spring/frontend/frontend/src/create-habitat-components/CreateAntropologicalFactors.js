@@ -9,11 +9,13 @@ import * as Constants from '../constants'
 import axios from 'axios'
 import Button from '@mui/material/Button'
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
 
 
 const CreateAntropologicalFactors = () => {
 
     const { enqueueSnackbar } = useSnackbar();
+    const navigate = useNavigate();
 
 
     const [shrubberyOptions, setShrubberyOptions] = useState([]);
@@ -84,11 +86,97 @@ const CreateAntropologicalFactors = () => {
             enqueueSnackbar('Plavljenje staništa ne može biti prazno!', {variant: 'error'});
             return false;
         }
+        if (localStorage.getItem('shrubbery') === null || localStorage.getItem('distance') === null ||
+            localStorage.getItem('disturbance') === null || localStorage.getItem('roads') === null ||
+            localStorage.getItem('agriculture') === null || localStorage.getItem('grazing') === null ||
+            localStorage.getItem('grassRemoving') === null || localStorage.getItem('predators') === null ||
+            localStorage.getItem('protection') === null || localStorage.getItem('purpose') === null){
+            enqueueSnackbar('Obavezno je uneti sve ljudske faktore!', {variant: 'error'});
+            return false;
+        }
         return true;
     }
 
     const submitHabitat = () => {
-        checkCreateHabitatFormsValid();
+        if (checkCreateHabitatFormsValid()) {
+            const habitat = {
+                name: localStorage.getItem("name"),
+                username: sessionStorage.getItem("username"),
+                dateCreated: "2022-06-26",  // todo:
+                naturalFactorsDTO: {
+                    type: localStorage.getItem("type"),
+                    exposition: localStorage.getItem("exposition"),
+                    elevation: localStorage.getItem("elevation"),
+                    mjt: localStorage.getItem("mjt"),
+                    slope: localStorage.getItem("slope"),
+                    flooding: localStorage.getItem("flooding")
+                },
+                antropologicalFactorDTO: [{
+                    shrubbery: {
+                        value: localStorage.getItem('shrubbery'),
+                        type: 'shrubbery'
+
+                    },
+                    distanceToNeighbourhoodPopulation: {
+                        value: localStorage.getItem('distance'),
+                        type: 'distanceToNeighbourhoodPopulation'
+
+                    },
+                    disturbance: {
+                        value: localStorage.getItem('disturbance'),
+                        type: 'disturbance'
+
+                    },
+                    roads: {
+                        value: localStorage.getItem('roads'),
+                        type: 'roads'
+
+                    },
+                    agriculture: {
+                        value: localStorage.getItem('agriculture'),
+                        type: 'agriculture'
+
+                    },
+                    grazing: {
+                        value: localStorage.getItem('grazing'),
+                        type: 'grazing'
+
+                    },
+                    grassRemoving: {
+                        value: localStorage.getItem('grassRemoving'),
+                        type: 'grassRemoving'
+
+                    },
+                    predators: {
+                        value: localStorage.getItem('predators'),
+                        type: 'predators'
+
+                    },
+                    protection: {
+                        value: localStorage.getItem('protection'),
+                        type: 'protection'
+
+                    },
+                    purpose: {
+                        value: localStorage.getItem('purpose'),
+                        type: 'purpose'
+
+                    }
+                }]
+            }
+            console.log(habitat);
+            axios.post(Constants.BasePath + 'addHabitat', habitat, 
+            { headers: { "Content-Type": "application/json; charset=UTF-8" },
+            })
+            .then(response => {
+                console.log(response.data);
+                // navigate('/dashboard');
+
+            })
+            .catch(error => {
+                console.log(error.response);
+            })
+            }
     }
 
     return (

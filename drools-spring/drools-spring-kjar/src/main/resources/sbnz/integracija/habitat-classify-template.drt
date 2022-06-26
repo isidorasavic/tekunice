@@ -1,0 +1,29 @@
+template header
+type
+exposition
+elevation
+mjt
+label
+
+package sbnz.integracija;
+
+import sbnz.integracija.example.facts.Habitat
+import sbnz.integracija.example.facts.enums.*
+
+
+template "habitat-classify-template"
+
+rule "Label_Habitat_@{row.rowNumber}"
+no-loop true
+when
+    $c: Customer(label==Label.NO_LABEL,
+                naturalFactors.type == Type.@{type},
+    			naturalFactors.exposition == Exposition.@{exposition},
+    			naturalFactors.elevation == Elevation.@{elevation},
+    			naturalFactors.mjt == MJT.@{mjt})
+then
+    modify($h){setLabel(Label.@{label})}
+end
+
+end template
+

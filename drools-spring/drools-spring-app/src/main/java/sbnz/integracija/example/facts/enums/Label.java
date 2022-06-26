@@ -1,7 +1,6 @@
 package sbnz.integracija.example.facts.enums;
 
 public enum Label {
-    //TODO: RECENICE!!
     NO_LABEL("Nema labele"),
     OPTIMAL (" Optimalno stanište - Karakteristike navedenog  staništa su izuzetno povoljne za optimalan razvoj i opstanak populacije tekunica. Za uspeh naseljavanja nisu potrebne dodatne aktivnosti na održavanju terena."),
     SUBOPTIMAL("Suboptimalno stanište - Karakteristike predloženog staništa su sasvim dobre za opstanak tekunica. Uspeh naseljavanja trebalo bi da bude na zadovoljavajućem nivou ali će verovatno biti neophodno preduzeti određene aktivnosti manjeg obima na održavanju staništa."),

@@ -30,13 +30,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(error);
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    protected ResponseEntity<Object> runtimeException(RuntimeException e) {
-        ErrorResponse error = new ErrorResponse(HttpStatus.NOT_ACCEPTABLE);
-        error.setMessage(e.getMessage());
-        return buildResponseEntity(error);
-    }
-
     private ResponseEntity<Object> buildResponseEntity(ErrorResponse error) {
         return new ResponseEntity<>(error, error.getStatus());
     }

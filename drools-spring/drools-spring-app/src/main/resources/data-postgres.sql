@@ -79,13 +79,13 @@ values ('Veoma često', 'disturbance', 10, 'Izuzetno nepovoljna situacija, neoph
 
 --saobracaj TODO
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište preseca jedan ili više asfaltnih puteva', 'roads', 2, '');
+values ('Stanište preseca jedan ili više asfaltnih puteva', 'roads', 9, '(Postojanje asfaltnih puteva može nepovoljno uticati na opstanak populacija ali i ne mora ukoliko saobraćaj nije intenzivan. Prilikom izbora staništa za naseljavanje tekunica prioritet treba uvek dati onima bez bez asfaltnih puteva)');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište se graniči sa asfaltnim putem', 'roads', 0, '');
+values ('Stanište se graniči sa asfaltnim putem', 'roads', 7, '(Postojanje asfaltnog puta u graničnim područjima staništa ne predstavljaj direktnu pretnju zbog čega ovakva staništa mogu biti izabrana za naseljavanje tekunica ali prioritet treba uvek dati onima bez bez asfaltnih puteva)');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište preseca ili se ono graniči sa zemljanim putem', 'roads', 2, '');
+values ('Stanište preseca ili se ono graniči sa zemljanim putem', 'roads', 3, '(Zemljanim putevima se najčešće kreću poljoprivredne mašine što znači da je frekvencija saobraćaja niska i samim tim ovakva staništa su dobar izbor za naseljavanje tekunica ukoliko su i svi drugi faktori povoljni)');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema puteva na staništu', 'roads', 0, '');
+values ('Nema puteva na staništu', 'roads', 0, 'Veoma povoljna situacija');
 
 -- poljoprivreda
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)

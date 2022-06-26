@@ -28,9 +28,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="drools-spring-kjar-0.0.1-SNAPSHOT1" level="project" />
-    <orderEntry type="library" name="javax.persistence-api-2.2" level="project" />
-    <orderEntry type="library" name="postgresql-42.4.0" level="project" />
+    <orderEntry type="library" name="drools-spring-kjar-0.0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.0" level="project" />
@@ -257,5 +255,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.20" level="project" />
+    <orderEntry type="library" name="drools-spring-app-0.0.1-SNAPSHOT" level="project" />
   </component>
 </module>

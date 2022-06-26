@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sbnz.integracija.example.controller.AuthenticationController;
 import sbnz.integracija.example.dto.NaturalFactorOptions;
 import sbnz.integracija.example.facts.NaturalFactors;
 import sbnz.integracija.example.dto.NaturalFactorsDTO;
@@ -13,6 +14,7 @@ import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.facts.enums.Exposition;
 import sbnz.integracija.example.facts.enums.Flooding;
 import sbnz.integracija.example.facts.enums.Type;
+import sbnz.integracija.example.repository.NaturalFactorRepository;
 import sbnz.integracija.example.repository.OptionRepository;
 
 import java.util.ArrayList;
@@ -26,14 +28,20 @@ public class NaturalFactorsService {
 
     private final KieContainer kieContainer;
     private final OptionRepository optionRepository;
+    private final NaturalFactorRepository naturalFactorRepository;
 
     @Autowired
-    public NaturalFactorsService(KieContainer kieContainer, OptionRepository optionRepository) {
+    public NaturalFactorsService(KieContainer kieContainer, OptionRepository optionRepository,  NaturalFactorRepository naturalFactorRepository) {
         this.kieContainer = kieContainer;
         this.optionRepository = optionRepository;
+        this.naturalFactorRepository = naturalFactorRepository;
     }
 
+    private static final Logger LOG = LoggerFactory.getLogger(AuthenticationController.class);
+
     public NaturalFactorOptions getAllOptions(NaturalFactorOptions naturalFactorOptions) {
+        LOG.info("Entered service for getting options!");
+        LOG.info(naturalFactorOptions.toString());
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(naturalFactorOptions);
         kieSession.fireAllRules();
@@ -89,5 +97,10 @@ public class NaturalFactorsService {
     public List<Option> getTypeOptions(){
 
         return optionRepository.findAllByType("type");
+    }
+
+    public void saveNaturalFactors(NaturalFactors factors){
+        naturalFactorRepository.saveAndFlush(factors);
+
     }
 }

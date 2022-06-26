@@ -12,6 +12,7 @@ import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.repository.AntropologicalFactorAndLevelRepository;
 import sbnz.integracija.example.repository.AntropologicalFactorRepository;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,6 @@ public class AntropologicalFactorsService {
 
 
     public AntropologicalFactorsOptions getOptions() {
-        log.info(":)");
         AntropologicalFactorsOptions options = new AntropologicalFactorsOptions();
         antropologicalFactorLevelAndDescriptionRepository.findAllByFactorName("shrubbery").forEach(factor -> {
             options.getShrubberyOptions().add(new Option(factor.getLevel()+"", factor.getDescription(), factor.getFactorName()));
@@ -88,5 +88,26 @@ public class AntropologicalFactorsService {
         antropologicalFactorDTO.setPurpose(new Option(antropologicalFactors.getPurpose()));
         return antropologicalFactorDTO;
 
+    }
+
+    protected AntropologicalFactors getFactorsFromDTO(AntropologicalFactorDTO antropologicalFactorDTO){
+        AntropologicalFactors factors = new AntropologicalFactors();
+        factors.setDateAdded(LocalDate.now());
+        factors.setShrubbery(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getShrubbery().getValue()), antropologicalFactorDTO.getShrubbery().getType()));
+        factors.setDistanceToNeighbourhoodPopulation(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDistanceToNeighbourhoodPopulation().getValue()), antropologicalFactorDTO.getDistanceToNeighbourhoodPopulation().getType()));
+        factors.setDisturbance(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDisturbance().getValue()), antropologicalFactorDTO.getDisturbance().getType()));
+        factors.setRoads(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getRoads().getValue()), antropologicalFactorDTO.getRoads().getType()));
+        factors.setAgriculture(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getAgriculture().getValue()), antropologicalFactorDTO.getAgriculture().getType()));
+        factors.setGrazing(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrazing().getValue()), antropologicalFactorDTO.getGrazing().getType()));
+        factors.setGrassRemoving(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrassRemoving().getValue()), antropologicalFactorDTO.getGrassRemoving().getType()));
+        factors.setPredators(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPredators().getValue()), antropologicalFactorDTO.getPredators().getType()));
+        factors.setProtection(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getProtection().getValue()), antropologicalFactorDTO.getProtection().getType()));
+        factors.setPurpose(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPurpose().getValue()), antropologicalFactorDTO.getPurpose().getType()));
+
+        return factors;
+    }
+
+    public void saveAntropologicalFactors(AntropologicalFactors factors){
+        antropologicalFactorRepository.saveAndFlush(factors);
     }
 }

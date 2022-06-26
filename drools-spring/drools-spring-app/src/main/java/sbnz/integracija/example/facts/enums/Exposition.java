@@ -1,7 +1,7 @@
 package sbnz.integracija.example.facts.enums;
 
 public enum Exposition {
-    No_Exposition(0), North(1), NorthWest(2), NorthEast(3), East(4), West(5), South(6), SouthEast(7), SouthWest(8);
+    NoExposition(0), North(1), NorthWest(2), NorthEast(3), East(4), West(5), South(6), SouthEast(7), SouthWest(8);
 
     private int numVal;
 

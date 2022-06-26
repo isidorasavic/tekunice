@@ -11,4 +11,6 @@ import java.util.List;
 public interface AntropologicalFactorAndLevelRepository extends JpaRepository<AntropologicalFactorLevelAndDescription, Long> {
 
     List<AntropologicalFactorLevelAndDescription> findAllByFactorName(@Param("factor_name") String factor_name);
+
+    AntropologicalFactorLevelAndDescription getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(@Param("level") int level, @Param("factor_name") String factor_name);
 }

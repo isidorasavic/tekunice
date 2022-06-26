@@ -1,5 +1,7 @@
 package sbnz.integracija.example.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +18,9 @@ import java.util.List;
 public class NaturalFactorController {
     private final NaturalFactorsService naturalFactorsService;
 
+    private static final Logger LOG = LoggerFactory.getLogger(AuthenticationController.class);
+
+
     @Autowired
     public NaturalFactorController(NaturalFactorsService naturalFactorsService) {
         this.naturalFactorsService = naturalFactorsService;
@@ -23,6 +28,7 @@ public class NaturalFactorController {
 
     @RequestMapping(value="/naturalFactorOptions", method= RequestMethod.GET, produces = "application/json")
     public NaturalFactorOptions getNaturalFactorOptions(@RequestParam("type") String type){
+        LOG.info("Recieved request for options for type: "+type);
         NaturalFactorOptions options = new NaturalFactorOptions();
         options.setHabitatType(Type.valueOf(type));
         return naturalFactorsService.getAllOptions(options);
