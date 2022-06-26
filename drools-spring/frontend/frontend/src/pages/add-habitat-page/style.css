@@ -3,15 +3,14 @@
     height: 100vh;
     background-color: #D4EFDF;
     color: #6C1E15;
-    /* darksagegreen */
-
+    /* background-color: pink; */
 }
 
 .form-container {
     outline:#6C1E15 ridge 2px;
     border-radius: 5px;
     width: 55vw;
-    height: 70%;
+    height: 75%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -22,13 +21,18 @@
 
 .round-bttn-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     padding: 5px;
     margin-bottom: 0;
 }
 
 .round-bttn {
     padding: 10px;
+}
+
+.form-title {
+    margin-bottom: 0;
+    font-weight: normal;
 }
 
 

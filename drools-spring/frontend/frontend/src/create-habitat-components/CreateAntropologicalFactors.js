@@ -7,9 +7,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import * as Constants from '../constants'
 import axios from 'axios'
+import Button from '@mui/material/Button'
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 
 const CreateAntropologicalFactors = () => {
+
+    const { enqueueSnackbar } = useSnackbar();
+
 
     const [shrubberyOptions, setShrubberyOptions] = useState([]);
     const [distanceOptions, setDistanceOptions] = useState([]);
@@ -50,6 +55,41 @@ const CreateAntropologicalFactors = () => {
           })
     }, []);
 
+    const checkCreateHabitatFormsValid = () => {
+        if (localStorage.getItem('name') === null){
+            enqueueSnackbar('Ime staništa ne može biti prazno!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('type') === null){
+            enqueueSnackbar('Tip staništa ne može biti prazan!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('exposition') === null){
+            enqueueSnackbar('Ekspozicija staništa ne može biti prazna!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('elevation') === null){
+            enqueueSnackbar('Nadmorska visina staništa ne može biti prazna!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('mjt') === null){
+            enqueueSnackbar('Srednja julska temperatura staništa ne može biti prazna!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('slope') === null){
+            enqueueSnackbar('Nagib staništa ne može biti prazan!', {variant: 'error'});
+            return false;
+        }
+        if (localStorage.getItem('flooding') === null){
+            enqueueSnackbar('Plavljenje staništa ne može biti prazno!', {variant: 'error'});
+            return false;
+        }
+        return true;
+    }
+
+    const submitHabitat = () => {
+        checkCreateHabitatFormsValid();
+    }
 
     return (
         <div>
@@ -265,6 +305,7 @@ const CreateAntropologicalFactors = () => {
                     </FormControl>
                 </div>
             </form>
+            <Button className='submit-bttn' variant="outlined" onClick={submitHabitat} style={{marginTop:"30px"}} sx={Constants.bttnStyle}>Kreiraj novo stanište</Button>
         </div>
     )
 

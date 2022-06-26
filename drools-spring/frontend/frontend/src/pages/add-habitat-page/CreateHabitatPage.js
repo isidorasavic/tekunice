@@ -15,9 +15,19 @@ const CreateHabitatPage = () => {
     const formNames = ["createNew", "naturalFactors", "antropologicalFactors"]
 
     let form;
-    if(openForm === 'createNew') form = <CreateNewHabitat/>
-    if(openForm === 'naturalFactors') form = <CreateNaturalFactors/>
-    if(openForm === 'antropologicalFactors') form = <CreateAntropologicalFactors/>
+    let title;
+    if(openForm === 'createNew') {
+        form = <CreateNewHabitat/>
+        title = "Kreiraj ime i tip staništa"
+    }
+    if(openForm === 'naturalFactors') {
+        form = <CreateNaturalFactors/>
+        title = "Dodaj prirodne faktore staništa"
+    }
+    if(openForm === 'antropologicalFactors') {
+        form = <CreateAntropologicalFactors/>
+        title = "Dodaj ljudske faktore staništa"
+    }
 
     if (sessionStorage.getItem('username') === null) {
         return (
@@ -29,7 +39,7 @@ const CreateHabitatPage = () => {
 
     return (
         <div className="add-habitat-container">
-             <Typography variant="h3" component="div" gutterBottom style={{padding:"60px"}}>
+            <Typography variant="h3" component="div" gutterBottom style={{padding:"40px"}}>
                 Kreiraj novo stanište
             </Typography>
             <div className="form-container">
@@ -39,6 +49,9 @@ const CreateHabitatPage = () => {
                             className="arrow-back" onClick={() => {setOpenForm(formNames[formNames.indexOf(openForm)-1])}}
                             disabled={formNames.indexOf(openForm) === 0}> <ArrowBack />
                         </Fab>
+                    </div>
+                    <div>
+                        <h2 className="form-title">{title}</h2>
                     </div>
                     <div className="round-bttn"  style={{textAlign:"right"}}>
                         <Fab style={{backgroundColor:"tan"}} aria-label="add" 
