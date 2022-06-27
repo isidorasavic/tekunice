@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sbnz.integracija.example.dto.AntropologicalFactorDTO;
 import sbnz.integracija.example.dto.HabitatDTO;
+import sbnz.integracija.example.dto.RecommendationDTO;
 import sbnz.integracija.example.exception.InvalidArgumentException;
 import sbnz.integracija.example.facts.*;
 import sbnz.integracija.example.facts.enums.Label;
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HabitatService {
@@ -340,4 +342,35 @@ public class HabitatService {
         return habitats;
     }
 
+
+    public RecommendationDTO getRecommendations(long id){
+
+        RecommendationDTO recommendationDTO = new RecommendationDTO();
+        Optional<Habitat> habitatOptional = habitatRepository.findById(id);
+        if(!habitatOptional.isPresent()) throw new InvalidArgumentException("Habitat not found!");
+        Habitat habitat = habitatOptional.get();
+        recommendationDTO.setSuccessRate(-1);
+        recommendationDTO.setSuccessMessage("");
+
+        List<Option> options = new ArrayList<>();
+        options.add(new Option(habitat.getAntropologicalFactors().getShrubbery()));
+        options.add(new Option(habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation()));
+        options.add(new Option(habitat.getAntropologicalFactors().getDisturbance()));
+        options.add(new Option(habitat.getAntropologicalFactors().getRoads()));
+        options.add(new Option(habitat.getAntropologicalFactors().getAgriculture()));
+        options.add(new Option(habitat.getAntropologicalFactors().getGrazing()));
+        options.add(new Option(habitat.getAntropologicalFactors().getGrassRemoving()));
+        options.add(new Option(habitat.getAntropologicalFactors().getPredators()));
+        options.add(new Option(habitat.getAntropologicalFactors().getProtection()));
+        options.add(new Option(habitat.getAntropologicalFactors().getPurpose()));
+
+        recommendationDTO.setRecommendations(options);
+        KieSession kieSession = kieContainer.newKieSession();
+        kieSession.insert(recommendationDTO);
+        kieSession.fireAllRules();
+        kieSession.dispose();
+        log.info(recommendationDTO.toString());
+        return recommendationDTO;
+
+    }
 }

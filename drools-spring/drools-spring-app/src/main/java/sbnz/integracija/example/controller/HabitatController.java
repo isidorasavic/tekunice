@@ -3,6 +3,7 @@ package sbnz.integracija.example.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sbnz.integracija.example.dto.HabitatDTO;
+import sbnz.integracija.example.dto.RecommendationDTO;
 import sbnz.integracija.example.facts.Habitat;
 import sbnz.integracija.example.service.HabitatService;
 
@@ -32,6 +33,12 @@ public class HabitatController {
     @RequestMapping(value="/user/{username}/habitats", method= RequestMethod.GET, produces = "application/json")
     public List<HabitatDTO> getUserHabitats(@PathVariable("username") String username){
         return habitatService.getAllUserHabitats(username);
+
+    }
+
+    @RequestMapping(value="/habitat/{id}/recommendations", method= RequestMethod.GET, produces = "application/json")
+    public RecommendationDTO getRecommendations(@PathVariable("id") long id){
+        return habitatService.getRecommendations(id);
 
     }
 

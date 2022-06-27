@@ -89,3 +89,59 @@ rule "simple-rule-12"
     then
         modify($h){setLabel(Label.SUBOPTIMAL)}
 end
+
+rule "simple-rule-13"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.South, naturalFactors.elevation == Elevation.Small)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-14"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.SouthEast, naturalFactors.elevation == Elevation.Small)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-15"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.SouthWest, naturalFactors.elevation == Elevation.Small)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-16"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.SPKP, naturalFactors.exposition == Exposition.NoExposition, naturalFactors.elevation == Elevation.Small)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-17"
+    when
+        $h : Habitat(label == Label.NO_LABEL, (naturalFactors.type == Type.SLVTKSK || naturalFactors.type == Type.SLZ), naturalFactors.elevation == Elevation.Small)
+    then
+        modify($h){setLabel(Label.SUBOPTIMAL)}
+end
+
+rule "simple-rule-18"
+    when
+        $h : Habitat(label == Label.NO_LABEL, (naturalFactors.type == Type.SLVTKSK || naturalFactors.type == Type.SLZ), naturalFactors.elevation != Elevation.Small)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-19"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PP, (naturalFactors.exposition==Exposition.South || naturalFactors.exposition==Exposition.SouthEast ||naturalFactors.exposition==Exposition.SouthWest || naturalFactors.exposition==Exposition.NoExposition), naturalFactors.elevation == Elevation.Large)
+    then
+        modify($h){setLabel(Label.MODERATE)}
+end
+
+rule "simple-rule-20"
+    when
+        $h : Habitat(label == Label.NO_LABEL, naturalFactors.type == Type.PP, (naturalFactors.exposition==Exposition.South || naturalFactors.exposition==Exposition.SouthEast ||naturalFactors.exposition==Exposition.SouthWest || naturalFactors.exposition==Exposition.NoExposition), naturalFactors.elevation == Elevation.ExtraLarge)
+    then
+        modify($h){setLabel(Label.INADEQUATE)}
+end
