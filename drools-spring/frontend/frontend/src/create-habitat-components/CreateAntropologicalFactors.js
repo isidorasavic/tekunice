@@ -99,7 +99,7 @@ const CreateAntropologicalFactors = () => {
     }
 
     const handleCloseModal= () => {
-        setModalData({open: false, title: '', subtitle:''});
+        // setModalData({open: false, title: '', subtitle:''});
         navigate('/dashboard')
     }
 
@@ -176,8 +176,7 @@ const CreateAntropologicalFactors = () => {
             })
             .then(response => {
                 console.log('response:', response.data);
-                setModalData({...modalData, open:true, title: response.data.label.split(' - ')[0], subtitle: response.data.label.split(' - ')[0]})
-                
+                navigate('/dashboard')
 
             })
             .catch(error => {

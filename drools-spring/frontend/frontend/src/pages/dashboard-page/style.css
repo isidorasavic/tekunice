@@ -111,7 +111,7 @@
     padding-left: 10px;
     text-align: start;
     border-bottom: #6C1E15 1px solid;
-    max-height: 100px;
+    /* height: 200px; */
 }
 
 p {

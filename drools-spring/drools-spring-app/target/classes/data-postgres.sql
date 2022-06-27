@@ -63,7 +63,7 @@ values ('Žbunaste vrste su veoma brojne', 'shrubbery', 10, 'Ovo je veoma nepovo
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Najbliža susedna populacija je udaljena više kilometara', 'distanceToNeighbourhoodPopulation', 10, 'Udaljenost do najbliže susedne populacije nije povoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Susedna populacija je udaljena manje 1km ali je između njih neka barijera (npr. urbano područje, poljoprivredno zemljište...)', 'distanceToNeighbourhoodPopulation', 5, 'Udaljenost do najbliže susedne populacije je relativno nepovoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
+values ('Susedna populacija je udaljena manje 1km ali je između njih neka barijera', 'distanceToNeighbourhoodPopulation', 5, 'Udaljenost do najbliže susedne populacije je relativno nepovoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Susedna populacija je veoma blizu i postoji mogućnost kontakta jedinki', 'distanceToNeighbourhoodPopulation', 0, 'Veoma povoljna situacija.');
 
