@@ -47,8 +47,6 @@ insert into factor_options (value, label, type) values ('Medium', 'Srednji nagib
 insert into factor_options (value, label, type) values ('Great', 'Veliki nagib (40%)', 'slope');
 
 -- ANTROPOLOSKI FAKTORI NAZIV FAKTORA, OPIS, PREPORUKA I BROJNA VREDNOST KOLIKO JE STETNO
--- TODO: dodati preporuke svuda i levele namestiti
-
 --zbunje
 insert into atropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Nema žbunastih vrsta na staništu', 'shrubbery', 0, 'Veoma povoljna situacija.');

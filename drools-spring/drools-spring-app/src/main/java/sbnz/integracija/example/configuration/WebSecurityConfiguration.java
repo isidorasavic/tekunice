@@ -62,7 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
         .and()
             .authorizeRequests()
-				.antMatchers("/**").permitAll() // TODO: ispraviti
+				.antMatchers("/**").permitAll()
                 .anyRequest().authenticated() // protect all other requests
 		.and()
 			.cors()
@@ -83,7 +83,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// TokenAuthenticationFilter ce ignorisati sve ispod navedene putanje
-		web.ignoring().regexMatchers(HttpMethod.GET, "/((?!api).*)"); //TODO: izbrisati
+		web.ignoring().regexMatchers(HttpMethod.GET, "/((?!api).*)"); 
 		web.ignoring().antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico", "/**/*.html",
 				"/**/*.css", "/**/*.js");
 		web.ignoring().antMatchers(HttpMethod.POST, "/auth/login");
