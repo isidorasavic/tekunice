@@ -18,7 +18,7 @@ public class HabitatController {
     }
 
     @RequestMapping(value="/addHabitat", method= RequestMethod.POST, produces = "application/json")
-    public Habitat getOptions(@RequestBody HabitatDTO habitatDTO){
+    public HabitatDTO getOptions(@RequestBody HabitatDTO habitatDTO){
         return habitatService.addNewHabitat(habitatDTO);
 
     }

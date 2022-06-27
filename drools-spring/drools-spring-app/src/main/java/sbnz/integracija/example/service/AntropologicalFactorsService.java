@@ -32,11 +32,6 @@ public class AntropologicalFactorsService {
         this.antropologicalFactorRepository = antropologicalFactorRepository;
     }
 
-    public List<AntropologicalFactors> findAllForHabitat(long habitatId){
-        return antropologicalFactorRepository.findAllByHabitatId(habitatId);
-    }
-
-
     public AntropologicalFactorsOptions getOptions() {
         AntropologicalFactorsOptions options = new AntropologicalFactorsOptions();
         antropologicalFactorLevelAndDescriptionRepository.findAllByFactorName("shrubbery").forEach(factor -> {
@@ -75,7 +70,6 @@ public class AntropologicalFactorsService {
 
     protected AntropologicalFactorDTO getDTO(AntropologicalFactors antropologicalFactors) {
         AntropologicalFactorDTO antropologicalFactorDTO = new AntropologicalFactorDTO();
-        antropologicalFactorDTO.setDateAdded(antropologicalFactors.getDateAdded().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         antropologicalFactorDTO.setShrubbery(new Option(antropologicalFactors.getShrubbery()));
         antropologicalFactorDTO.setDistanceToNeighbourhoodPopulation(new Option(antropologicalFactors.getDistanceToNeighbourhoodPopulation()));
         antropologicalFactorDTO.setDisturbance(new Option(antropologicalFactors.getDisturbance()));
@@ -92,17 +86,16 @@ public class AntropologicalFactorsService {
 
     protected AntropologicalFactors getFactorsFromDTO(AntropologicalFactorDTO antropologicalFactorDTO){
         AntropologicalFactors factors = new AntropologicalFactors();
-        factors.setDateAdded(LocalDate.now());
-        factors.setShrubbery(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getShrubbery().getValue()), antropologicalFactorDTO.getShrubbery().getType()));
-        factors.setDistanceToNeighbourhoodPopulation(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDistanceToNeighbourhoodPopulation().getValue()), antropologicalFactorDTO.getDistanceToNeighbourhoodPopulation().getType()));
-        factors.setDisturbance(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDisturbance().getValue()), antropologicalFactorDTO.getDisturbance().getType()));
-        factors.setRoads(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getRoads().getValue()), antropologicalFactorDTO.getRoads().getType()));
-        factors.setAgriculture(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getAgriculture().getValue()), antropologicalFactorDTO.getAgriculture().getType()));
-        factors.setGrazing(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrazing().getValue()), antropologicalFactorDTO.getGrazing().getType()));
-        factors.setGrassRemoving(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrassRemoving().getValue()), antropologicalFactorDTO.getGrassRemoving().getType()));
-        factors.setPredators(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPredators().getValue()), antropologicalFactorDTO.getPredators().getType()));
-        factors.setProtection(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getProtection().getValue()), antropologicalFactorDTO.getProtection().getType()));
-        factors.setPurpose(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPurpose().getValue()), antropologicalFactorDTO.getPurpose().getType()));
+        factors.setShrubbery(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getShrubbery().getValue()), "shrubbery"));
+        factors.setDistanceToNeighbourhoodPopulation(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDistanceToNeighbourhoodPopulation().getValue()), "distanceToNeighbourhoodPopulation"));
+        factors.setDisturbance(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getDisturbance().getValue()), "disturbance"));
+        factors.setRoads(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getRoads().getValue()), "roads"));
+        factors.setAgriculture(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getAgriculture().getValue()), "agriculture"));
+        factors.setGrazing(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrazing().getValue()), "grazing"));
+        factors.setGrassRemoving(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getGrassRemoving().getValue()), "grassRemoving"));
+        factors.setPredators(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPredators().getValue()), "predators"));
+        factors.setProtection(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getProtection().getValue()), "protection"));
+        factors.setPurpose(antropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPurpose().getValue()), "purpose"));
 
         return factors;
     }

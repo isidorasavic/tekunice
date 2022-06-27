@@ -3,11 +3,9 @@ package sbnz.integracija.example.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sbnz.integracija.example.dto.NaturalFactorOptions;
+import sbnz.integracija.example.dto.NaturalFactorsDTO;
 import sbnz.integracija.example.facts.Option;
 import sbnz.integracija.example.facts.enums.Type;
 import sbnz.integracija.example.service.NaturalFactorsService;
@@ -39,4 +37,9 @@ public class NaturalFactorController {
         return naturalFactorsService.getTypeOptions();
     }
 
+
+    @RequestMapping(value="/naturalFactors/{id}", method= RequestMethod.GET, produces = "application/json")
+    public NaturalFactorsDTO getNaturalFactor(@PathVariable("id") long id) {
+        return naturalFactorsService.getById(id);
+    }
 }

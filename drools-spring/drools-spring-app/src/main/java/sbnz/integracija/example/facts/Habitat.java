@@ -62,12 +62,5 @@ public class Habitat {
         this.dateCreated = dateCreated;
     }
 
-//    public Habitat(HabitatDTO habitatDTO){
-//        this.name = habitatDTO.getName();
-//        this.label = Label.valueOf(habitatDTO.getLabel().getValue());
-//        this.naturalFactors = new NaturalFactors(habitatDTO.getNaturalFactorsDTO());
-//        //TODO: antropological factors
-//        this.dateCreated = LocalDate.parse(habitatDTO.getDateCreated());
-//    }
 
 }

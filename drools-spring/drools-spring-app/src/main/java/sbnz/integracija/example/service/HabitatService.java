@@ -279,7 +279,7 @@ public class HabitatService {
         return kieHelper.build().newKieSession();
     }
 
-    public Habitat addNewHabitat(HabitatDTO habitatDTO) {
+    public HabitatDTO addNewHabitat(HabitatDTO habitatDTO) {
         User user = (User) userService.loadUserByUsername(habitatDTO.getUsername());
 
         Habitat newHabitat = new Habitat();
@@ -288,14 +288,12 @@ public class HabitatService {
         newHabitat.setName(habitatDTO.getName());
         newHabitat.setDateCreated(LocalDate.now());
         newHabitat.setNaturalFactors(new NaturalFactors(habitatDTO.getNaturalFactorsDTO()));
-        AntropologicalFactors antropologicalFactors = antropologicalFactorsService.getFactorsFromDTO(habitatDTO.getAntropologicalFactorDTO().get(0));
+        AntropologicalFactors antropologicalFactors = antropologicalFactorsService.getFactorsFromDTO(habitatDTO.getAntropologicalFactorDTO());
         newHabitat.setAntropologicalFactors(antropologicalFactors);
 
         naturalFactorsService.saveNaturalFactors(newHabitat.getNaturalFactors());
         antropologicalFactorsService.saveAntropologicalFactors(antropologicalFactors);
         newHabitat = habitatRepository.saveAndFlush(newHabitat);
-        antropologicalFactors.setHabitatId(newHabitat.getId());
-        antropologicalFactorsService.saveAntropologicalFactors(antropologicalFactors);
 
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(newHabitat);
@@ -312,9 +310,17 @@ public class HabitatService {
         if (newHabitat.getLabel() == Label.NO_LABEL){
             throw new InvalidArgumentException("Something went wrong! :(");
         }
-
         habitatRepository.saveAndFlush(newHabitat);
-        return newHabitat;
+
+        HabitatDTO newHabitatDTO = new HabitatDTO();
+        newHabitatDTO.setName(newHabitat.getName());
+        newHabitatDTO.setUsername(newHabitat.getUser().getUsername());
+        newHabitatDTO.setLabel(new Option(newHabitat.getLabel().toString(), newHabitat.getLabel().getName(), "label"));
+        newHabitatDTO.setDateCreated(newHabitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        newHabitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(newHabitat.getNaturalFactors()));
+        newHabitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(newHabitat.getAntropologicalFactors()));
+
+        return newHabitatDTO;
     }
 
     public List<HabitatDTO> getAllUserHabitats(String username) {
@@ -327,13 +333,9 @@ public class HabitatService {
             habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
             habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
-
-            List<AntropologicalFactorDTO> antropologicalFactorDTOS= new ArrayList<>();
-            antropologicalFactorsService.findAllForHabitat(habitat.getId()).forEach(factor -> {
-                antropologicalFactorDTOS.add(antropologicalFactorsService.getDTO(factor));
-            });
-            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorDTOS);
+            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(habitat.getAntropologicalFactors()));
             habitats.add(habitatDTO);
+            log.info(habitat.toString());
         });
         return habitats;
     }

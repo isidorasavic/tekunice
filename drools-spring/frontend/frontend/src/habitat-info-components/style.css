@@ -4,6 +4,12 @@
     grid-template-columns: 1fr 2fr;
 }
 
+.ant-factors-tab-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
 .natural-factors-container {
     border-right:  #6C1E15 1px solid;
     border-top:  #6C1E15 1px solid;

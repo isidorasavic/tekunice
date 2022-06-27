@@ -37,7 +37,6 @@ public class AntropologicalFactorDTO {
         this.predators = new Option(antropologicalFactors.getPredators());
         this.protection = new Option(antropologicalFactors.getProtection());
         this.purpose = new Option(antropologicalFactors.getPurpose());
-        this.dateAdded = antropologicalFactors.getDateAdded().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
 

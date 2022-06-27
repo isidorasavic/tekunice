@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface AntropologicalFactorRepository extends JpaRepository<AntropologicalFactors, Long> {
 
-    List<AntropologicalFactors> findAllByHabitatId(@Param("habitat_id") long habitat_id);
 }

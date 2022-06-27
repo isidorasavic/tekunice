@@ -21,13 +21,12 @@ public class HabitatDTO {
     private NaturalFactorsDTO naturalFactorsDTO;
     private String username;
 
-    private List<AntropologicalFactorDTO> antropologicalFactorDTO;
+    private AntropologicalFactorDTO antropologicalFactorDTO;
 
     private String dateCreated;
-    // TODO: antropological factors
 
 
-    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, List<AntropologicalFactorDTO> antropologicalFactorDTO, String dateCreated) {
+    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
@@ -39,12 +38,4 @@ public class HabitatDTO {
     public HabitatDTO() {
     }
 
-//    public HabitatDTO(Habitat habitat) {
-//        this.name = habitat.getName();
-//        this.label = habitat.getLabel().name();
-//        this.naturalFactorsDTO = new NaturalFactorsDTO(habitat.getNaturalFactors());
-//        //TODO: antropological facrots
-//        this.username = habitat.getUser().getUsername();
-//        this.dateCreated = habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-//    }
 }

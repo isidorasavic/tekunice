@@ -28,42 +28,52 @@ import Tab from '@mui/material/Tab';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
+import AntropologicalFactorsTab from '../../habitat-info-components/AntropologicalFactorsTab';
 
 const DashboardPage = () => {
 
     const navigate = useNavigate();
 
     const [habitatsList, setHabitatsList] = useState([]);
-    const [selectedHabitat, setSelectedHabitat] = useState();
+    const [selectedHabitat, setSelectedHabitat] = useState({userId:-1, label: null, name:'', naturalFactorsDTO: null, antropologicalFactorDTO: null});
+    const [selectedNaturalFactors, setSelectedNaturalFactors] = useState({type: '', exposition: '', elevation: '', mjt: '', slope: '', flooding: ''})
+    const [selectedAntropoloicalFactors, setSelectedAntropologicalFactors] = useState({shrubbery:'', distanceToNeighbourhoodPopulation:'', disturbance:'', roads:'', agriculture:'', grazing:'', grassRemoving:'', predators:'', protection:'', purpose:''})
 
-    const [value, setValue] = useState('-1');
+    const [label1, setLabel1] = useState('');
+    const [label2, setLabel2] = useState('');
+    const [labelValue, setLabelValue] = useState('');
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-      };
+    let png;
+    if (labelValue === 'OPTIMAL') png=require('./OPTIMAL.gif')
+    if (labelValue === 'SUBOPTIMAL') png=require('./SUBOPTIMAL.gif')
+    if (labelValue === 'MODERATE') png=require('./MODERATE.gif')
+    if (labelValue === 'INADEQUATE') png=require('./INADEQUATE.gif')
+    if (labelValue ===  'INAPPROPRIATE') png=require('./INAPPROPRIATE.gif')
 
     useEffect(() => {
-        getHabitats();
-    }, [])
-
-    const createNewHabitat = () => {
-        localStorage.clear();
-        navigate('/create-habitat');
-    }
-
-    const getHabitats = () => {
         axios.get(Constants.BasePath + 'user/'+sessionStorage.getItem('username')+'/habitats', 
         { headers: { "Content-Type": "application/json; charset=UTF-8" },
         })
         .then(response => {
             setHabitatsList(response.data)
             setSelectedHabitat(response.data[0]);
+            setLabel1(response.data[0].label.label.split(' - ')[0]);
+            setLabel2(response.data[0].label.label.split(' - ')[1]);
+            setLabelValue(response.data[0].label.value)
+            setSelectedNaturalFactors(response.data[0].naturalFactorsDTO)
+            setSelectedAntropologicalFactors(response.data[0].antropologicalFactorDTO)
+
+            console.log("selected habitat: ",response.data[0])
         })
         .catch(error => {
             console.log(error.response);
         })
-    }
+    }, [])
 
+    const createNewHabitat = () => {
+        localStorage.clear();
+        navigate('/create-habitat');
+    }
 
     const logOut = () => {
         localStorage.clear();
@@ -89,6 +99,13 @@ const DashboardPage = () => {
     }
     const handleListItemClick = (event, index) => {
         setSelectedHabitat(habitatsList.at(index));
+        setLabel1(habitatsList.at(index).label.label.split(' - ')[0]);
+        setLabel2(habitatsList.at(index).label.label.split(' - ')[1]);
+        setLabelValue(habitatsList.at(index).label.value)
+        setSelectedNaturalFactors(habitatsList.at(index).naturalFactorsDTO)
+        setSelectedAntropologicalFactors(habitatsList.at(index).antropologicalFactorDTO)
+
+
       };
 
     return (
@@ -106,7 +123,7 @@ const DashboardPage = () => {
                 </div>
             </div>
             <div className="content-div">
-                <div className="habitat-list-div">
+                <div className={habitatsList.length > 10 ? "habitat-list-div-scrollable" : "habitat-list-div"}>
                     <Button variant="outlined" sx={Constants.bttnStyle} onClick={createNewHabitat}>Dodaj novo stanište</Button>
                     <List component="nav" sx={{marginTop:"20px"}} aria-label="main mailbox folders">
                     {habitatsList.map((habitat, index) => (
@@ -123,16 +140,68 @@ const DashboardPage = () => {
                     </List>
                 </div>
                 <div className="selected-habitat-div">
-                    <TabContext value={value} >
-                        <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label="Prirodni faktori" value="-1" />
-                        </TabList>
-                        <TabPanel value="-1"><NaturalFactorsTab habitat={selectedHabitat}/></TabPanel>
-                        <TabPanel value="2">Item Two</TabPanel>
-                        <TabPanel value="3">Item Three</TabPanel>
-
-                    </TabContext>
-                </div>
+                    <div className="natural-factors-container">
+                        <div id="nf">
+                                <p><b id="factor">Tip staništa:</b><p id="factor-value">{selectedNaturalFactors.type}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Ekspozicija:</b><p id="factor-value">{selectedNaturalFactors.exposition}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Nadmorska visina:</b><p id="factor-value">{selectedNaturalFactors.elevation}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Srednja julska temperatura:</b><p id="factor-value">{selectedNaturalFactors.mjt}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Nagib terena:</b><p id="factor-value">{selectedNaturalFactors.slope}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Plavljenje:</b><p id="factor-value">{selectedNaturalFactors.flooding}</p></p>
+                            </div>
+                            <div id="nf">
+                            <p><b id="factor">Stanište kreirano:</b><p id="factor-value">{selectedHabitat.dateCreated}</p></p>
+                            </div>
+                        </div>
+                        <div className="natural-factors-container">
+                        <div id="nf">
+                                <p><b id="factor">Procenat prisutnosti žbunastih vrsta:</b><p id="factor-value">{selectedAntropoloicalFactors.shrubbery.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Udaljenost susednih populacija:</b><p id="factor-value">{selectedAntropoloicalFactors.distanceToNeighbourhoodPopulation.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Hvatanje, trovanje i uznemiravanje životinja:</b><p id="factor-value">{selectedAntropoloicalFactors.disturbance.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Saobraćajnice:</b><p id="factor-value">{selectedAntropoloicalFactors.roads.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Poljoprivreda:</b><p id="factor-value">{selectedAntropoloicalFactors.agriculture.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Ispaša:</b><p id="factor-value">{selectedAntropoloicalFactors.grazing.label}</p></p>
+                            </div>
+                            <div id="nf">
+                            <p><b id="factor">Uklanjanje travnate površine:</b><p id="factor-value">{selectedAntropoloicalFactors.grassRemoving.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Predatori:</b><p id="factor-value">{selectedAntropoloicalFactors.predators.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Da li stanište ima neki vid zaštite?</b><p id="factor-value">{selectedAntropoloicalFactors.protection.label}</p></p>
+                            </div>
+                            <div id="nf">
+                                <p><b id="factor">Vlasništvo i namena parcele:</b><p id="factor-value">{selectedAntropoloicalFactors.purpose.label}</p></p>
+                            </div>
+                        </div>
+                    
+                    <div className="label-container">
+                        <h1>{label1}</h1>
+                        <h4>{label2}</h4>
+                        <img src={png} className="gif" alt="loading..." />  
+                    </div>
+                    </div>
             </div>
         </div>
     )

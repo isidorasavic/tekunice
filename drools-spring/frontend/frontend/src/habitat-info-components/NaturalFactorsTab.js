@@ -44,6 +44,9 @@ const NaturalFactorsTab = props => {
                 <div id="nf">
                     <p><b id="factor">Plavljenje:</b><p id="factor-value">{naturalFactors.flooding}</p></p>
                 </div>
+                <div id="nf">
+                <p><b id="factor">Stanište kreirano:</b><p id="factor-value">{props.habitat.dateCreated}</p></p>
+                </div>
             </div>
             <div className="label-container">
                 <h1>{label1}</h1>

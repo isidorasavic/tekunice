@@ -1,0 +1,12 @@
+package sbnz.integracija;
+
+import sbnz.integracija.example.facts.Habitat
+import sbnz.integracija.example.facts.enums.*
+
+dialect  "mvel"
+
+query isThereRecommendationForShrubbery(Habitat h)
+    h.antropologicalFactors.shrubbery.level > 0
+end
+
+

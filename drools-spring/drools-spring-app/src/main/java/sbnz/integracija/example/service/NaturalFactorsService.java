@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sbnz.integracija.example.controller.AuthenticationController;
 import sbnz.integracija.example.dto.NaturalFactorOptions;
+import sbnz.integracija.example.exception.InvalidArgumentException;
 import sbnz.integracija.example.facts.NaturalFactors;
 import sbnz.integracija.example.dto.NaturalFactorsDTO;
 import sbnz.integracija.example.facts.Option;
@@ -92,6 +93,14 @@ public class NaturalFactorsService {
         naturalFactorsDTO.setSlope(optionRepository.findByValueAndType(naturalFactors.getSlope().toString(), "slope").get().getLabel());
         naturalFactorsDTO.setFlooding(optionRepository.findByValueAndType(naturalFactors.getFlooding().toString(), "flooding").get().getLabel());
         return naturalFactorsDTO;
+    }
+
+    public NaturalFactorsDTO getById(long id){
+        Optional<NaturalFactors> optionalNaturalFactors = naturalFactorRepository.findById(id);
+        if(optionalNaturalFactors.isPresent()){
+            return getDTO(optionalNaturalFactors.get());
+        }
+        throw new InvalidArgumentException("Invalid natural factors!");
     }
 
     public List<Option> getTypeOptions(){

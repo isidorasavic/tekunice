@@ -10,13 +10,14 @@ import axios from 'axios'
 import Button from '@mui/material/Button'
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
-
+import HabitatCreatedModal from './HabitatCreatedModal';
 
 const CreateAntropologicalFactors = () => {
 
     const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
 
+    const [modalData, setModalData] = useState({open: false, title: '', subtitle:''})
 
     const [shrubberyOptions, setShrubberyOptions] = useState([]);
     const [distanceOptions, setDistanceOptions] = useState([]);
@@ -97,12 +98,17 @@ const CreateAntropologicalFactors = () => {
         return true;
     }
 
-    const submitHabitat = () => {
+    const handleCloseModal= () => {
+        setModalData({open: false, title: '', subtitle:''});
+        navigate('/dashboard')
+    }
+
+    const submitHabitat = (event) => {
+        event.preventDefault();
         if (checkCreateHabitatFormsValid()) {
             const habitat = {
                 name: localStorage.getItem("name"),
                 username: sessionStorage.getItem("username"),
-                dateCreated: "2022-06-26",  // todo:
                 naturalFactorsDTO: {
                     type: localStorage.getItem("type"),
                     exposition: localStorage.getItem("exposition"),
@@ -111,7 +117,7 @@ const CreateAntropologicalFactors = () => {
                     slope: localStorage.getItem("slope"),
                     flooding: localStorage.getItem("flooding")
                 },
-                antropologicalFactorDTO: [{
+                antropologicalFactorDTO: {
                     shrubbery: {
                         value: localStorage.getItem('shrubbery'),
                         type: 'shrubbery'
@@ -162,15 +168,16 @@ const CreateAntropologicalFactors = () => {
                         type: 'purpose'
 
                     }
-                }]
+                }
             }
             console.log(habitat);
             axios.post(Constants.BasePath + 'addHabitat', habitat, 
             { headers: { "Content-Type": "application/json; charset=UTF-8" },
             })
             .then(response => {
-                console.log(response.data);
-                // navigate('/dashboard');
+                console.log('response:', response.data);
+                setModalData({...modalData, open:true, title: response.data.label.split(' - ')[0], subtitle: response.data.label.split(' - ')[0]})
+                
 
             })
             .catch(error => {
@@ -394,6 +401,7 @@ const CreateAntropologicalFactors = () => {
                 </div>
             </form>
             <Button className='submit-bttn' variant="outlined" onClick={submitHabitat} style={{marginTop:"30px"}} sx={Constants.bttnStyle}>Kreiraj novo stanište</Button>
+            <HabitatCreatedModal open={modalData.open} title={modalData.title} subtitle={modalData.subtitle} closeModal={handleCloseModal}/>
         </div>
     )
 
