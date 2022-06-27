@@ -316,6 +316,7 @@ public class HabitatService {
 
         HabitatDTO newHabitatDTO = new HabitatDTO();
         newHabitatDTO.setName(newHabitat.getName());
+        newHabitatDTO.setId(newHabitat.getId());
         newHabitatDTO.setUsername(newHabitat.getUser().getUsername());
         newHabitatDTO.setLabel(new Option(newHabitat.getLabel().toString(), newHabitat.getLabel().getName(), "label"));
         newHabitatDTO.setDateCreated(newHabitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
@@ -330,6 +331,7 @@ public class HabitatService {
         List<HabitatDTO> habitats = new ArrayList<>();
         habitatRepository.findAllByUserId(user.getId()).forEach(habitat -> {
             HabitatDTO habitatDTO = new HabitatDTO();
+            habitatDTO.setId(habitat.getId());
             habitatDTO.setName(habitat.getName());
             habitatDTO.setUsername(habitat.getUser().getUsername());
             habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
@@ -353,16 +355,16 @@ public class HabitatService {
         recommendationDTO.setSuccessMessage("");
 
         List<Option> options = new ArrayList<>();
-        options.add(new Option(habitat.getAntropologicalFactors().getShrubbery()));
-        options.add(new Option(habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation()));
-        options.add(new Option(habitat.getAntropologicalFactors().getDisturbance()));
-        options.add(new Option(habitat.getAntropologicalFactors().getRoads()));
-        options.add(new Option(habitat.getAntropologicalFactors().getAgriculture()));
-        options.add(new Option(habitat.getAntropologicalFactors().getGrazing()));
-        options.add(new Option(habitat.getAntropologicalFactors().getGrassRemoving()));
-        options.add(new Option(habitat.getAntropologicalFactors().getPredators()));
-        options.add(new Option(habitat.getAntropologicalFactors().getProtection()));
-        options.add(new Option(habitat.getAntropologicalFactors().getPurpose()));
+        options.add(new Option(habitat.getAntropologicalFactors().getShrubbery().getLevel()+"", habitat.getAntropologicalFactors().getShrubbery().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation().getLevel()+"", habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getDisturbance().getLevel()+"", habitat.getAntropologicalFactors().getDisturbance().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getRoads().getLevel()+"", habitat.getAntropologicalFactors().getRoads().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getAgriculture().getLevel()+"", habitat.getAntropologicalFactors().getAgriculture().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getGrazing().getLevel()+"", habitat.getAntropologicalFactors().getGrazing().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getGrassRemoving().getLevel()+"", habitat.getAntropologicalFactors().getGrassRemoving().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getPredators().getLevel()+"", habitat.getAntropologicalFactors().getPredators().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getProtection().getLevel()+"", habitat.getAntropologicalFactors().getProtection().getRecommendation(), ""));
+        options.add(new Option(habitat.getAntropologicalFactors().getPurpose().getLevel()+"", habitat.getAntropologicalFactors().getPurpose().getRecommendation(), ""));
 
         recommendationDTO.setRecommendations(options);
         KieSession kieSession = kieContainer.newKieSession();

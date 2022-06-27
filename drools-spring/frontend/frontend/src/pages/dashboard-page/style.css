@@ -94,9 +94,6 @@
 }
 
 .natural-factors-container {
-    border-right:  #6C1E15 1px solid;
-    border-top:  #6C1E15 1px solid;
-    border-left:  #6C1E15 1px solid;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -108,9 +105,9 @@
 }
 
 #nf {
-    padding-left: 10px;
+    padding-left: 15px;
     text-align: start;
-    border-bottom: #6C1E15 1px solid;
+    outline:  #6C1E15 1px solid;
     /* height: 200px; */
 }
 
@@ -119,11 +116,11 @@ p {
 }
 
 b#factor {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 p#factor-value {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 h1 {

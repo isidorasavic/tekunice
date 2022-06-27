@@ -1,47 +1,33 @@
 import React, { PureComponent, useState, useEffect } from 'react';
-import Typography from '@mui/material/Typography';
-import Fab from '@mui/material/Fab';
 import './style.css'
 import * as Constants from '../../constants'
 import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
-import TextField from '@mui/material/TextField'
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import LocalFloristOutlinedIcon from '@mui/icons-material/LocalFloristOutlined';
-import NaturalFactorsTab from '../../habitat-info-components/NaturalFactorsTab'
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
-import TabContext from '@mui/lab/TabContext';
-import AntropologicalFactorsTab from '../../habitat-info-components/AntropologicalFactorsTab';
+import IconButton from '@mui/material/IconButton';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import Recommendations from '../../recommendations-components/Recommendations'
+
 
 const DashboardPage = () => {
 
     const navigate = useNavigate();
 
     const [habitatsList, setHabitatsList] = useState([]);
-    const [selectedHabitat, setSelectedHabitat] = useState({userId:-1, label: null, name:'', naturalFactorsDTO: null, antropologicalFactorDTO: null});
+    const [selectedHabitat, setSelectedHabitat] = useState({id: -1, userId:-1, label: null, name:'', naturalFactorsDTO: null, antropologicalFactorDTO: null});
     const [selectedNaturalFactors, setSelectedNaturalFactors] = useState({type: '', exposition: '', elevation: '', mjt: '', slope: '', flooding: ''})
     const [selectedAntropoloicalFactors, setSelectedAntropologicalFactors] = useState({shrubbery:'', distanceToNeighbourhoodPopulation:'', disturbance:'', roads:'', agriculture:'', grazing:'', grassRemoving:'', predators:'', protection:'', purpose:''})
 
     const [label1, setLabel1] = useState('');
     const [label2, setLabel2] = useState('');
     const [labelValue, setLabelValue] = useState('');
+
+    const [recommendationsModal, setRecommendationsModal] = useState({open: false, name: '', recommendations: [], message: ''});
 
     let png;
     if (labelValue === 'OPTIMAL') png=require('./OPTIMAL.gif')
@@ -104,9 +90,21 @@ const DashboardPage = () => {
         setLabelValue(habitatsList.at(index).label.value)
         setSelectedNaturalFactors(habitatsList.at(index).naturalFactorsDTO)
         setSelectedAntropologicalFactors(habitatsList.at(index).antropologicalFactorDTO)
-
-
       };
+
+    const getRecommendation = (id, name) => {
+        console.log(id);
+        axios.get(Constants.BasePath + 'habitat/'+ id +'/recommendations', 
+        { headers: { "Content-Type": "application/json; charset=UTF-8" },
+        })
+        .then(response => {
+            console.log(response.data)
+            setRecommendationsModal({open: true, name: name, recommendations: response.data.recommendations, message: response.data.successMessage})
+        })
+        .catch(error => {
+            console.log(error.response);
+        })
+    }
 
     return (
         <div className="dashboard-container">
@@ -127,15 +125,21 @@ const DashboardPage = () => {
                     <Button variant="outlined" sx={Constants.bttnStyle} onClick={createNewHabitat}>Dodaj novo stanište</Button>
                     <List component="nav" sx={{marginTop:"20px"}} aria-label="main mailbox folders">
                     {habitatsList.map((habitat, index) => (
-                        <ListItemButton
-                            selected={selectedHabitat.name === habitat.name}
-                            onClick={(event) => handleListItemClick(event, index)}
-                            >
-                            <ListItemIcon>
-                                <LocalFloristOutlinedIcon sx={Constants.iconStyle} />
-                            </ListItemIcon>
-                            <ListItemText primary={habitat.name}/>
-                        </ListItemButton>
+                        <div style={{display: "flex", flexDisplay:"row"}}>
+                            <ListItemButton
+                                selected={selectedHabitat.name === habitat.name}
+                                onClick={(event) => handleListItemClick(event, index)}
+                                >
+                                <ListItemIcon>
+                                    <LocalFloristOutlinedIcon sx={Constants.iconStyle} />
+                                </ListItemIcon>
+                                <ListItemText primary={habitat.name}/>
+                                
+                            </ListItemButton>
+                            <IconButton disabled={habitat.label.value === 'INAPPROPRIATE'} onClick={()=>{getRecommendation(habitat.id, habitat.name)}}>
+                                <FormatListBulletedIcon sx={Constants.iconStyle}/>
+                            </IconButton>
+                        </div>
                     ))}
                     </List>
                 </div>
@@ -203,6 +207,7 @@ const DashboardPage = () => {
                     </div>
                     </div>
             </div>
+            <Recommendations open={recommendationsModal.open} name={recommendationsModal.name} recommendations={recommendationsModal.recommendations} message={recommendationsModal.message} closeModal={()=>{setRecommendationsModal({open: false, name: '', recommendations: [], message: ''})}}/>
         </div>
     )
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class HabitatDTO {
 
+    private long id;
     private String name;
     private Option label;
     private NaturalFactorsDTO naturalFactorsDTO;
@@ -26,7 +27,8 @@ public class HabitatDTO {
     private String dateCreated;
 
 
-    public HabitatDTO(String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
+    public HabitatDTO(long id, String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
+        this.id = id;
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
