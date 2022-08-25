@@ -1,5 +1,6 @@
 package sbnz.integracija;
 
+import sbnz.integracija.example.facts.AnthropologicalFactors
 import sbnz.integracija.example.facts.Habitat
 import sbnz.integracija.example.facts.enums.*
 
@@ -35,7 +36,8 @@ end
 
 rule "puno-zbunja-rule"
     when
-        $h : Habitat(label == Label.NO_LABEL, antropologicalFactors.shrubbery.level > 5)
+        $h : Habitat($id : id, label == Label.NO_LABEL)
+        $af : AnthropologicalFactors (habitat.id == $id, shrubbery.level > 5)
     then
         modify($h){setLabel(Label.INAPPROPRIATE)}
 end
