@@ -13,9 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sbnz.integracija.example.dto.AntropologicalFactorDTO;
 import sbnz.integracija.example.dto.HabitatDTO;
-import sbnz.integracija.example.dto.RecommendationDTO;
+import sbnz.integracija.example.dto.HabitatNameDTO;
+import sbnz.integracija.example.dto.NewHabitatDTO;
 import sbnz.integracija.example.exception.InvalidArgumentException;
 import sbnz.integracija.example.facts.*;
 import sbnz.integracija.example.facts.enums.Label;
@@ -41,15 +41,15 @@ public class HabitatService {
 
     private final NaturalFactorsService naturalFactorsService;
 
-    private final AntropologicalFactorsService antropologicalFactorsService;
+    private final AnthropologicalFactorsService anthropologicalFactorsService;
 
     @Autowired
-    public HabitatService(KieContainer kieContainer, CustomUserDetailsService userService,HabitatRepository habitatRepository, NaturalFactorsService naturalFactorsService, AntropologicalFactorsService antropologicalFactorsService) {
+    public HabitatService(KieContainer kieContainer, CustomUserDetailsService userService,HabitatRepository habitatRepository, NaturalFactorsService naturalFactorsService, AnthropologicalFactorsService anthropologicalFactorsService) {
         this.habitatRepository = habitatRepository;
         this.kieContainer = kieContainer;
         this.userService = userService;
         this.naturalFactorsService = naturalFactorsService;
-        this.antropologicalFactorsService = antropologicalFactorsService;
+        this.anthropologicalFactorsService = anthropologicalFactorsService;
     }
 
     public KieSession generateRules() {
@@ -281,24 +281,22 @@ public class HabitatService {
         return kieHelper.build().newKieSession();
     }
 
-    public HabitatDTO addNewHabitat(HabitatDTO habitatDTO) {
+    public HabitatDTO addNewHabitat(NewHabitatDTO habitatDTO) {
+
         User user = (User) userService.loadUserByUsername(habitatDTO.getUsername());
 
-        Habitat newHabitat = new Habitat();
-        newHabitat.setLabel(Label.NO_LABEL);
-        newHabitat.setUser(user);
-        newHabitat.setName(habitatDTO.getName());
-        newHabitat.setDateCreated(LocalDate.now());
-        newHabitat.setNaturalFactors(new NaturalFactors(habitatDTO.getNaturalFactorsDTO()));
-        AntropologicalFactors antropologicalFactors = antropologicalFactorsService.getFactorsFromDTO(habitatDTO.getAntropologicalFactorDTO());
-        newHabitat.setAntropologicalFactors(antropologicalFactors);
+        Habitat newHabitat = new Habitat(habitatDTO.getName(), Label.NO_LABEL,
+                new NaturalFactors(habitatDTO.getNaturalFactorsDTO()), user, LocalDate.now());
 
         naturalFactorsService.saveNaturalFactors(newHabitat.getNaturalFactors());
-        antropologicalFactorsService.saveAntropologicalFactors(antropologicalFactors);
-        newHabitat = habitatRepository.saveAndFlush(newHabitat);
+        habitatRepository.saveAndFlush(newHabitat);
+        habitatDTO.getAnthropologicalFactorsDTO().setDateAdded(LocalDate.now().toString());
+        AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsService.addNewAnthropologicalFactors(habitatDTO.getAnthropologicalFactorsDTO(),
+                                                                                                newHabitat.getId());
 
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(newHabitat);
+        kieSession.insert(anthropologicalFactors);
         kieSession.fireAllRules();
         kieSession.dispose();
 
@@ -314,65 +312,41 @@ public class HabitatService {
         }
         habitatRepository.saveAndFlush(newHabitat);
 
-        HabitatDTO newHabitatDTO = new HabitatDTO();
-        newHabitatDTO.setName(newHabitat.getName());
-        newHabitatDTO.setId(newHabitat.getId());
-        newHabitatDTO.setUsername(newHabitat.getUser().getUsername());
-        newHabitatDTO.setLabel(new Option(newHabitat.getLabel().toString(), newHabitat.getLabel().getName(), "label"));
-        newHabitatDTO.setDateCreated(newHabitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-        newHabitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(newHabitat.getNaturalFactors()));
-        newHabitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(newHabitat.getAntropologicalFactors()));
-
-        return newHabitatDTO;
+        return getHabitatById(newHabitat.getId());
     }
 
-    public List<HabitatDTO> getAllUserHabitats(String username) {
-        User user = (User) userService.loadUserByUsername(username);
-        List<HabitatDTO> habitats = new ArrayList<>();
+    public List<HabitatNameDTO> getAllUserHabitats(long userId) {
+        User user = (User) userService.loadUserById(userId);
+        List<HabitatNameDTO> habitats = new ArrayList<>();
         habitatRepository.findAllByUserId(user.getId()).forEach(habitat -> {
-            HabitatDTO habitatDTO = new HabitatDTO();
-            habitatDTO.setId(habitat.getId());
-            habitatDTO.setName(habitat.getName());
-            habitatDTO.setUsername(habitat.getUser().getUsername());
-            habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
-            habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-            habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
-            habitatDTO.setAntropologicalFactorDTO(antropologicalFactorsService.getDTO(habitat.getAntropologicalFactors()));
-            habitats.add(habitatDTO);
-            log.info(habitat.toString());
+            habitats.add(new HabitatNameDTO(habitat));
         });
         return habitats;
     }
 
+    public Habitat findHabitatById(long id){
+        Optional<Habitat> optHabitat = habitatRepository.findById(id);
+        if (!optHabitat.isPresent())
+            throw new InvalidArgumentException("Habitat with id " + id + " not found!");
+        return optHabitat.get();
+    }
 
-    public RecommendationDTO getRecommendations(long id){
+    public HabitatDTO getHabitatById(long id){
+        Optional<Habitat> optHabitat = habitatRepository.findById(id);
+        if (!optHabitat.isPresent())
+            throw new InvalidArgumentException("Habitat with id " + id + " not found!");
 
-        RecommendationDTO recommendationDTO = new RecommendationDTO();
-        Optional<Habitat> habitatOptional = habitatRepository.findById(id);
-        if(!habitatOptional.isPresent()) throw new InvalidArgumentException("Habitat not found!");
-        Habitat habitat = habitatOptional.get();
-        recommendationDTO.setSuccessRate(-1);
-        recommendationDTO.setSuccessMessage("");
+        Habitat habitat = optHabitat.get();
+        HabitatDTO habitatDTO = new HabitatDTO();
+        habitatDTO.setId(habitat.getId());
+        habitatDTO.setName(habitat.getName());
+        habitatDTO.setUsername(habitat.getUser().getUsername());
+        habitatDTO.setLabel(new Option(habitat.getLabel().toString(), habitat.getLabel().getName(), "label"));
+        habitatDTO.setDateCreated(habitat.getDateCreated().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        habitatDTO.setNaturalFactorsDTO(naturalFactorsService.getDTO(habitat.getNaturalFactors()));
+        habitatDTO.setAnthropologicalFactorDTO(anthropologicalFactorsService.getFactorsForHabitat(habitat.getId()));
 
-        List<Option> options = new ArrayList<>();
-        options.add(new Option(habitat.getAntropologicalFactors().getShrubbery().getLevel()+"", habitat.getAntropologicalFactors().getShrubbery().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation().getLevel()+"", habitat.getAntropologicalFactors().getDistanceToNeighbourhoodPopulation().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getDisturbance().getLevel()+"", habitat.getAntropologicalFactors().getDisturbance().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getRoads().getLevel()+"", habitat.getAntropologicalFactors().getRoads().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getAgriculture().getLevel()+"", habitat.getAntropologicalFactors().getAgriculture().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getGrazing().getLevel()+"", habitat.getAntropologicalFactors().getGrazing().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getGrassRemoving().getLevel()+"", habitat.getAntropologicalFactors().getGrassRemoving().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getPredators().getLevel()+"", habitat.getAntropologicalFactors().getPredators().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getProtection().getLevel()+"", habitat.getAntropologicalFactors().getProtection().getRecommendation(), ""));
-        options.add(new Option(habitat.getAntropologicalFactors().getPurpose().getLevel()+"", habitat.getAntropologicalFactors().getPurpose().getRecommendation(), ""));
-
-        recommendationDTO.setRecommendations(options);
-        KieSession kieSession = kieContainer.newKieSession();
-        kieSession.insert(recommendationDTO);
-        kieSession.fireAllRules();
-        kieSession.dispose();
-        log.info(recommendationDTO.toString());
-        return recommendationDTO;
+        return habitatDTO;
 
     }
 }

@@ -44,6 +44,15 @@ public class CustomUserDetailsService implements UserDetailsService{
 		}
     }
 
+	public UserDetails loadUserById(long id) throws UsernameNotFoundException {
+		Optional<User> maybeUser = userRepository.findById(id);
+		if (maybeUser.isPresent()) {
+			return maybeUser.get();
+		} else {
+			throw new UserNotFoundException(String.format("No user found with id '%d'.", id));
+		}
+	}
+
 	public UserDTO signUp(UserDTO userDTO) {
 		if (userRepository.findByUsername(userDTO.getUsername()).isPresent()) {
 			throw new InvalidArgumentException(String.format("Username '%s' already exists!", userDTO.getUsername()));

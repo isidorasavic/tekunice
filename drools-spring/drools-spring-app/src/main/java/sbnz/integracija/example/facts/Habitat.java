@@ -3,11 +3,13 @@ package sbnz.integracija.example.facts;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import net.minidev.json.annotate.JsonIgnore;
 import sbnz.integracija.example.dto.HabitatDTO;
 import sbnz.integracija.example.facts.enums.Label;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,9 +29,16 @@ public class Habitat {
     @Enumerated(EnumType.STRING)
     private Label label;
 
-    @JoinColumn(name = "antropological_factors_id", referencedColumnName = "id")
-    @OneToOne
-    private AntropologicalFactors antropologicalFactors;
+//    @JoinColumn(name = "antropological_factors_id", referencedColumnName = "id")
+//    @OneToOne
+//    private AntropologicalFactors antropologicalFactors;
+
+/*
+    @OneToMany(fetch =FetchType.LAZY)
+    @JoinColumn(name="antropological_factors_id", referencedColumnName="id")
+    @JsonIgnore
+    private List<AntropologicalFactors> antropologicalFactors;
+*/
 
     @JoinColumn(name = "natural_factors_id", referencedColumnName = "id")
     @OneToOne
@@ -53,10 +62,9 @@ public class Habitat {
     public Habitat() {
     }
 
-    public Habitat(String name, Label label, AntropologicalFactors antropologicalFactors, NaturalFactors naturalFactors, User user, LocalDate dateCreated) {
+    public Habitat(String name, Label label, NaturalFactors naturalFactors, User user, LocalDate dateCreated) {
         this.name = name;
         this.label = label;
-        this.antropologicalFactors = antropologicalFactors;
         this.naturalFactors = naturalFactors;
         this.user = user;
         this.dateCreated = dateCreated;

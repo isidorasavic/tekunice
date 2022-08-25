@@ -4,6 +4,7 @@ import lombok.*;
 import sbnz.integracija.example.facts.Habitat;
 import sbnz.integracija.example.facts.Option;
 
+import java.util.Dictionary;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RecommendationDTO {
 
-    private List<Option> recommendations;
+    private Dictionary<String, String> recommendations;
     private double successRate;
     private String successMessage;
 }
