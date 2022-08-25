@@ -32,9 +32,9 @@ public class HabitatController {
 //
 //    }
 
-    @RequestMapping(value="/user/{id}/habitats", method= RequestMethod.GET, produces = "application/json")
-    public List<HabitatNameDTO> getUserHabitats(@PathVariable("id") long id){
-        return habitatService.getAllUserHabitats(id);
+    @RequestMapping(value="/user/{username}/habitats", method= RequestMethod.GET, produces = "application/json")
+    public List<HabitatNameDTO> getUserHabitats(@PathVariable("username") String username){
+        return habitatService.getAllUserHabitats(username);
     }
 
     @RequestMapping(value="/habitat/{id}", method= RequestMethod.GET, produces = "application/json")

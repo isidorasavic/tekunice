@@ -315,8 +315,8 @@ public class HabitatService {
         return getHabitatById(newHabitat.getId());
     }
 
-    public List<HabitatNameDTO> getAllUserHabitats(long userId) {
-        User user = (User) userService.loadUserById(userId);
+    public List<HabitatNameDTO> getAllUserHabitats(String username) {
+        User user = (User) userService.loadUserByUsername(username);
         List<HabitatNameDTO> habitats = new ArrayList<>();
         habitatRepository.findAllByUserId(user.getId()).forEach(habitat -> {
             habitats.add(new HabitatNameDTO(habitat));

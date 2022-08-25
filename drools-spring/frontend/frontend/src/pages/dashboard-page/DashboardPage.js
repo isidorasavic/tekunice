@@ -42,14 +42,8 @@ const DashboardPage = () => {
         })
         .then(response => {
             setHabitatsList(response.data)
-            setSelectedHabitat(response.data[0]);
-            setLabel1(response.data[0].label.label.split(' - ')[0]);
-            setLabel2(response.data[0].label.label.split(' - ')[1]);
-            setLabelValue(response.data[0].label.value)
-            setSelectedNaturalFactors(response.data[0].naturalFactorsDTO)
-            setSelectedAntropologicalFactors(response.data[0].antropologicalFactorDTO)
-
-            console.log("selected habitat: ",response.data[0])
+            console.log(response.data);
+            selectHabitat(response.data[0].id);
         })
         .catch(error => {
             console.log(error.response);
@@ -76,6 +70,25 @@ const DashboardPage = () => {
           })
     }
 
+    const selectHabitat = (id) => {
+        axios.get(Constants.BasePath + 'habitat/' + id, 
+        { headers: { "Content-Type": "application/json; charset=UTF-8" },
+        })
+        .then(response => {
+            setSelectedHabitat(response.data);
+            setLabel1(response.data.label.label.split(' - ')[0]);
+            setLabel2(response.data.label.label.split(' - ')[1]);
+            setLabelValue(response.data.label.value)
+            setSelectedNaturalFactors(response.data.naturalFactorsDTO)
+            setSelectedAntropologicalFactors(response.data.antropologicalFactorDTO.get(0)); //todo
+
+            console.log("selected habitat: ", response)
+        })
+        .catch(error => {
+            console.log(error.response);
+        })
+    }
+
     if (sessionStorage.getItem('username') === null) {
         return (
             <div>
@@ -83,14 +96,14 @@ const DashboardPage = () => {
             </div>
         )
     }
-    const handleListItemClick = (event, index) => {
-        setSelectedHabitat(habitatsList.at(index));
-        setLabel1(habitatsList.at(index).label.label.split(' - ')[0]);
-        setLabel2(habitatsList.at(index).label.label.split(' - ')[1]);
-        setLabelValue(habitatsList.at(index).label.value)
-        setSelectedNaturalFactors(habitatsList.at(index).naturalFactorsDTO)
-        setSelectedAntropologicalFactors(habitatsList.at(index).antropologicalFactorDTO)
-      };
+    // const handleListItemClick = (event, index) => {
+    //     setSelectedHabitat(habitatsList.at(index));
+    //     setLabel1(habitatsList.at(index).label.label.split(' - ')[0]);
+    //     setLabel2(habitatsList.at(index).label.label.split(' - ')[1]);
+    //     setLabelValue(habitatsList.at(index).label.value)
+    //     setSelectedNaturalFactors(habitatsList.at(index).naturalFactorsDTO)
+    //     setSelectedAntropologicalFactors(habitatsList.at(index).antropologicalFactorDTO)
+    //   };
 
     const getRecommendation = (id, name) => {
         console.log(id);
@@ -120,6 +133,7 @@ const DashboardPage = () => {
                     <Button variant="outlined" sx={Constants.bttnStyle} onClick={logOut} className="log_out-bttn">Log out</Button>
                 </div>
             </div>
+            {/* lista postojecih stanista */}
             <div className="content-div">
                 <div className={habitatsList.length > 10 ? "habitat-list-div-scrollable" : "habitat-list-div"}>
                     <Button variant="outlined" sx={Constants.bttnStyle} onClick={createNewHabitat}>Dodaj novo stanište</Button>
@@ -128,7 +142,7 @@ const DashboardPage = () => {
                         <div style={{display: "flex", flexDisplay:"row"}}>
                             <ListItemButton
                                 selected={selectedHabitat.name === habitat.name}
-                                onClick={(event) => handleListItemClick(event, index)}
+                                // onClick={(event) => handleListItemClick(event, index)}
                                 >
                                 <ListItemIcon>
                                     <LocalFloristOutlinedIcon sx={Constants.iconStyle} />
@@ -136,13 +150,14 @@ const DashboardPage = () => {
                                 <ListItemText primary={habitat.name}/>
                                 
                             </ListItemButton>
-                            <IconButton disabled={habitat.label.value === 'INAPPROPRIATE'} onClick={()=>{getRecommendation(habitat.id, habitat.name)}}>
+                            {/* <IconButton disabled={habitat.label.value === 'INAPPROPRIATE'} onClick={()=>{getRecommendation(habitat.id, habitat.name)}}>
                                 <FormatListBulletedIcon sx={Constants.iconStyle}/>
-                            </IconButton>
+                            </IconButton> */}
                         </div>
                     ))}
                     </List>
                 </div>
+                {/* trenutno prikazano staniste */}
                 <div className="selected-habitat-div">
                     <div className="natural-factors-container">
                         <div id="nf">
