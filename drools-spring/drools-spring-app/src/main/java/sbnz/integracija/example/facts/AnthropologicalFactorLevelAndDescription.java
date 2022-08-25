@@ -9,8 +9,8 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="atropological_factor_level_and_description")
-public class AntropologicalFactorLevelAndDescription {
+@Table(name="anthropological_factor_level_and_description")
+public class AnthropologicalFactorLevelAndDescription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +25,20 @@ public class AntropologicalFactorLevelAndDescription {
     @Column(name="recommendation", nullable=false)
     private String recommendation;
 
-    public AntropologicalFactorLevelAndDescription(Option option) {
+    public AnthropologicalFactorLevelAndDescription(Option option) {
         this.factorName = option.getType();
         this.description = option.getLabel();
         this.level = Integer.parseInt(option.getValue());
         this.recommendation = "";
     }
 
-    public AntropologicalFactorLevelAndDescription(String factorName, String description, int level, String recommendation) {
+    public AnthropologicalFactorLevelAndDescription(String factorName, String description, int level, String recommendation) {
         this.factorName = factorName;
         this.description = description;
         this.level = level;
         this.recommendation = recommendation;
     }
 
-    public AntropologicalFactorLevelAndDescription() {
+    public AnthropologicalFactorLevelAndDescription() {
     }
 }

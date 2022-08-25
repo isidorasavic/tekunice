@@ -1,13 +1,8 @@
 package sbnz.integracija.example.dto;
 
 import lombok.*;
-import sbnz.integracija.example.facts.Habitat;
-import sbnz.integracija.example.facts.NaturalFactors;
 import sbnz.integracija.example.facts.Option;
-import sbnz.integracija.example.facts.enums.Label;
 
-import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Getter
@@ -22,19 +17,19 @@ public class HabitatDTO {
     private NaturalFactorsDTO naturalFactorsDTO;
     private String username;
 
-    private AntropologicalFactorDTO antropologicalFactorDTO;
+    private List<AntropologicalFactorDTO> anthropologicalFactorDTO;
 
     private String dateCreated;
 
 
-    public HabitatDTO(long id, String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, AntropologicalFactorDTO antropologicalFactorDTO, String dateCreated) {
+    public HabitatDTO(long id, String name, Option label, NaturalFactorsDTO naturalFactorsDTO, String username, List<AntropologicalFactorDTO> anthropologicalFactorDTO, String dateCreated) {
         this.id = id;
         this.name = name;
         this.label = label;
         this.naturalFactorsDTO = naturalFactorsDTO;
         this.username = username;
         this.dateCreated = dateCreated;
-        this.antropologicalFactorDTO = antropologicalFactorDTO;
+        this.anthropologicalFactorDTO = anthropologicalFactorDTO;
     }
 
     public HabitatDTO() {

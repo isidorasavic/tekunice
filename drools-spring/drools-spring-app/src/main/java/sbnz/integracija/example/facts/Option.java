@@ -47,7 +47,7 @@ public class Option {
                 ", type='" + type + '\'' +
                 '}';
     }
-    public Option(AntropologicalFactorLevelAndDescription antropologicalFactor) {
+    public Option(AnthropologicalFactorLevelAndDescription antropologicalFactor) {
         this.value = antropologicalFactor.getLevel()+"";
         this.label = antropologicalFactor.getDescription();
         this.type = antropologicalFactor.getFactorName();
