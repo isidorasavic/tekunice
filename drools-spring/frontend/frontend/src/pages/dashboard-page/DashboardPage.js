@@ -12,6 +12,7 @@ import LocalFloristOutlinedIcon from '@mui/icons-material/LocalFloristOutlined';
 import IconButton from '@mui/material/IconButton';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import Recommendations from '../../recommendations-components/Recommendations'
+import HeaderComponent from '../../components/header-component/HeaderComponent';
 
 
 const DashboardPage = () => {
@@ -42,7 +43,6 @@ const DashboardPage = () => {
         })
         .then(response => {
             setHabitatsList(response.data)
-            console.log(response.data);
             selectHabitat(response.data[0].id);
         })
         .catch(error => {
@@ -55,20 +55,19 @@ const DashboardPage = () => {
         navigate('/create-habitat');
     }
 
-    const logOut = () => {
-        localStorage.clear();
-        sessionStorage.clear();
-        axios.post(Constants.BasePath + 'auth/logout', 
-        { headers: { "Content-Type": "application/json; charset=UTF-8" },
-        })
-        .then(response => {
-            console.log(response.data);
-            navigate('/login');
-        })
-        .catch(error => {
-            console.log(error.response);
-          })
-    }
+    // const logOut = () => {
+    //     localStorage.clear();
+    //     sessionStorage.clear();
+    //     axios.post(Constants.BasePath + 'auth/logout', 
+    //     { headers: { "Content-Type": "application/json; charset=UTF-8" },
+    //     })
+    //     .then(response => {
+    //         navigate('/login');
+    //     })
+    //     .catch(error => {
+    //         console.log(error.response);
+    //       })
+    // }
 
     const selectHabitat = (id) => {
         axios.get(Constants.BasePath + 'habitat/' + id, 
@@ -80,12 +79,11 @@ const DashboardPage = () => {
             setLabel2(response.data.label.label.split(' - ')[1]);
             setLabelValue(response.data.label.value)
             setSelectedNaturalFactors(response.data.naturalFactorsDTO)
-            setSelectedAntropologicalFactors(response.data.antropologicalFactorDTO.get(0)); //todo
 
-            console.log("selected habitat: ", response)
+            setSelectedAntropologicalFactors(response.data.anthropologicalFactorDTO.get(0)); //todo
         })
         .catch(error => {
-            console.log(error.response);
+            console.error(error);
         })
     }
 
@@ -113,18 +111,7 @@ const DashboardPage = () => {
 
     return (
         <div className="dashboard-container">
-            <div className="header-div">
-                <div className="logo">
-                    <img src="icon.png" className="logo-image" alt="tekunica"/>
-                    <div>Srećne tekunice</div>
-                </div>
-                <div className="dashboard-title">
-                    Moja staništa
-                </div>
-                <div className="log-out-div">
-                    <Button variant="outlined" sx={Constants.bttnStyle} onClick={logOut} className="log_out-bttn">Log out</Button>
-                </div>
-            </div>
+            <HeaderComponent/>
             {/* lista postojecih stanista */}
             <div className="content-div">
                 <div className={habitatsList.length > 10 ? "habitat-list-div-scrollable" : "habitat-list-div"}>

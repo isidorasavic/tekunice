@@ -20,7 +20,7 @@ export const ModalStyle = {
 const Recommendations = props => {
 
     useEffect(()=>{
-        console.log(props.recommendations)
+        // console.log(props.recommendations)
     }, [props])
 
     const handleClose = () => {

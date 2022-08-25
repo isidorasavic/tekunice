@@ -7,82 +7,55 @@
 
 }
 
-.logo {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    font-size: 30px;
-    display: flex;
-    flex-direction: row;
-}
-
-.logo-image {
-    height: 50px;
-}
-
-
-.dashboard-title {
-    padding: 30px;
-    font-size: 50px;
-    border-bottom: #6C1E15 2px solid;
-    max-height: 50px;
-
-}
-
-.log-out-div {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-}
-
 .content-div {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
 }
 
 .habitat-list-div {
     border-right: #6C1E15 2px solid;
+    width: 150px;
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    height: 75vh;
+    padding: 30px;
+    height: 80vh;
 }
 
 .habitat-list-div-scrollable{
     border-right: #6C1E15 2px solid;
+    width: 200px;
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    height: 75vh;
+    padding: 30px;
+    height: 80vh;
     overflow-y: scroll;
 }
 
 .selected-habitat-div {
+    width: 100%;
     padding: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;
+    background-color: darkturquoise;
 
 }
 
 .tab-bttns-div {
     height: 7%;
-    /* padding: 10px; */
     display: flex;
     flex-direction: row;
-    /* background-color: pink; */
     border-bottom: #6C1E15 solid 1px;
     gap: 10px;
 }
 
 
 .selected-tab-div {
-    /* background-color: lightblue; */
     height: 93%;
     padding: 50px;
 }
 
 .factors-tab-container {
-    /* height: 69vh; */
     display: grid;
     grid-template-columns: 1fr 2fr;
 }

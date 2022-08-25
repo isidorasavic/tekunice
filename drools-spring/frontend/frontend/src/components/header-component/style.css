@@ -1,0 +1,33 @@
+.header-div {
+    height: 60px;
+    border-bottom: #6C1E15 2px solid;
+}
+
+.logo {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-image {
+    height: 50px;
+}
+
+.logo-title {
+    vertical-align: bottom;
+    padding-top: 10px;
+}
+
+.dashboard-title {
+    font-size: 40px;
+    max-height: 50px;
+}
+
+.log-out-div {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
