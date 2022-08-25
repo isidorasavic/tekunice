@@ -96,14 +96,6 @@ const DashboardPage = () => {
             </div>
         )
     }
-    // const handleListItemClick = (event, index) => {
-    //     setSelectedHabitat(habitatsList.at(index));
-    //     setLabel1(habitatsList.at(index).label.label.split(' - ')[0]);
-    //     setLabel2(habitatsList.at(index).label.label.split(' - ')[1]);
-    //     setLabelValue(habitatsList.at(index).label.value)
-    //     setSelectedNaturalFactors(habitatsList.at(index).naturalFactorsDTO)
-    //     setSelectedAntropologicalFactors(habitatsList.at(index).antropologicalFactorDTO)
-    //   };
 
     const getRecommendation = (id, name) => {
         console.log(id);
@@ -142,7 +134,7 @@ const DashboardPage = () => {
                         <div style={{display: "flex", flexDisplay:"row"}}>
                             <ListItemButton
                                 selected={selectedHabitat.name === habitat.name}
-                                // onClick={(event) => handleListItemClick(event, index)}
+                                onClick={(event) => selectHabitat(habitat.id)}
                                 >
                                 <ListItemIcon>
                                     <LocalFloristOutlinedIcon sx={Constants.iconStyle} />

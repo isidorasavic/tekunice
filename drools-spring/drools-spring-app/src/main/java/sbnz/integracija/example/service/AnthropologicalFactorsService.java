@@ -143,7 +143,7 @@ public class AnthropologicalFactorsService {
         options.add(new Option(anthropologicalFactors.getProtection().getLevel()+"", anthropologicalFactors.getProtection().getRecommendation(), ""));
         options.add(new Option(anthropologicalFactors.getPurpose().getLevel()+"", anthropologicalFactors.getPurpose().getRecommendation(), ""));
 
-//        recommendationDTO.setRecommendations(options);
+        recommendationDTO.setRecommendations(options);
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(recommendationDTO);
         kieSession.fireAllRules();

@@ -36,7 +36,7 @@ const CreateAntropologicalFactors = () => {
 
     useEffect(() => {
         axios
-        .get(Constants.BasePath + 'antropologicalFactorsOptions', 
+        .get(Constants.BasePath + 'anthropologicalFactorsOptions', 
         { headers: { "Content-Type": "application/json; charset=UTF-8" },
         })
         .then(response => {
@@ -117,7 +117,7 @@ const CreateAntropologicalFactors = () => {
                     slope: localStorage.getItem("slope"),
                     flooding: localStorage.getItem("flooding")
                 },
-                antropologicalFactorDTO: {
+                anthropologicalFactorsDTO: {
                     shrubbery: {
                         value: localStorage.getItem('shrubbery'),
                         type: 'shrubbery'
