@@ -10,7 +10,7 @@
 - dodavanje novog stanista (RADI)
 	- ako ne radi samo clean install-ovati kjar pa opet sve
 
-+ dodavanje novih AF za postojece staniste (RADI VALJDA)
++ dodavanje novih AF za postojece staniste (RADI)
 	- ** ista funkc ce biti i za gore kad se dodaju AF, bitno je na frontu u formu dodati datum i id stanista!
 
 - dobavljanje preporuke za odgovarajuce AF (RADI)
@@ -18,5 +18,4 @@
 	+ dodati mozda i na beku proveru da li je staniste nepovoljno, pa ako jeste baciti exception
 	!! proveriti sta se od podataka tu salje jos da li sve valja zapravo
 
-
-- front vise ne radi uopste :(
+- kad se dobavljaju preporuke uvek vraca 80%???????

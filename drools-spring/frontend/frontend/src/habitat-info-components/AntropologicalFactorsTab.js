@@ -3,7 +3,6 @@ import './style.css'
 import * as Constants from '../constants'
 import axios from 'axios'
 
-
 const AntropologicalFactorsTab = props => {
 
     const [antropologicalFactors, setAntropologicalFactors] = useState({shrubbery:'', distance:'', disturbance:'', roads:'', agriculture:'', grazing:'', grassRemoving:'', predators:'', protection:'', purpose:''});

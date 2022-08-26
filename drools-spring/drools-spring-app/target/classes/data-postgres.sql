@@ -87,7 +87,7 @@ values ('Nema puteva na staništu', 'roads', 0, 'Veoma povoljna situacija');
 
 -- poljoprivreda
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija ybog potencijalnog trovanja pesticidima.');
+values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Stanište se jednim delom dodiruje sa poljoprivrednim zemljištem', 'agriculture', 5, 'Tekunice mogu biti ugrožene zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
@@ -136,6 +136,4 @@ insert into habitats (name, label, natural_factors_id, user_id, date_created) va
 
 --ljudski faktori
 insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)
-values (1, 5, 8, 12,16, 19, 22, 24, 26, 28, 1, '2022-05-10');
-insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)
-values (2, 5, 8, 12,16, 19, 22, 24, 26, 28, 1, '2022-07-10');
+                    values (1, 5, 8, 12,16, 19, 22, 24, 26, 28, 1, '2022-05-10');

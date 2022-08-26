@@ -104,6 +104,10 @@ const DashboardPage = () => {
     }
 
  
+    const addNewAnthropologicalFactors = (habitatId) => {
+        localStorage.clear();
+        navigate('/new-anthropological-factors/'+habitatId);
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -142,7 +146,7 @@ const DashboardPage = () => {
                             <Tab style={Constants.tabBttnStyle} label={"Antropološki faktori: "+af.dateAdded} {...a11yProps(index+1)} />
                         ))}
                         {selectedHabitat.label.value === "INAPPROPRIATE" ? null : <Tooltip title="Dodaj nove antropološke faktore">
-                            <Button {...a11yProps(100)} style={Constants.newAFBttnStyle}><AddIcon/></Button>
+                            <Button {...a11yProps(100)} style={Constants.newAFBttnStyle} onClick={(event) => addNewAnthropologicalFactors(selectedHabitat.id)}><AddIcon/></Button>
                         </Tooltip>}
 
                         </Tabs>

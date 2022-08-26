@@ -113,7 +113,7 @@ public class AnthropologicalFactorsService {
         factors.setProtection(anthropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getProtection().getValue()), "protection"));
         factors.setPurpose(anthropologicalFactorLevelAndDescriptionRepository.getAntropologicalFactorLevelAndDescriptionByLevelAndFactorName(Integer.parseInt(antropologicalFactorDTO.getPurpose().getValue()), "purpose"));
         factors.setHabitat(optHabitat.get());
-        factors.setDateCreated(LocalDate.parse(antropologicalFactorDTO.getDateAdded()));
+        factors.setDateCreated(LocalDate.now());
         saveAnthropologicalFactors(factors);
         return factors;
     }

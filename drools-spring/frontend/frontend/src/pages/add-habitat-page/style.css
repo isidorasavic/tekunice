@@ -34,7 +34,17 @@
     margin-bottom: 0;
     font-weight: normal;
 }
+.back-bttn {
+    position: absolute;
+    top: 70%;
+    left: 3%;
+}
 
+.header-add-af {
+    display: grid;
+    grid-template-rows: 1fr 15fr;
+
+}
 
 
 

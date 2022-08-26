@@ -5,6 +5,7 @@ import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import LogInPage from '../src/pages/login-page/LogInPage'
 import DashboardPage from '../src/pages/dashboard-page/DashboardPage'
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import AddAnthopologicalFactors from './create-habitat-components/AddAnthropologicalFactors';
 
 
 
@@ -24,6 +25,8 @@ function App() {
                 <Route index path='/login' element={< LogInPage/>}></Route>
                 <Route path='/dashboard' element={< DashboardPage/>}></Route>
                 <Route path='/create-habitat' element={< CreateHabitatPage />}></Route>
+                <Route path='/new-anthropological-factors/:id' element={< AddAnthopologicalFactors />}></Route>
+
             </Routes>
         </Router>
       </div>
