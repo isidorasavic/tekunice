@@ -25,7 +25,7 @@ function App() {
                 <Route index path='/login' element={< LogInPage/>}></Route>
                 <Route path='/dashboard' element={< DashboardPage/>}></Route>
                 <Route path='/create-habitat' element={< CreateHabitatPage />}></Route>
-                <Route path='/new-anthropological-factors/:id' element={< AddAnthopologicalFactors />}></Route>
+                <Route path='/new-anthropological-factors/:habitatId' element={< AddAnthopologicalFactors />}></Route>
 
             </Routes>
         </Router>

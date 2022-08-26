@@ -39,12 +39,12 @@ const AddAnthopologicalFactors = () => {
                     <Fab style={{backgroundColor:"tan"}} className="back-bttn"  onClick={returnToDashboard}> <ArrowBack /></Fab>
                 </Tooltip>
                 <Typography variant="h4" component="div">
-                Dodaj nove antropološke faktore {habitatId}
+                Dodaj nove antropološke faktore
                 </Typography>
             </div>
             <div className="form-container">
                 <div id="add-af-form">
-                <CreateAntropologicalFactors className="add-af-form"  addNew={true} habitatId={1}/>                   
+                <CreateAntropologicalFactors className="add-af-form"  addNew={true} habitatId={habitatId}/>                   
                 </div>
             </div>
         </div>
