@@ -34,19 +34,9 @@
 
 .selected-habitat-div {
     width: 100%;
-    padding: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    background-color: darkturquoise;
+    padding: 40px;
+    /* background-color: darkturquoise; */
 
-}
-
-.tab-bttns-div {
-    height: 7%;
-    display: flex;
-    flex-direction: row;
-    border-bottom: #6C1E15 solid 1px;
-    gap: 10px;
 }
 
 
@@ -60,42 +50,3 @@
     grid-template-columns: 1fr 2fr;
 }
 
-.ant-factors-tab-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-}
-
-.natural-factors-container {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-}
-
-.label-container {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-#nf {
-    padding-left: 15px;
-    text-align: start;
-    outline:  #6C1E15 1px solid;
-    /* height: 200px; */
-}
-
-p {
-    margin-top: 0;
-}
-
-b#factor {
-    font-size: 15px;
-}
-
-p#factor-value {
-    font-size: 15px;
-}
-
-h1 {
-    margin-top: 0;
-}

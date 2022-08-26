@@ -87,7 +87,7 @@ values ('Nema puteva na staništu', 'roads', 0, 'Veoma povoljna situacija');
 
 -- poljoprivreda
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija ybog potencijalnog trovanja pesticidima.');
+values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Stanište se jednim delom dodiruje sa poljoprivrednim zemljištem', 'agriculture', 5, 'Tekunice mogu biti ugrožene zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)

@@ -137,3 +137,5 @@ insert into habitats (name, label, natural_factors_id, user_id, date_created) va
 --ljudski faktori
 insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)
 values (1, 5, 8, 12,16, 19, 22, 24, 26, 28, 1, '2022-05-10');
+insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)
+values (2, 5, 8, 12,16, 19, 22, 24, 26, 28, 1, '2022-07-10');

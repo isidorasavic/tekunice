@@ -1,53 +1,58 @@
 .factors-tab-container {
-    /* height: 69vh; */
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
 
-.ant-factors-tab-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-}
-
 .natural-factors-container {
-    border-right:  #6C1E15 1px solid;
-    border-top:  #6C1E15 1px solid;
-    border-left:  #6C1E15 1px solid;
     display: flex;
     flex-direction: column;
     height: fit-content;
 }
 
 .label-container {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
-#nf {
-    padding-left: 10px;
-    text-align: start;
-    border-bottom: #6C1E15 1px solid;
-    max-height: 70px;
+p.label-text {
+    font-weight: 500;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 120%;
 }
 
 p {
     margin-top: 0;
+    font-size: 15px;
 }
-
+ 
 b#factor {
     font-size: 20px;
-}
-
-p#factor-value {
-    font-size: 15px;
 }
 
 h1 {
     margin-top: 0;
 }
 
-/* .gif {
-    height: 500px;
-    width: 500px; 
-} */
+.factor-values-container {
+    text-align: start;
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.inappropriate-label {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 10%;
+}
+
+.success-rate {
+    font-size: 30px;
+}
+
+.succes-label {
+    font-size: 120%;
+    padding-top: 2%;
+    padding-left: 20%;
+    padding-right: 20%;
+}

@@ -1,56 +1,71 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import './style.css'
+import * as Constants from '../constants'
+import axios from 'axios'
 
 
 const AntropologicalFactorsTab = props => {
 
     const [antropologicalFactors, setAntropologicalFactors] = useState({shrubbery:'', distance:'', disturbance:'', roads:'', agriculture:'', grazing:'', grassRemoving:'', predators:'', protection:'', purpose:''});
+    const [recommendations, setRecommendations] = useState({recommendations: [], message: '', rate: 0});
+    const [habitatLabel, setHabitatLabel] = useState('');
 
     useEffect(()=> {
-        setAntropologicalFactors({shrubbery:props.habitat.antropologicalFactorsDTO.shrubbery, distance:props.habitat.antropologicalFactorsDTO.distanceToNeighbourhoodPopulation, disturbance:props.habitat.antropologicalFactorsDTO.disturbance, roads:props.habitat.antropologicalFactorsDTO.roads, agriculture:props.habitat.antropologicalFactorsDTO.agriculture, grazing:props.habitat.antropologicalFactorsDTO.grazing, grassRemoving:props.habitat.antropologicalFactorsDTO.grassRemoving, predators:props.habitat.antropologicalFactorsDTO.predators, protection:props.habitat.antropologicalFactorsDTO.protection, purpose:props.habitat.antropologicalFactorsDTO.purpose});
-        console.log(props.habitat)
+        if (props.af.shrubbery.value != null){
+            setAntropologicalFactors({shrubbery:props.af.shrubbery, distance:props.af.distanceToNeighbourhoodPopulation, disturbance:props.af.disturbance, roads:props.af.roads, agriculture:props.af.agriculture, grazing:props.af.grazing, grassRemoving:props.af.grassRemoving, predators:props.af.predators, protection:props.af.protection, purpose:props.af.purpose});
+            getRecommendation(props.af.id);
+            console.log("label: ", props.habitatLabel);
+            setHabitatLabel(props.habitatLabel);
+        }
     }, [props])
 
+    const getRecommendation = (id) => {
+        axios.get(Constants.BasePath + 'anthropologicalFactors/'+ id  + '/recommendations', 
+        { headers: { "Content-Type": "application/json; charset=UTF-8" },
+        })
+        .then(response => {
+            console.log("rec: ", response.data);
+            setRecommendations({recommendations: response.data.recommendations, message: response.data.successMessage, rate: response.data.successRate})
+        })
+        .catch(error => {
+            console.log(error.response);
+        })
+    }
 
     return (
-        <div className="ant-factors-tab-container">
-        <div className="natural-factors-container">
-            <div id="nf">
-                <p><b id="factor">Obrastanje žbunastim vrstama:</b><p id="factor-value">{antropologicalFactors.shrubbery}</p></p>
+        <div className="factors-tab-container">
+            <div className="natural-factors-container">
+                <h1>Antropološki (ljudski) faktori</h1>
+                <div className="factor-values-container">
+                    <p><b id="factor">Obrastanje žbunastim vrstama: </b>{antropologicalFactors.shrubbery.label}</p>
+                    <p><b id="factor">Fragmentiranost i udaljenost susednih populacija: </b> {antropologicalFactors.distance.label}</p>
+                    <p><b id="factor">Hvatanje, trovanje, krivolov i uznemiravanje životinja: </b> {antropologicalFactors.disturbance.label}</p>
+                    <p><b id="factor">Saobraćajnice: </b> {antropologicalFactors.agriculture.label}</p>
+                    <p><b id="factor">Poljoprivreda: </b> {antropologicalFactors.agriculture.label}</p>
+                    <p><b id="factor">Ispaša: </b> {antropologicalFactors.grazing.label}</p>
+                    <p><b id="factor">Uklanjanje travnate površine: </b> {antropologicalFactors.grassRemoving.label}</p>
+                    <p><b id="factor">Predatori (price grabljivice, domaće mačke,..): </b> {antropologicalFactors.predators.label}</p>
+                    <p><b id="factor">Da li stanište ima neki vid zaštite?: </b> {antropologicalFactors.protection.label}</p>
+                    <p><b id="factor">Vlasništvo i namena parcele: </b> {antropologicalFactors.purpose.label}</p>
+                </div>
             </div>
-            <div id="nf">
-            <p><b id="factor">Fragmentiranost i udaljenost susednih populacija:</b><p id="factor-value">g</p></p>
+            <div className="label-container">
+                <h1>Preporuke</h1>
+                {habitatLabel === "INAPPROPRIATE" ? 
+                    <p className="inappropriate-label">Stanište je na osnovu svojih prirodnih faktora određeno kao nepovoljno, i nažalost ne postoje ljudske akcije koje bi ga mogle poboljšati. :(</p>  
+                    :                    
+                    <div>
+                        {recommendations.recommendations.map((recommendation, index) => (
+                            <ul>
+                                <li>{recommendation.label}</li>
+                            </ul>
+                        ))}
+                        <p className="succes-label">Ukoliko se sve preporučene akcije preduzmu, verovatnoća za uspešno nastanjivanje tekunica je: </p> 
+                        <b className="success-rate">{recommendations.rate * 100}%</b> 
+                    </div>
+                }
             </div>
-            <div id="nf">
-            <p><b id="factor">Hvatanje, trovanje, krivolov i uznemiravanje životinja:</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Saobraćajnice:</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Poljoprivreda:</b><p id="factor-value">g</p></p>
-            </div>
-
         </div>
-        <div className="natural-factors-container">
-            <div id="nf">
-            <p><b id="factor">Ispaša:</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Uklanjanje travnate površine:</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Predatori (price grabljivice, domaće mačke,..):</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Da li stanište ima neki vid zaštite?:</b><p id="factor-value">g</p></p>
-            </div>
-            <div id="nf">
-            <p><b id="factor">Vlasništvo i namena parcele:</b><p id="factor-value">g</p></p>
-            </div>
-
-        </div>
-    </div>
 
     )
 
