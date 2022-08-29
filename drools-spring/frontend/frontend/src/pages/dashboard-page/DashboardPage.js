@@ -102,7 +102,6 @@ const DashboardPage = () => {
             </div>
         )
     }
-
  
     const addNewAnthropologicalFactors = (habitatId) => {
         localStorage.clear();
@@ -139,7 +138,7 @@ const DashboardPage = () => {
                 </div>
                 {/* trenutno prikazano staniste */}
                 <div className="selected-habitat-div">
-                    <Box sx={{ borderBottom: 2, borderColor: 'divider' }}>
+                    {habitatsList.length !== 0 ? <Box sx={{ borderBottom: 2, borderColor: 'divider' }}>
                         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab style={Constants.tabBttnStyle} label="Prirodni faktori" {...a11yProps(0)} />
                         {selectedAntropologicalFactors.map((af, index) => (
@@ -150,18 +149,20 @@ const DashboardPage = () => {
                         </Tooltip>}
 
                         </Tabs>
-                    </Box>
+                    </Box> : <div></div>}
                     <TabPanel style={{height: '70vh'}} value={value} index={0}>
-                        <NaturalFactorsTab habitat={selectedHabitat}></NaturalFactorsTab>
+                        { habitatsList.length !== 0 ?<NaturalFactorsTab habitat={selectedHabitat}></NaturalFactorsTab> : <h3>Nemate kreirano ni jedno staniste</h3>}
                     </TabPanel>
                     {selectedAntropologicalFactors.map((af, index) => (
                         <TabPanel style={{height: '70vh'}} value={value} index={index+1}>
                             <AntropologicalFactorsTab af={af} habitatLabel={selectedHabitat.label.value}></AntropologicalFactorsTab>
                         </TabPanel>
                     ))}
-                    </div>
+                </div>
             </div>
         </div>
     )
 }
 export default DashboardPage;
+
+
