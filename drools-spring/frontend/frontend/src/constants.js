@@ -53,3 +53,9 @@ export const newAFBttnStyle = {
   bottom: '0',
   color: '#6C1E15'
 }
+
+export const linkBttnStyle = {
+  color:" #6C1E15",
+  height: 30,
+  fontSize: 12
+};

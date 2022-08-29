@@ -1,7 +1,4 @@
 import React, { PureComponent, useState, useEffect } from 'react';
-import Typography from '@mui/material/Typography';
-import Fab from '@mui/material/Fab';
-import './style.css'
 import * as Constants from '../../constants'
 import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
@@ -13,37 +10,54 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Button from '@mui/material/Button'
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 
-const LogInPage = () => {
+const RegisterPage = () => {
+
+    const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
 
-    const [userCreditentials, setUserCreditentials] = useState({username:'', password:''});
+    const [userCreditentials, setUserCreditentials] = useState({username: '', password: '', password2: ''});
     const [showPassword, setShowPassword] = useState(false);
-
+    const [showPassword2, setShowPassword2] = useState(false);
+    
     useEffect(()=> {
         if (sessionStorage.getItem('username') !== null){
             navigate('/dashboard');
         }
     }, [])
 
-    const logIn = (event) => {
+    const register = (event) => {
         event.preventDefault();
         const newUser = {
             username: userCreditentials.username,
             password: userCreditentials.password
         }
-        axios.post(Constants.BasePath + 'auth/login',newUser, 
+        axios.post(Constants.BasePath + 'auth/signUp',newUser, 
         { headers: { "Content-Type": "application/json; charset=UTF-8" },
         })
         .then(response => {
             console.log(response.data);
-            sessionStorage.setItem('username', response.data.username);
-            navigate('/dashboard');
+            enqueueSnackbar('Nalog je uspesno kreiran!', {variant: 'success'});
+            navigate('/login');
         })
         .catch(error => {
             console.log(error.response);
+            enqueueSnackbar('Doslo je do greske!', {variant: 'error'});
+            setUserCreditentials({username:'', password:'', password2:''});
           })
+
+    }
+
+    const isFormValid = () => {
+        if (userCreditentials.password !== userCreditentials.password2) {
+            return false;
+        }
+        if (userCreditentials.username === '' || userCreditentials.password === '' || userCreditentials.password2 === ''){
+            return false;
+        }
+        return true;
     }
 
     return (
@@ -52,10 +66,10 @@ const LogInPage = () => {
                 Srećne tekunice
             </div>
             <div className="log-in-subtitle">
-                Log in
+                Kreirajte nalog
             </div>
             <div className="log-in-form-container">
-                <form onSubmit={logIn} className="log-in-form">
+                <form onSubmit={register} className="log-in-form">
                         <div className="row">
                             <TextField
                                 required
@@ -89,16 +103,36 @@ const LogInPage = () => {
                             </FormControl>
                         </div>
                         <div className="row">
-                            <Button variant="outlined" sx={Constants.bttnStyle} className="log_in_submit" type="submit">Submit</Button>
+                            <FormControl variant="outlined">
+                                <OutlinedInput
+                                    required
+                                    className="input-field"
+                                    type={showPassword2 ? 'text' : 'password'}
+                                    value={userCreditentials.password2}
+                                    onChange={(event)=> {setUserCreditentials({...userCreditentials, password2: event.target.value})}}
+                                    endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={()=> {setShowPassword2(!showPassword2)}}
+                                        edge="end"
+                                        >
+                                        {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                    }
+                                    error={userCreditentials.password !== userCreditentials.password2}
+                                    placeholder="Ponovite lozinku"
+                                />
+                            </FormControl>
                         </div>
                         <div className="row">
-                            <Button id="link-bttn" className="smallButton"  sx={Constants.linkBttnStyle} component={Link} to="/registration">Kreiraj nalog</Button>
+                            <Button variant="outlined" sx={Constants.bttnStyle} className="log_in_submit" type="submit" disabled={!isFormValid()}>Submit</Button>
                         </div>
                     </form>
             </div>
         </div>
+
     )
-
-
 }
-export default LogInPage
+export default RegisterPage
