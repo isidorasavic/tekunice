@@ -25,13 +25,6 @@ public class HabitatController {
         return habitatService.addNewHabitat(habitatDTO);
 
     }
-
-//    @RequestMapping(value="/generateRules", method= RequestMethod.POST, produces = "application/json")
-//    public void generateRules(){
-//        habitatService.generateRules();
-//
-//    }
-
     @RequestMapping(value="/user/{username}/habitats", method= RequestMethod.GET, produces = "application/json")
     public List<HabitatNameDTO> getUserHabitats(@PathVariable("username") String username){
         return habitatService.getAllUserHabitats(username);

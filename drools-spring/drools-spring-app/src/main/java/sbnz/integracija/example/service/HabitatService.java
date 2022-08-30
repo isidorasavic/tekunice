@@ -291,8 +291,8 @@ public class HabitatService {
         naturalFactorsService.saveNaturalFactors(newHabitat.getNaturalFactors());
         habitatRepository.saveAndFlush(newHabitat);
         habitatDTO.getAnthropologicalFactorsDTO().setDateAdded(LocalDate.now().toString());
-        AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsService.addNewAnthropologicalFactors(habitatDTO.getAnthropologicalFactorsDTO(),
-                                                                                                newHabitat.getId());
+        AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsService.addNewAnthropologicalFactors
+                                                        (habitatDTO.getAnthropologicalFactorsDTO(), newHabitat.getId());
 
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(newHabitat);
