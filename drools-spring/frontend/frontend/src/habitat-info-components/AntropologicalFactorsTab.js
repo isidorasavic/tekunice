@@ -2,6 +2,13 @@ import React, { PureComponent, useState, useEffect } from 'react';
 import './style.css'
 import * as Constants from '../constants'
 import axios from 'axios'
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 const AntropologicalFactorsTab = props => {
 
@@ -48,16 +55,22 @@ const AntropologicalFactorsTab = props => {
                     <p><b id="factor">Vlasništvo i namena parcele: </b> {antropologicalFactors.purpose.label}</p>
                 </div>
             </div>
-            <div className="label-container">
+            <div className="label-container" >
                 <h1>Preporuke</h1>
                 {habitatLabel === "INAPPROPRIATE" ? 
                     <p className="inappropriate-label">Stanište je na osnovu svojih prirodnih faktora određeno kao nepovoljno, i nažalost ne postoje ljudske akcije koje bi ga mogle poboljšati. :(</p>  
                     :                    
-                    <div>
-                        {recommendations.recommendations.map((recommendation, index) => (
-                            <ul>
-                                <li>{recommendation.label}</li>
-                            </ul>
+                    <div className="recommendations-div">
+                        {recommendations.recommendations.map((recommendation) => (
+                            <div>
+                                <ListItem style={{textAlign:"center", height:"70px"}}>
+                                    <ListItemIcon>
+                                        <AutoFixHighIcon sx={Constants.iconStyle} />
+                                    </ListItemIcon>
+                                    <ListItemText primary={recommendation.label} />
+                                </ListItem>
+                                <Divider sx={Constants.iconStyle}/>
+                            </div>
                         ))}
                         <p className="succes-label">Ukoliko se sve preporučene akcije preduzmu, verovatnoća za uspešno nastanjivanje tekunica je: </p> 
                         <b className="success-rate">{recommendations.rate * 100}%</b> 

@@ -156,6 +156,7 @@ public class AnthropologicalFactorsService {
         kieSession.insert(recommendationDTO);
         kieSession.fireAllRules();
         kieSession.dispose();
+        recommendationDTO.getRecommendations().removeIf(o -> o.getLabel().equals("Nije potrebno preduzeti nikakve akcije."));
         log.info(recommendationDTO.toString());
         return recommendationDTO;
 
