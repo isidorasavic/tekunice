@@ -3,6 +3,7 @@ package sbnz.integracija.example.facts;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.kie.api.definition.type.Position;
 
 import javax.persistence.*;
 
@@ -17,9 +18,11 @@ public class Option {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
+    @Position(0)
     @Column(name = "value")
     private String value;
 
+    @Position(1)
     @Column(name = "label")
     private String label;
 

@@ -5,6 +5,31 @@ import sbnz.integracija.example.dto.RecommendationDTO
 
 dialect  "mvel"
 
+query doesHaveRecommendations (String x, String y)
+    Option(x, y; )
+    or
+    ( Option(z, y; ) and doesHaveRecommendations( x, z; ) )
+end
+
+//rule "test-option-rule"
+//no-loop
+//    when
+//        $o : Option()
+//        $r : RecommendationDTO (successRate == 0)
+//        not doesHaveRecommendations("0", "Veoma povoljna situacija."; )
+//    then
+//        modify($r){setSuccessRate(-1)}
+//end
+
+rule "best-success-rate"
+no-loop
+    when
+        $r : RecommendationDTO (successRate == 0)
+    then
+        modify($r){setSuccessRate(0.9)}
+        modify($r){setSuccessMessage("Ne postoje akcije koje je neophodno preduzeti.")}
+end
+
 rule "high-success-rate"
 no-loop
     when

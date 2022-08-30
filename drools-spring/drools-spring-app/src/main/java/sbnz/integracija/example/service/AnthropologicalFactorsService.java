@@ -2,6 +2,8 @@ package sbnz.integracija.example.service;
 
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.QueryResults;
+import org.kie.api.runtime.rule.QueryResultsRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,23 +130,29 @@ public class AnthropologicalFactorsService {
         Optional<AnthropologicalFactors> anthropologicalFactorsOpt = anthropologicalFactorRepository.findById(id);
         if(!anthropologicalFactorsOpt.isPresent()) throw new InvalidArgumentException("Anthropological factors not found!");
         AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsOpt.get();
-        recommendationDTO.setSuccessRate(-1);
+        recommendationDTO.setSuccessRate(0);
         recommendationDTO.setSuccessMessage("");
 
         List<Option> options = new ArrayList<>();
-        options.add(new Option(anthropologicalFactors.getShrubbery().getLevel()+"", anthropologicalFactors.getShrubbery().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getDistanceToNeighbourhoodPopulation().getLevel()+"", anthropologicalFactors.getDistanceToNeighbourhoodPopulation().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getDisturbance().getLevel()+"", anthropologicalFactors.getDisturbance().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getRoads().getLevel()+"", anthropologicalFactors.getRoads().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getAgriculture().getLevel()+"", anthropologicalFactors.getAgriculture().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getGrazing().getLevel()+"", anthropologicalFactors.getGrazing().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getGrassRemoving().getLevel()+"", anthropologicalFactors.getGrassRemoving().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getPredators().getLevel()+"", anthropologicalFactors.getPredators().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getProtection().getLevel()+"", anthropologicalFactors.getProtection().getRecommendation(), ""));
-        options.add(new Option(anthropologicalFactors.getPurpose().getLevel()+"", anthropologicalFactors.getPurpose().getRecommendation(), ""));
+        options.add(new Option(anthropologicalFactors.getShrubbery().getLevel()+"", anthropologicalFactors.getShrubbery().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getDistanceToNeighbourhoodPopulation().getLevel()+"", anthropologicalFactors.getDistanceToNeighbourhoodPopulation().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getDisturbance().getLevel()+"", anthropologicalFactors.getDisturbance().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getRoads().getLevel()+"", anthropologicalFactors.getRoads().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getAgriculture().getLevel()+"", anthropologicalFactors.getAgriculture().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getGrazing().getLevel()+"", anthropologicalFactors.getGrazing().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getGrassRemoving().getLevel()+"", anthropologicalFactors.getGrassRemoving().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getPredators().getLevel()+"", anthropologicalFactors.getPredators().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getProtection().getLevel()+"", anthropologicalFactors.getProtection().getRecommendation(), "a"));
+        options.add(new Option(anthropologicalFactors.getPurpose().getLevel()+"", anthropologicalFactors.getPurpose().getRecommendation(), "a"));
 
         recommendationDTO.setRecommendations(options);
         KieSession kieSession = kieContainer.newKieSession();
+        recommendationDTO.getRecommendations().forEach(kieSession::insert);
+        kieSession.fireAllRules();
+        QueryResults results =
+                kieSession.getQueryResults( "doesHaveRecommendations", "0", "Nije potrebno preduzeti nikakve akcije." );
+
+        if (results.size() != 10) recommendationDTO.setSuccessRate(-1);
         kieSession.insert(recommendationDTO);
         kieSession.fireAllRules();
         kieSession.dispose();
