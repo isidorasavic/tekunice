@@ -6,8 +6,8 @@ insert into factor_options (value, label, type) values ('SLVTKSK', 'Sekundarne l
 insert into factor_options (value, label, type) values ('LS', 'Listopadne šume', 'type');
 insert into factor_options (value, label, type) values ('CS', 'Četinarske šume', 'type');
 insert into factor_options (value, label, type) values ('SLZ', 'Suve livade sa žbunjem', 'type');
-insert into factor_options (value, label, type) values ('PP', 'Poljoprivredna zemljišta', 'type');
-insert into factor_options (value, label, type) values ('PZ', 'Planinski pašnjaci', 'type');
+insert into factor_options (value, label, type) values ('PZ', 'Poljoprivredna zemljišta', 'type');
+insert into factor_options (value, label, type) values ('PP', 'Planinski pašnjaci', 'type');
 insert into factor_options (value, label, type) values ('BMS', 'Barska i močvarna staništa', 'type');
 
 insert into factor_options (value, label, type) values ('NoElevation', '0-200mv', 'elevation');

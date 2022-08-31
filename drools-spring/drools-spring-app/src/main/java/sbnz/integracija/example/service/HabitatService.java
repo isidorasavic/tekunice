@@ -300,6 +300,8 @@ public class HabitatService {
         kieSession.fireAllRules();
         kieSession.dispose();
 
+        log.info("new habitat before template: "+newHabitat.toString());
+
         if (newHabitat.getLabel() == Label.NO_LABEL){
             kieSession = generateRules();
             kieSession.insert(newHabitat);
@@ -311,7 +313,7 @@ public class HabitatService {
             throw new InvalidArgumentException("Something went wrong! :(");
         }
         habitatRepository.saveAndFlush(newHabitat);
-
+        log.info("New habitat: "+ newHabitat.toString());
         return getHabitatById(newHabitat.getId());
     }
 
@@ -328,6 +330,8 @@ public class HabitatService {
         Optional<Habitat> optHabitat = habitatRepository.findById(id);
         if (!optHabitat.isPresent())
             throw new InvalidArgumentException("Habitat with id " + id + " not found!");
+
+        log.info("Habitat by id: "+ optHabitat.get().toString());
         return optHabitat.get();
     }
 
