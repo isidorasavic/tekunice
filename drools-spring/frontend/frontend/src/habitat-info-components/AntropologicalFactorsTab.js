@@ -72,8 +72,8 @@ const AntropologicalFactorsTab = props => {
                                 <Divider sx={Constants.iconStyle}/>
                             </div>
                         ))}
-                        <p className="succes-label">Ukoliko se sve preporučene akcije preduzmu, verovatnoća za uspešno nastanjivanje tekunica je: </p> 
-                        <b className="success-rate">{recommendations.rate * 100}%</b> 
+                        <p className="succes-label">{recommendations.message} </p> 
+                        {recommendations.rate !== 0.9 ? <b className="success-rate">{recommendations.rate * 100}%</b> : null}
                     </div>
                 }
             </div>
