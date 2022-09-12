@@ -291,14 +291,16 @@ public class HabitatService {
         naturalFactorsService.saveNaturalFactors(newHabitat.getNaturalFactors());
         habitatRepository.saveAndFlush(newHabitat);
         habitatDTO.getAnthropologicalFactorsDTO().setDateAdded(LocalDate.now().toString());
-        AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsService.addNewAnthropologicalFactors(habitatDTO.getAnthropologicalFactorsDTO(),
-                                                                                                newHabitat.getId());
+        AnthropologicalFactors anthropologicalFactors = anthropologicalFactorsService.addNewAnthropologicalFactors
+                                                        (habitatDTO.getAnthropologicalFactorsDTO(), newHabitat.getId());
 
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(newHabitat);
         kieSession.insert(anthropologicalFactors);
         kieSession.fireAllRules();
         kieSession.dispose();
+
+        log.info("new habitat before template: "+newHabitat.toString());
 
         if (newHabitat.getLabel() == Label.NO_LABEL){
             kieSession = generateRules();
@@ -311,12 +313,12 @@ public class HabitatService {
             throw new InvalidArgumentException("Something went wrong! :(");
         }
         habitatRepository.saveAndFlush(newHabitat);
-
+        log.info("New habitat: "+ newHabitat.toString());
         return getHabitatById(newHabitat.getId());
     }
 
-    public List<HabitatNameDTO> getAllUserHabitats(long userId) {
-        User user = (User) userService.loadUserById(userId);
+    public List<HabitatNameDTO> getAllUserHabitats(String username) {
+        User user = (User) userService.loadUserByUsername(username);
         List<HabitatNameDTO> habitats = new ArrayList<>();
         habitatRepository.findAllByUserId(user.getId()).forEach(habitat -> {
             habitats.add(new HabitatNameDTO(habitat));
@@ -328,6 +330,8 @@ public class HabitatService {
         Optional<Habitat> optHabitat = habitatRepository.findById(id);
         if (!optHabitat.isPresent())
             throw new InvalidArgumentException("Habitat with id " + id + " not found!");
+
+        log.info("Habitat by id: "+ optHabitat.get().toString());
         return optHabitat.get();
     }
 

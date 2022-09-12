@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RecommendationDTO {
 
-    private Dictionary<String, String> recommendations;
+    private List<Option> recommendations;
     private double successRate;
     private String successMessage;
 }

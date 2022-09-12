@@ -91,9 +91,9 @@ const LogInPage = () => {
                         <div className="row">
                             <Button variant="outlined" sx={Constants.bttnStyle} className="log_in_submit" type="submit">Submit</Button>
                         </div>
-                        {/* <div className="row">
-                            <Button id="link-bttn" className="smallButton" component={Link} to="/forgot_password">Forgot password</Button>
-                        </div> */}
+                        <div className="row">
+                            <Button id="link-bttn" className="smallButton"  sx={Constants.linkBttnStyle} component={Link} to="/registration">Kreiraj nalog</Button>
+                        </div>
                     </form>
             </div>
         </div>

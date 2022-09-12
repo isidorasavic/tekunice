@@ -1,0 +1,28 @@
+- dobavljanje svih stanista (RADI)
+	** po id korisnika (a ne username kako je bilo)
+	** dobavlja samo id i ime stanista tj nova klasa HabitatNameDTO(a ne i sve faktore kao do sad)
+
++ dobavljanje pojedinacnog stanista (RADI)
+	- dobavljanje NF za to stanista
+	- dobavljanje svih AF za to staniste
+	** ovako se dobavlja ako hocemo svi faktori da su nam dostupni isto (a ne kao pre, kad ova metoda nije postojala)
+
+- dodavanje novog stanista (RADI)
+	- ako ne radi samo clean install-ovati kjar pa opet sve
+
++ dodavanje novih AF za postojece staniste (RADI)
+	- ** ista funkc ce biti i za gore kad se dodaju AF, bitno je na frontu u formu dodati datum i id stanista!
+
+- dobavljanje preporuke za odgovarajuce AF (RADI)
+	** na osnovu id-ja antropoloskih faktora (a ne stanista kako je bilo pre)
+	+ dodati mozda i na beku proveru da li je staniste nepovoljno, pa ako jeste baciti exception
+	!! proveriti sta se od podataka tu salje jos da li sve valja zapravo
+
+- kad se dobavljaju preporuke uvek vraca 80%???????
+
+- prikaz preporuka 
+	!! radi ali je bas gadno, bljak
+
+TODO: ispraviti drools da radi preporuke nekako i namestiti na frontu samo malo lepse da se ispisuju i to je to
+
+!! dodati da korisnik moze da napravi nalog!!!!!!!!!!

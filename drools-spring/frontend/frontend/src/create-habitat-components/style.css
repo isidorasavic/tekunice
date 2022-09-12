@@ -12,7 +12,6 @@ div.form-element {
 
 .antrpological-form {
     display: grid;
-    /* padding-top: 80px; */
     grid-template-columns: 1fr 1fr;
     padding-left: 10px;
     padding-right: 10px;
@@ -23,5 +22,21 @@ div.antropological-form-element {
     margin-top: 20px;
     align-items: center;
     width: 26vw;
+
+}
+
+#add-af-form {
+    margin-top: 10%;
+}
+
+.back-bttn {
+    position: absolute;
+    top: 70%;
+    left: 3%;
+}
+
+.header-add-af {
+    display: grid;
+    grid-template-rows: 1fr 15fr;
 
 }

@@ -12,7 +12,7 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
 import HabitatCreatedModal from './HabitatCreatedModal';
 
-const CreateAntropologicalFactors = () => {
+const CreateAntropologicalFactors = props => {
 
     const { enqueueSnackbar } = useSnackbar();
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ const CreateAntropologicalFactors = () => {
 
     useEffect(() => {
         axios
-        .get(Constants.BasePath + 'antropologicalFactorsOptions', 
+        .get(Constants.BasePath + 'anthropologicalFactorsOptions', 
         { headers: { "Content-Type": "application/json; charset=UTF-8" },
         })
         .then(response => {
@@ -59,34 +59,38 @@ const CreateAntropologicalFactors = () => {
     }, []);
 
     const checkCreateHabitatFormsValid = () => {
-        if (localStorage.getItem('name') === null){
-            enqueueSnackbar('Ime staništa ne može biti prazno!', {variant: 'error'});
-            return false;
+        if (props.addNew === false){
+
+            if (localStorage.getItem('name') === null){
+                enqueueSnackbar('Ime staništa ne može biti prazno!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('type') === null){
+                enqueueSnackbar('Tip staništa ne može biti prazan!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('exposition') === null){
+                enqueueSnackbar('Ekspozicija staništa ne može biti prazna!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('elevation') === null){
+                enqueueSnackbar('Nadmorska visina staništa ne može biti prazna!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('mjt') === null){
+                enqueueSnackbar('Srednja julska temperatura staništa ne može biti prazna!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('slope') === null){
+                enqueueSnackbar('Nagib staništa ne može biti prazan!', {variant: 'error'});
+                return false;
+            }
+            if (localStorage.getItem('flooding') === null){
+                enqueueSnackbar('Plavljenje staništa ne može biti prazno!', {variant: 'error'});
+                return false;
+            }
         }
-        if (localStorage.getItem('type') === null){
-            enqueueSnackbar('Tip staništa ne može biti prazan!', {variant: 'error'});
-            return false;
-        }
-        if (localStorage.getItem('exposition') === null){
-            enqueueSnackbar('Ekspozicija staništa ne može biti prazna!', {variant: 'error'});
-            return false;
-        }
-        if (localStorage.getItem('elevation') === null){
-            enqueueSnackbar('Nadmorska visina staništa ne može biti prazna!', {variant: 'error'});
-            return false;
-        }
-        if (localStorage.getItem('mjt') === null){
-            enqueueSnackbar('Srednja julska temperatura staništa ne može biti prazna!', {variant: 'error'});
-            return false;
-        }
-        if (localStorage.getItem('slope') === null){
-            enqueueSnackbar('Nagib staništa ne može biti prazan!', {variant: 'error'});
-            return false;
-        }
-        if (localStorage.getItem('flooding') === null){
-            enqueueSnackbar('Plavljenje staništa ne može biti prazno!', {variant: 'error'});
-            return false;
-        }
+
         if (localStorage.getItem('shrubbery') === null || localStorage.getItem('distance') === null ||
             localStorage.getItem('disturbance') === null || localStorage.getItem('roads') === null ||
             localStorage.getItem('agriculture') === null || localStorage.getItem('grazing') === null ||
@@ -99,13 +103,64 @@ const CreateAntropologicalFactors = () => {
     }
 
     const handleCloseModal= () => {
-        // setModalData({open: false, title: '', subtitle:''});
         navigate('/dashboard')
     }
 
     const submitHabitat = (event) => {
         event.preventDefault();
         if (checkCreateHabitatFormsValid()) {
+            const anthropologicalFactors = {
+                shrubbery: {
+                    value: localStorage.getItem('shrubbery'),
+                    type: 'shrubbery'
+
+                },
+                distanceToNeighbourhoodPopulation: {
+                    value: localStorage.getItem('distance'),
+                    type: 'distanceToNeighbourhoodPopulation'
+
+                },
+                disturbance: {
+                    value: localStorage.getItem('disturbance'),
+                    type: 'disturbance'
+
+                },
+                roads: {
+                    value: localStorage.getItem('roads'),
+                    type: 'roads'
+
+                },
+                agriculture: {
+                    value: localStorage.getItem('agriculture'),
+                    type: 'agriculture'
+
+                },
+                grazing: {
+                    value: localStorage.getItem('grazing'),
+                    type: 'grazing'
+
+                },
+                grassRemoving: {
+                    value: localStorage.getItem('grassRemoving'),
+                    type: 'grassRemoving'
+
+                },
+                predators: {
+                    value: localStorage.getItem('predators'),
+                    type: 'predators'
+
+                },
+                protection: {
+                    value: localStorage.getItem('protection'),
+                    type: 'protection'
+
+                },
+                purpose: {
+                    value: localStorage.getItem('purpose'),
+                    type: 'purpose'
+                },
+                habitatId: props.habitatId
+            };
             const habitat = {
                 name: localStorage.getItem("name"),
                 username: sessionStorage.getItem("username"),
@@ -117,76 +172,40 @@ const CreateAntropologicalFactors = () => {
                     slope: localStorage.getItem("slope"),
                     flooding: localStorage.getItem("flooding")
                 },
-                antropologicalFactorDTO: {
-                    shrubbery: {
-                        value: localStorage.getItem('shrubbery'),
-                        type: 'shrubbery'
-
-                    },
-                    distanceToNeighbourhoodPopulation: {
-                        value: localStorage.getItem('distance'),
-                        type: 'distanceToNeighbourhoodPopulation'
-
-                    },
-                    disturbance: {
-                        value: localStorage.getItem('disturbance'),
-                        type: 'disturbance'
-
-                    },
-                    roads: {
-                        value: localStorage.getItem('roads'),
-                        type: 'roads'
-
-                    },
-                    agriculture: {
-                        value: localStorage.getItem('agriculture'),
-                        type: 'agriculture'
-
-                    },
-                    grazing: {
-                        value: localStorage.getItem('grazing'),
-                        type: 'grazing'
-
-                    },
-                    grassRemoving: {
-                        value: localStorage.getItem('grassRemoving'),
-                        type: 'grassRemoving'
-
-                    },
-                    predators: {
-                        value: localStorage.getItem('predators'),
-                        type: 'predators'
-
-                    },
-                    protection: {
-                        value: localStorage.getItem('protection'),
-                        type: 'protection'
-
-                    },
-                    purpose: {
-                        value: localStorage.getItem('purpose'),
-                        type: 'purpose'
-
-                    }
-                }
+                anthropologicalFactorsDTO: anthropologicalFactors
             }
-            console.log(habitat);
-            axios.post(Constants.BasePath + 'addHabitat', habitat, 
-            { headers: { "Content-Type": "application/json; charset=UTF-8" },
-            })
-            .then(response => {
-                console.log('response:', response.data);
-                navigate('/dashboard')
+            if (!props.addNew){
+                axios.post(Constants.BasePath + 'addHabitat', habitat, 
+                    { headers: { "Content-Type": "application/json; charset=UTF-8" },
+                    })
+                    .then(response => {
+                        console.log('response:', response.data);
+                        navigate('/dashboard')
 
-            })
-            .catch(error => {
-                console.log(error.response);
-            })
+                    })
+                    .catch(error => {
+                        console.log(error.response);
+                    })
+                }
+            else {
+                axios.put(Constants.BasePath + 'habitat/'+props.habitatId+'/updateAnthropologicalFactors', anthropologicalFactors, 
+                    { headers: { "Content-Type": "application/json; charset=UTF-8" },
+                    })
+                    .then(response => {
+                        console.log('response:', response.data);
+                        navigate('/dashboard')
+
+                    })
+                    .catch(error => {
+                        console.log(error.response);
+                    })
+                }
+
             }
     }
 
     return (
-        <div>
+        <div className="abc">
             <form className="antrpological-form">
                 <div className="antropological-form-element">
                     <FormControl fullWidth>
@@ -399,12 +418,12 @@ const CreateAntropologicalFactors = () => {
                     </FormControl>
                 </div>
             </form>
-            <Button className='submit-bttn' variant="outlined" onClick={submitHabitat} style={{marginTop:"30px"}} sx={Constants.bttnStyle}>Kreiraj novo stanište</Button>
+            <Button className='submit-bttn' variant="outlined" onClick={submitHabitat} style={{marginTop:"30px"}} sx={Constants.bttnStyle}>Sačuvaj</Button>
             <HabitatCreatedModal open={modalData.open} title={modalData.title} subtitle={modalData.subtitle} closeModal={handleCloseModal}/>
         </div>
     )
-
-
-
 }
+                            
+
+                            
 export default CreateAntropologicalFactors

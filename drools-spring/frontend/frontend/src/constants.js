@@ -31,7 +31,9 @@ export const ModalStyle = {
 
 export const bttnStyle = {
   color:" #6C1E15",
-  borderColor:" #6C1E15"
+  borderColor:" #6C1E15",
+  height: 30,
+  fontSize: 9
 };
 
 export const iconStyle = {
@@ -39,3 +41,21 @@ export const iconStyle = {
   borderColor:" tan"
 };
 
+export const tabBttnStyle = {
+  fontSize: 12,
+  width: 180,
+  color: '#6C1E15'
+}
+
+export const newAFBttnStyle = {
+  position: 'absolute',
+  right: '0',
+  bottom: '0',
+  color: '#6C1E15'
+}
+
+export const linkBttnStyle = {
+  color:" #6C1E15",
+  height: 30,
+  fontSize: 12
+};

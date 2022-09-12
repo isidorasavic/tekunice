@@ -16,7 +16,7 @@ template "habitat-classify-template"
 rule "Label_Habitat_@{row.rowNumber}"
 no-loop true
 when
-    $c: Customer(label==Label.NO_LABEL,
+    $h: Habitat(label==Label.NO_LABEL,
                 naturalFactors.type == Type.@{type},
     			naturalFactors.exposition == Exposition.@{exposition},
     			naturalFactors.elevation == Elevation.@{elevation},

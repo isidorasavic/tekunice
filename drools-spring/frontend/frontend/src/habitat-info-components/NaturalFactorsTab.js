@@ -9,11 +9,12 @@ const NaturalFactorsTab = props => {
     const [labelValue, setLabelValue] = useState(null);
 
     useEffect(()=> {
-        setLabel1(props.habitat.label.label.split(' - ')[0]);
-        setLabel2(props.habitat.label.label.split(' - ')[1]);
-        setNaturalFactors(props.habitat.naturalFactorsDTO);
-        setLabelValue(props.habitat.label.value)
-        console.log(props.habitat)
+        if (props.habitat.id != -1){
+            setLabel1(props.habitat.label.label.split(' - ')[0]);
+            setLabel2(props.habitat.label.label.split(' - ')[1]);
+            setNaturalFactors(props.habitat.naturalFactorsDTO);
+            setLabelValue(props.habitat.label.value)
+        }
     }, [props])
 
     let png;
@@ -26,31 +27,20 @@ const NaturalFactorsTab = props => {
     return (
         <div className="factors-tab-container">
             <div className="natural-factors-container">
-                <div id="nf">
-                    <p><b id="factor">Tip staništa:</b><p id="factor-value">{naturalFactors.type}</p></p>
-                </div>
-                <div id="nf">
-                    <p><b id="factor">Ekspozicija:</b><p id="factor-value">{naturalFactors.exposition}</p></p>
-                </div>
-                <div id="nf">
-                    <p><b id="factor">Nadmorska visina:</b><p id="factor-value">{naturalFactors.elevation}</p></p>
-                </div>
-                <div id="nf">
-                    <p><b id="factor">Srednja julska temperatura:</b><p id="factor-value">{naturalFactors.mjt}</p></p>
-                </div>
-                <div id="nf">
-                    <p><b id="factor">Nagib terena:</b><p id="factor-value">{naturalFactors.slope}</p></p>
-                </div>
-                <div id="nf">
-                    <p><b id="factor">Plavljenje:</b><p id="factor-value">{naturalFactors.flooding}</p></p>
-                </div>
-                <div id="nf">
-                <p><b id="factor">Stanište kreirano:</b><p id="factor-value">{props.habitat.dateCreated}</p></p>
+                <h1>Prirodni (nepromenljivi) faktori</h1>
+                <div className="factor-values-container">
+                    <p><b id="factor">Tip staništa: </b>{naturalFactors.type}</p>
+                    <p><b id="factor">Ekspozicija: </b> {naturalFactors.exposition}</p>
+                    <p><b id="factor">Nadmorska visina: </b> {naturalFactors.elevation}</p>
+                    <p><b id="factor">Srednja julska temperatura: </b> {naturalFactors.mjt}</p>
+                    <p><b id="factor">Nagib terena: </b> {naturalFactors.slope}</p>
+                    <p><b id="factor">Plavljenje: </b> {naturalFactors.flooding}</p>
+                    <p><b id="factor">Stanište kreirano: </b> {props.habitat.dateCreated}</p>
                 </div>
             </div>
             <div className="label-container">
                 <h1>{label1}</h1>
-                <h4>{label2}</h4>
+                <p className="label-text">{label2}</p>
                 <img src={png} className="gif" alt="loading..." />  
             </div>
         </div>

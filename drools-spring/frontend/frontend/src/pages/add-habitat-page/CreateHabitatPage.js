@@ -7,12 +7,20 @@ import Fab from '@mui/material/Fab';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import CreateAntropologicalFactors from '../../create-habitat-components/CreateAntropologicalFactors'
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom"
+import Tooltip from '@mui/material/Tooltip';
 
 const CreateHabitatPage = () => {
+
+    const navigate = useNavigate();
 
     const [openForm, setOpenForm] = useState('createNew');
 
     const formNames = ["createNew", "naturalFactors", "antropologicalFactors"]
+
+    const returnToDashboard = () => {
+        navigate('/dashboard');
+    }   
 
     let form;
     let title;
@@ -25,8 +33,8 @@ const CreateHabitatPage = () => {
         title = "Dodaj prirodne faktore staništa"
     }
     if(openForm === 'antropologicalFactors') {
-        form = <CreateAntropologicalFactors/>
-        title = "Dodaj ljudske faktore staništa"
+        form = <CreateAntropologicalFactors addNew={false}/>
+        title = "Dodaj antropološke faktore staništa"
     }
 
     if (sessionStorage.getItem('username') === null) {
@@ -39,9 +47,14 @@ const CreateHabitatPage = () => {
 
     return (
         <div className="add-habitat-container">
-            <Typography variant="h3" component="div" gutterBottom style={{padding:"40px"}}>
-                Kreiraj novo stanište
-            </Typography>
+            <div className="header-add-af">
+                <Tooltip title="Vrati se na početnu stranu">
+                    <Fab style={{backgroundColor:"tan"}} className="back-bttn"  onClick={returnToDashboard}> <ArrowBack /></Fab>
+                </Tooltip>
+                <Typography variant="h3" component="div">
+                    Kreiraj novo stanište
+                </Typography>
+            </div>
             <div className="form-container">
                 <div className="round-bttn-container">
                     <div className="round-bttn" style={{textAlign:"left"}}>

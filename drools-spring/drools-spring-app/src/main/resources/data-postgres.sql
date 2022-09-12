@@ -6,8 +6,8 @@ insert into factor_options (value, label, type) values ('SLVTKSK', 'Sekundarne l
 insert into factor_options (value, label, type) values ('LS', 'Listopadne šume', 'type');
 insert into factor_options (value, label, type) values ('CS', 'Četinarske šume', 'type');
 insert into factor_options (value, label, type) values ('SLZ', 'Suve livade sa žbunjem', 'type');
-insert into factor_options (value, label, type) values ('PP', 'Poljoprivredna zemljišta', 'type');
-insert into factor_options (value, label, type) values ('PZ', 'Planinski pašnjaci', 'type');
+insert into factor_options (value, label, type) values ('PZ', 'Poljoprivredna zemljišta', 'type');
+insert into factor_options (value, label, type) values ('PP', 'Planinski pašnjaci', 'type');
 insert into factor_options (value, label, type) values ('BMS', 'Barska i močvarna staništa', 'type');
 
 insert into factor_options (value, label, type) values ('NoElevation', '0-200mv', 'elevation');
@@ -49,7 +49,7 @@ insert into factor_options (value, label, type) values ('Great', 'Veliki nagib (
 -- ANTROPOLOSKI FAKTORI NAZIV FAKTORA, OPIS, PREPORUKA I BROJNA VREDNOST KOLIKO JE STETNO
 --zbunje
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema žbunastih vrsta na staništu', 'shrubbery', 0, 'Veoma povoljna situacija.');
+values ('Nema žbunastih vrsta na staništu', 'shrubbery', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Žbunaste vrste su veoma retke i malobrojne', 'shrubbery', 3, 'Neophodno je pratiti razvoj žbunastih vrsta i povremeno ih uklanjati.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
@@ -63,11 +63,11 @@ values ('Najbliža susedna populacija je udaljena više kilometara', 'distanceTo
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Susedna populacija je udaljena manje 1km ali je između njih neka barijera', 'distanceToNeighbourhoodPopulation', 5, 'Udaljenost do najbliže susedne populacije je relativno nepovoljna ali ovo nije limitirajući faktor. Ukoliko je moguće, poželjno bi bilo naći stanište sa bližom susednom populacijom.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Susedna populacija je veoma blizu i postoji mogućnost kontakta jedinki', 'distanceToNeighbourhoodPopulation', 0, 'Veoma povoljna situacija.');
+values ('Susedna populacija je veoma blizu i postoji mogućnost kontakta jedinki', 'distanceToNeighbourhoodPopulation', 0, 'Nije potrebno preduzeti nikakve akcije.');
 
 --hvatanje trovanje, krivolov
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema', 'disturbance', 0, 'Veoma povoljna situacija');
+values ('Nema', 'disturbance', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Veoma retko', 'disturbance', 3, 'Sitacija je relativno nepovoljna, i nije porebno preduzeti drastične mere.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
@@ -83,19 +83,19 @@ values ('Stanište se graniči sa asfaltnim putem', 'roads', 7, 'Postojanje asfa
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Stanište preseca ili se ono graniči sa zemljanim putem', 'roads', 3, '(Zemljanim putevima se najčešće kreću poljoprivredne mašine što znači da je frekvencija saobraćaja niska i samim tim ovakva staništa su dobar izbor za naseljavanje tekunica ukoliko su i svi drugi faktori povoljni)');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema puteva na staništu', 'roads', 0, 'Veoma povoljna situacija');
+values ('Nema puteva na staništu', 'roads', 0, 'Nije potrebno preduzeti nikakve akcije.');
 
 -- poljoprivreda
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija ybog potencijalnog trovanja pesticidima.');
+values ('Stanište u potpunosti uokvireno poljoprivrednim zemljištem', 'agriculture', 10, 'Veoma nepovoljna situacija zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Stanište se jednim delom dodiruje sa poljoprivrednim zemljištem', 'agriculture', 5, 'Tekunice mogu biti ugrožene zbog potencijalnog trovanja pesticidima.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema poljoprivrednog zemljišta u neposrednoj blizini staništa', 'agriculture', 0, 'Veoma povoljna situacija.');
+values ('Nema poljoprivrednog zemljišta u neposrednoj blizini staništa', 'agriculture', 0, 'Nije potrebno preduzeti nikakve akcije.');
 
 --ispasa
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu se redovno napasaju ovce/krave', 'grazing', 0, 'Veoma povoljna situacija');
+values ('Na staništu se redovno napasaju ovce/krave', 'grazing', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Na staništu se povremeno ili u manjem obimu napasaju ovce/krave ispaše', 'grazing', 3, 'Ukoliko je moguće u saradnji sa lokalnom zajednicom raditi na podsticanju razvoja stočarstva');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
@@ -103,25 +103,25 @@ values ('Na staništu nema ispaše', 'grazing', 6, 'Ukoliko je moguće u saradnj
 
 --uklanjanje trave
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Nema uklanjanja trave', 'grassRemoving', 0, 'Veoma povoljna situacija.');
+values ('Nema uklanjanja trave', 'grassRemoving', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Ima uklanjanja trave', 'grassRemoving', 7, 'Za uspešnost naseljavanja tekunica neophodno je potpuno prekinuti ovakav vid eksploatacije zemljišta na konkretnom staništu');
 
 --predatori
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu su primećeni potencijalni predatori', 'predators', 0, 'Veoma povoljna situacija.');
+values ('Na staništu nisu primećeni potencijalni predatori', 'predators', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Na staništu nisu primećeni potencijalni predatori', 'predators', 4, 'Potrebno je pratiti u kojoj meri prirodni predatori utiču na tekunice. U većini slučajeva oni su manje opasni u osnosu na domaće mačke, kojih ima u blizini ljudskih staništa.');
+values ('Na staništu su primećeni potencijalni predatori', 'predators', 4, 'Potrebno je pratiti u kojoj meri prirodni predatori utiču na tekunice. U većini slučajeva oni su manje opasni u osnosu na domaće mačke, kojih ima u blizini ljudskih staništa.');
 
 --da li staniste ima vid zastite
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Ima', 'protection', 0, 'Veoma povoljna situacija');
+values ('Ima', 'protection', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Nema', 'protection', 5, 'VLasnici parcela su svakako u obavezi da postupaju u skladu sa propisanim merama zaštite. Ukoliko je neophodno treba obavestiti građane o novim merama koje se potencijalno donesu.');
 
 --vlasnistvo i namena parcele
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
-values ('Opštinsko', 'purpose', 0, 'Veoma povoljna sitacija');
+values ('Opštinsko', 'purpose', 0, 'Nije potrebno preduzeti nikakve akcije.');
 insert into anthropological_factor_level_and_description (description, factor_name, level, recommendation)
 values ('Privatno', 'purpose', 5, 'Vlasniik parcele je u obaveti da se pridržava zakona o zaštiti prirode. Neophodno je uspostaviti kontakt sa vlasnikom i obavestiti ga o merama koje je potrebno da poštuje.');
 
@@ -132,7 +132,7 @@ insert into users (username, password, first_name, last_name) values ('isidora',
 insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
 
 --stanista
-insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, '2022-05-10');
+insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Neradin', 'OPTIMAL', 1, 1, '2022-05-10');
 
 --ljudski faktori
 insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)

@@ -11,12 +11,9 @@ import * as Constants from '../constants'
 
 
 const CreateNewHabitat = () => {
-
     const [name, setName] = useState(localStorage.getItem('name'));
     const [type, setType] = useState(localStorage.getItem('type'));
-
     const [typeOptions, setTypeOptions] = useState([]);
-
 
     useEffect(()=> {
         setType(localStorage.getItem('type'))

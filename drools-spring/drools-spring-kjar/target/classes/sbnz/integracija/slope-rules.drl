@@ -53,6 +53,9 @@ no-loop
         $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("Large"), !$n.containsSlope("Great"))
     then
         modify($n){
+            addSloopeOption("Medium")
+        }
+        modify($n){
             addSloopeOption("Great")
         }
         update($n);
@@ -63,6 +66,9 @@ no-loop
     when
         $n : NaturalFactorOptions(habitatType != Type.NO_TYPE, $n.containsElevation("ExtraLarge"), !$n.containsSlope("Great"))
     then
+        modify($n){
+            addSloopeOption("Medium")
+        }
         modify($n){
             addSloopeOption("Great")
         }

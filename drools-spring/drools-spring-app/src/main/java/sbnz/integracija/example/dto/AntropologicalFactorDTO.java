@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 @ToString
 public class AntropologicalFactorDTO {
 
+    private long id;
     private Option shrubbery;
     private Option distanceToNeighbourhoodPopulation;
     private Option disturbance;
@@ -26,6 +27,7 @@ public class AntropologicalFactorDTO {
     private long habitatId;
 
     public AntropologicalFactorDTO(AnthropologicalFactors antropologicalFactors) {
+        this.id = antropologicalFactors.getId();
         this.shrubbery = new Option(antropologicalFactors.getShrubbery());
         this.distanceToNeighbourhoodPopulation = new Option(antropologicalFactors.getDistanceToNeighbourhoodPopulation());
         this.disturbance = new Option(antropologicalFactors.getDisturbance());
@@ -41,7 +43,8 @@ public class AntropologicalFactorDTO {
     }
 
 
-    public AntropologicalFactorDTO(Option shrubbery, Option distanceToNeighbourhoodPopulation, Option disturbance, Option roads, Option agriculture, Option grazing, Option grassRemoving, Option predators, Option protection, Option purpose, String dateAdded, long habitatId) {
+    public AntropologicalFactorDTO(long id, Option shrubbery, Option distanceToNeighbourhoodPopulation, Option disturbance, Option roads, Option agriculture, Option grazing, Option grassRemoving, Option predators, Option protection, Option purpose, String dateAdded, long habitatId) {
+        this.id = id;
         this.shrubbery = shrubbery;
         this.distanceToNeighbourhoodPopulation = distanceToNeighbourhoodPopulation;
         this.disturbance = disturbance;
