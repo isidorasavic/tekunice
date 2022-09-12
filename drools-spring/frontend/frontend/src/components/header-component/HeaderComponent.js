@@ -27,7 +27,8 @@ const HeaderComponent = () => {
     return (
         <div className="header-div">
             <div className="logo">
-                <img src="icon.png" className="logo-image" alt="tekunica"/>
+                {/* <img src="icon.png" className="logo-image" alt="tekunica"/> */}
+                <img src="animal-chipmunk.gif" className="logo-image" alt="tekunica"/>
                 <div className="logo-title">Srećne tekunice</div>
             </div>
             <div className="dashboard-title">

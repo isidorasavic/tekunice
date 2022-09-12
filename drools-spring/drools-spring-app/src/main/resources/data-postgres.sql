@@ -132,7 +132,7 @@ insert into users (username, password, first_name, last_name) values ('isidora',
 insert into natural_factors (type, elevation, mjt, exposition, slope, flooding) values ('PZS', 'NoElevation', 'Medium', 'South', 'NoSlope',  'None');
 
 --stanista
-insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Livadica', 'OPTIMAL', 1, 1, '2022-05-10');
+insert into habitats (name, label, natural_factors_id, user_id, date_created) values ('Neradin', 'OPTIMAL', 1, 1, '2022-05-10');
 
 --ljudski faktori
 insert into anthropological_factors (shrubbery_id, distance_id, disturbance_id, roads_id, agriculture_id, grazing_id, grass_removing_id, predators_id, protection_id, purpose_id, habitat_id, date_created)
